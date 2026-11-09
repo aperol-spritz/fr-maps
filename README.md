@@ -35,13 +35,19 @@ the standalone release pipeline and are not claimed to run on GitHub-hosted
 runners. The release tests exercise the actual builder, ZIP, Git tag resolution,
 GitHub release recovery and Foundry submission against local mock HTTP services.
 
-## Install after publication
+## Install in Foundry
 
 Releases are published on GitHub only; Foundry package-directory submission is
-intentionally disabled. Once the first stable release exists, its update manifest
-will be:
-`https://github.com/aperol-spritz/fr-maps/releases/latest/download/module.json`.
-There is no release at that URL until the maintainer publishes one.
+intentionally disabled. In Foundry's **Add-on Modules → Install Module**, paste
+this URL into **Manifest URL** and install:
+
+```text
+https://github.com/aperol-spritz/fr-maps/releases/latest/download/module.json
+```
+
+Enable **Neverwinter: City Map** in your world's module settings, then open it
+with **M**. The stable manifest follows the latest release for future updates.
+The first published version is [v0.17.0](https://github.com/aperol-spritz/fr-maps/releases/tag/v0.17.0).
 
 The installation folder stays `neverwinter-atlas` even though the repository is
 called `fr-maps`. See [asset/source notes](ASSET_NOTES.md); the repository does not

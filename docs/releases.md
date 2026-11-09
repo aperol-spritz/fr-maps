@@ -18,9 +18,18 @@ verified `14.370`). Development/build runtime is Node **24.x**.
 
 At the initial bootstrap inspection on 2026-11-09, the remote was public and empty, with default branch
 `main`, no refs, releases or workflows. The local module directory had no Git
-metadata. It was initialized on `main` with that remote as `origin`; no initial
-commit, branch push, release tag, GitHub release or Foundry submission was made.
+metadata. It was initialized on `main` with that remote as `origin`; at that
+inspection phase no initial commit, push or live publication had been made.
 There was no existing Publish Release UI workflow to preserve.
+
+After the maintainer authorized GitHub-only publication and completed Git sign-in,
+the initial commit and `v0.17.0` tag were pushed. The first
+[release run](https://github.com/aperol-spritz/fr-maps/actions/runs/42666541051)
+passed both jobs and published
+[v0.17.0](https://github.com/aperol-spritz/fr-maps/releases/tag/v0.17.0).
+The public assets were downloaded and independently verified; see
+[the live verification record](testing/release-live-2026-11-09.json).
+No Foundry directory submission was made.
 
 The immutable-release settings endpoint returned HTTP 401 without authenticated
 administration read access. Its setting is **unknown**, not assumed disabled.
@@ -30,10 +39,11 @@ GitHub Settings → General → Releases before the first publication.
 
 Maintainer setup:
 
-1. Review the source, `.gitignore`, and asset/source notes. Make the initial
+1. Initial bootstrap is complete for this repository. For a new clone/fork,
+   review the source, `.gitignore`, and asset/source notes. Make the initial
    commit and push `main` when ready. The workflow and its tag validator must be
    on the default branch before a manual Actions run is available. Both must
-   also be present in tags to be built. Example commands, **not run by the setup**:
+   also be present in tags to be built. Example bootstrap commands:
 
    ```sh
    git status --short
@@ -70,8 +80,8 @@ Commit the intended source/release notes and push the branch. Then, only when
 publication is authorized, create and push an existing commit's stable tag:
 
 ```sh
-git tag -a v0.17.0 -m "Neverwinter: City Map 0.17.0"
-git push origin v0.17.0
+git tag -a v0.17.1 -m "Neverwinter: City Map 0.17.1"
+git push origin v0.17.1
 ```
 
 Use a new `vMAJOR.MINOR.PATCH` tag each time. Leading zeros, prerelease/build
