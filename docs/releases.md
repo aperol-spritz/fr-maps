@@ -31,6 +31,15 @@ The public assets were downloaded and independently verified; see
 [the live verification record](testing/release-live-2026-11-09.json).
 No Foundry directory submission was made.
 
+Version [0.18.0](https://github.com/aperol-spritz/fr-maps/releases/tag/v0.18.0)
+was published through the existing GitHub-only
+[workflow](https://github.com/aperol-spritz/fr-maps/actions/runs/42704457837).
+It bundles the authored map positions/styles/calibration, six animated pin GIFs
+and the prepared 60-location RU/UA lore expansion. The downloaded public ZIP was
+verified against the exact tag commit and passed the disposable Foundry 14.370
+browser scenario. See [release notes](releases/0.18.0.md) and
+[public-asset/runtime evidence](testing/0.18.0-live-2026-11-09.json).
+
 The immutable-release settings endpoint returned HTTP 401 without authenticated
 administration read access. Its setting is **unknown**, not assumed disabled.
 The workflow probes it read-only and warns if unavailable; its asset strategy is
