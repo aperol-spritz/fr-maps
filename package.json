@@ -1,6 +1,6 @@
 {
   "name": "neverwinter-atlas",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -10,6 +10,8 @@
     "test": "node --test tests/node/*.test.mjs",
     "build": "node tools/build.mjs",
     "verify": "node tools/verify.mjs",
+    "package": "node tools/package.mjs",
+    "test:foundry:journals": "node tests/journals.mjs",
     "release:prepare": "node tools/release/prepare.mjs",
     "release:validate-tag": "node tools/release/tag.mjs",
     "test:foundry:access": "node tests/access.mjs",

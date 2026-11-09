@@ -104,13 +104,18 @@ compatibility values remain intact. Repository URLs come from Actions'
 
 `module.json` is at the ZIP root, byte-for-byte identical to the separate release
 asset. The package includes root runtime `.mjs` files, `atlas.css`, `assets/`,
-`lang/`, `data/places.json`, README/source notices, and the freshly built city
+`lang/`, `data/places.json`, README/source notices, `docs/journals.md`, and the freshly built city
 compendium at the path declared in the manifest. Existing/local databases are
 not copied. A small `release-provenance.json` records the tag commit and hashes.
 
 The validator checks runtime imports, CSS assets, manifest references, expected
 map/dictionary files, the LevelDB file set, root layout, provenance and checksums.
 The build verification reads back all journal rows from the actual new database.
+It also audits all journal media and UUID links against case-sensitive archive
+paths and the final collection IDs. Citation hyperlinks are retained and listed
+as external references; embedded remote media or missing module media fails the
+check. `npm run package` produces a verified local installable ZIP in a new
+`build/local-*` directory without a tag or publication. See [journal packaging](journals.md).
 It excludes development dependencies, tooling, tests, evidence, audit captures,
 the unconfirmed sewer reference, old packs, Git metadata, worlds and licences.
 

@@ -1,0 +1,47 @@
+{
+  "sourceWorld": "koban",
+  "media": [
+    {
+      "id": "knowledge",
+      "source": "worlds/koban/neverwinter-icons/Animated%20House%20of%20Knowledge.gif",
+      "path": "modules/neverwinter-atlas/assets/journals/pins/knowledge.gif",
+      "bytes": 1024285,
+      "sha256": "7a2296fe5df0e3e534b0be328775aecf027c59b1b0af2797d2336609530306b4"
+    },
+    {
+      "id": "beached",
+      "source": "worlds/koban/neverwinter-icons/Beached%20Leviathan_%20Tavern%20by%20Moonlight.gif",
+      "path": "modules/neverwinter-atlas/assets/journals/pins/beached.gif",
+      "bytes": 1091998,
+      "sha256": "57c98749f817de90743d00d3d6ecf7909d9896591b66ca741f77e1a5200d5bec"
+    },
+    {
+      "id": "castle",
+      "source": "worlds/koban/neverwinter-icons/Sunset%20Castle%20Cliffs%20in%20Motion.gif",
+      "path": "modules/neverwinter-atlas/assets/journals/pins/castle.gif",
+      "bytes": 960866,
+      "sha256": "c657238080faee6fe545f99269ebad5b89f9767a3834ab337106d841846d7a07"
+    },
+    {
+      "id": "mask",
+      "source": "worlds/koban/neverwinter-icons/Moonstone%20Tavern%20Terrace%20Loop.gif",
+      "path": "modules/neverwinter-atlas/assets/journals/pins/mask.gif",
+      "bytes": 1112646,
+      "sha256": "137288e1b5e7cf981cee9434f8dda67cbcfe967c8ddf091e120bfaf851028075"
+    },
+    {
+      "id": "shard",
+      "source": "worlds/koban/neverwinter-icons/shard_of_the_moon_stable_loop.gif",
+      "path": "modules/neverwinter-atlas/assets/journals/pins/shard.gif",
+      "bytes": 15530138,
+      "sha256": "caa6de59135f402323047b4508802ac852e26d6d2cd74a672065f511c2e6c7b8"
+    },
+    {
+      "id": "chasm-rift",
+      "source": "worlds/koban/neverwinter-icons/Animated%20Chasm%20Energy%20and%20Floating%20Isles.gif",
+      "path": "modules/neverwinter-atlas/assets/journals/pins/chasm-rift.gif",
+      "bytes": 963348,
+      "sha256": "4efd478afe13a6294f5599b343c864b7047cd2384c2fef053d96bc10690fd12d"
+    }
+  ]
+}

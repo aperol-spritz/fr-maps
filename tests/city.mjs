@@ -40,8 +40,8 @@ try {
   await atlas.waitFor();
   assert.ok((await page.locator('.nw-launch:visible').first().boundingBox()).height<=32,'Compact launcher');
   await page.waitForFunction(()=>document.querySelector('.nw-stage img')?.naturalWidth===3200 && document.querySelector('.nw-stage img')?.naturalHeight===2256);
-  assert.equal(await atlas.locator('.nw-pin:visible').count(),38);
-  report.checks.push('standalone-local-map-38-pins-12-territories','key-m-opens-atlas');
+  assert.equal(await atlas.locator('.nw-pin:visible').count(),48);
+  report.checks.push('standalone-local-map-48-pins-12-territories','key-m-opens-atlas');
   await territoriesFlow(page,report);
   const riverReference=JSON.parse(await fs.readFile(new URL('../data/river-default-source.json',import.meta.url)));
   const riverPoints=await atlas.locator('[data-zone=river]').getAttribute('points');
@@ -90,8 +90,8 @@ try {
     return journals.map(j=>({language:j.getFlag('neverwinter-atlas','language'),pages:j.pages.map(p=>({id:p.id,name:p.name,key:p.getFlag('neverwinter-atlas','key'),content:p.text.content}))}));
   });
   for(const journal of docs) {
-    assert.equal(journal.pages.length,50);
-    assert.equal(new Set(journal.pages.map(p=>p.key)).size,50);
+    assert.equal(journal.pages.length,60);
+    assert.equal(new Set(journal.pages.map(p=>p.key)).size,60);
     for(const item of journal.pages) {
       if(item.key==='mask-earthmote')assert.equal(item.name,journal.language==='ru'?'Маска Лунного Камня':'Маска Місячного Каменю');else assert.match(item.name,/\(.+\)/,'English in page name');
       assert.match(item.content,/forgottenrealms.fandom.com\/wiki\//);
@@ -120,10 +120,10 @@ try {
       assert.equal(await page.evaluate(async links=>(await Promise.all(links.map(link=>fromUuid(link)))).every(Boolean),links),true,'Journal cross-links resolve');
     }
   }
-  report.content={expected:{languages:['ru','uk'],pagesPerLanguage:50,pins:38},actual:{languages:docs.map(j=>j.language).sort(),pageCounts:docs.map(j=>j.pages.length),pins:await atlas.locator('.nw-pin').count()}};
+  report.content={expected:{languages:['ru','uk'],pagesPerLanguage:60,pins:48},actual:{languages:docs.map(j=>j.language).sort(),pageCounts:docs.map(j=>j.pages.length),pins:await atlas.locator('.nw-pin').count()}};
   report.hotkey={expected:'KeyM',actual:await page.evaluate(()=>game.keybindings.get('neverwinter-atlas','openAtlas')[0].key)};
   assert.equal(report.hotkey.actual,report.hotkey.expected);
-  report.checks.push('50-pages-per-language','journal-source-links','journal-related-uuid-links','journal-period-labels');
+  report.checks.push('60-pages-per-language','journal-source-links','journal-related-uuid-links','journal-period-labels');
   const newSearch=atlas.locator('input[type=search]');
   const period=atlas.locator('[data-period-filter]');
   await atlas.locator('[data-category]').selectOption('shop');
@@ -149,7 +149,7 @@ try {
   await atlas.locator('article [data-connections="district"] [data-go="blacklake-district"]').click();
   assert.match(await atlas.locator('h3').innerText(),/Bluelake District/);
   const districtMembers=await atlas.locator('[data-connections="members"] button').count();
-  assert.equal(districtMembers,12);
+  assert.equal(districtMembers,16);
   await atlas.locator('[data-connections="members"] [data-go="faces"]').click();
   assert.match(await atlas.locator('h3').innerText(),/House of a Thousand Faces/);
   await atlas.getByRole('button',{name:'UA',exact:true}).click();
@@ -164,12 +164,12 @@ try {
   await atlas.locator('[data-category]').selectOption('all');
   await period.selectOption('hide');
   const withoutHistorical=await atlas.locator('nav button').count();
-  assert.equal(withoutHistorical,40);
+  assert.equal(withoutHistorical,43);
   assert.equal(await atlas.locator('[data-place="dannar"]').count(),0);
   assert.equal(await atlas.locator('[data-place="beached"]').count(),1,'Uncertain date remains distinguishable from historical');
   await period.selectOption('historical');
   const historical=await atlas.locator('nav button').count();
-  assert.equal(historical,10);
+  assert.equal(historical,17);
   assert.equal(await atlas.locator('[data-place="wall"]').count(),1);
   assert.equal(await atlas.locator('[data-place="justice"]').count(),0);
   await atlas.locator('[data-place="shining-knight"]').click();
@@ -190,15 +190,15 @@ try {
   await page.keyboard.press('KeyM');
   await atlas.locator('[data-place="dannar"]').waitFor();
   assert.equal(await period.inputValue(),'historical');
-  assert.equal(await atlas.locator('.nw-pin').count(),9);
+  assert.equal(await atlas.locator('.nw-pin').count(),16);
   await period.selectOption('all');
-  assert.equal(await atlas.locator('.nw-pin').count(),38);
-  report.navigation={expected:{historical:10,withoutHistorical:40,districtMembers:12},actual:{historical,withoutHistorical,districtMembers}};
-  report.checks.push('related-place-click','district-members-and-return','back-restores-query-category-map','back-cancels-marker-placement','navigation-preserves-language','historical-filter-10-40','period-filter-persistence','local-parchment-skin');
+  assert.equal(await atlas.locator('.nw-pin').count(),48);
+  report.navigation={expected:{historical:17,withoutHistorical:43,districtMembers:16},actual:{historical,withoutHistorical,districtMembers}};
+  report.checks.push('related-place-click','district-members-and-return','back-restores-query-category-map','back-cancels-marker-placement','navigation-preserves-language','historical-filter-17-43','period-filter-persistence','local-parchment-skin');
   await atlas.locator('[data-category]').selectOption('shop');
-  assert.equal(await atlas.locator('nav button').count(),9);
+  assert.equal(await atlas.locator('nav button').count(),10);
   await atlas.locator('[data-category]').selectOption('service');
-  assert.equal(await atlas.locator('nav button').count(),4);assert.equal(await atlas.locator('[data-list-place=archives]').count(),1);
+  assert.equal(await atlas.locator('nav button').count(),7);assert.equal(await atlas.locator('[data-list-place=archives]').count(),1);
   await atlas.locator('[data-category]').selectOption('all');
   await newSearch.fill('оружие');
   assert.equal(await atlas.locator('nav button').count(),2);
@@ -225,7 +225,7 @@ try {
   await atlas.locator('nav button').click();
   assert.match(await atlas.locator('h3').innerText(),/Trade of Blades/);
   assert.match(await atlas.locator('article .nw-period').innerText(),/не установлен/);
-  report.checks.push('nine-shops-three-services','service-keyword-search-ru-ua','historical-shop-period','mmo-stable-context','guild-alias-and-uncertain-date');
+  report.checks.push('ten-shops-seven-services','service-keyword-search-ru-ua','historical-shop-period','mmo-stable-context','guild-alias-and-uncertain-date');
   await newSearch.fill('Merchant Square');await atlas.locator('nav button').click();
   assert.match(await atlas.locator('.nw-summary').innerText(),/1479/);
   assert.match(await atlas.locator('.nw-era').innerText(),/1492/);
@@ -307,7 +307,7 @@ try {
   assert.equal(await atlas.locator('footer output').innerText(),'150%');
   await search.fill('');
   await atlas.locator('[data-category]').selectOption('temple');
-  assert.equal(await atlas.locator('.nw-pin').count(),5);assert.equal(await atlas.locator('[data-place=driftwood]').count(),0);assert.ok(await atlas.locator('[data-list-place=knowledge]').isVisible());
+  assert.equal(await atlas.locator('.nw-pin').count(),7);assert.equal(await atlas.locator('[data-place=driftwood]').count(),0);assert.ok(await atlas.locator('[data-list-place=knowledge]').isVisible());
   await atlas.locator('[data-place="knowledge"]').click();
   await atlas.locator('article button').first().click();
   await page.waitForFunction(()=>[...foundry.applications.instances.values()].some(a=>a.rendered && a.document?.documentName==='JournalEntry' && a.document.name==='Невервінтер · 1492 ЛД' && a.element.innerText.includes('Храм Огми')));

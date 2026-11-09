@@ -171,9 +171,9 @@
           389
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "starshine",
+      "status": "included",
+      "note": "Lore reviewed 2026-11-09; 1492 limitations and overview placement recorded in module. Website coordinate is an overview, not independent proof of a building."
     },
     {
       "name": "Scar Keep",
@@ -241,9 +241,9 @@
           937
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "neverwinter-academy",
+      "status": "included",
+      "note": "Lore reviewed 2026-11-09; 1492 limitations and overview placement recorded in module. Website coordinate is an overview, not independent proof of a building."
     },
     {
       "name": "Neverwinter Academy of Magic",
@@ -255,9 +255,9 @@
           478
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "magic-academy",
+      "status": "included",
+      "note": "Reviewed 2026-11-09: overview placement and explicit 1492 limits; see data/places.json. No exact building claim."
     },
     {
       "name": "Vellgard Manor",
@@ -325,9 +325,9 @@
           290
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "sune-park",
+      "status": "included",
+      "note": "Reviewed 2026-11-09: overview placement and explicit 1492 limits; see data/places.json. No exact building claim."
     },
     {
       "name": "House of Knowledge",
@@ -369,7 +369,12 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-09",
+        "decision": "needs-source",
+        "note": "No reliable Neverwinter temple source located. Do not import same-named temples from other cities."
+      }
     },
     {
       "name": "Driftwood Tavern",
@@ -451,9 +456,9 @@
           456
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "shining-serpent",
+      "status": "included",
+      "note": "Lore reviewed 2026-11-09; 1492 limitations and overview placement recorded in module. Conflicting northern website coordinate rejected; southeast editorial overview used."
     },
     {
       "name": "Board Laid Bare",
@@ -465,9 +470,9 @@
           175
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "board-laid-bare",
+      "status": "included",
+      "note": "Lore reviewed 2026-11-09; 1492 limitations and overview placement recorded in module. Website coordinate is an overview, not independent proof of a building."
     },
     {
       "name": "Fallen Tower",
@@ -493,9 +498,9 @@
           688
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "sunken-flagon",
+      "status": "included",
+      "note": "Reviewed 2026-11-09: overview placement and explicit 1492 limits; see data/places.json. No exact building claim."
     },
     {
       "name": "Claven's General Supplies and Armory",
@@ -509,7 +514,12 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-09",
+        "decision": "needs-source",
+        "note": "No reliable named Neverwinter establishment source located. Retain as unverified, not declared noncanonical."
+      }
     },
     {
       "name": "Manycoins Moneylending",
@@ -621,7 +631,16 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-09",
+        "decision": "needs-source",
+        "note": "Hazel the Alchemist and Blacklake sludge research are documented in the MMO wiki; a named apothecary establishment, sale service and 1492 continuity are not established.",
+        "sources": [
+          "https://neverwinter.fandom.com/wiki/Stolen_Supplies",
+          "https://neverwinter.fandom.com/wiki/Blacklake_District"
+        ]
+      }
     },
     {
       "name": "Brandis Vrye Rookery",
@@ -635,7 +654,12 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-09",
+        "decision": "needs-source",
+        "note": "No reliable named Neverwinter establishment source located; identity, spelling and provenance require evidence."
+      }
     },
     {
       "name": "Sand's Magic Shop",
@@ -647,9 +671,9 @@
           656
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "sand-shop",
+      "status": "included",
+      "note": "Reviewed 2026-11-09: overview placement and explicit 1492 limits; see data/places.json. No exact building claim."
     },
     {
       "name": "Trade of Blades",
@@ -691,7 +715,12 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-09",
+        "decision": "needs-source",
+        "note": "No reliable named Neverwinter establishment source located. Retain as unverified, not declared noncanonical."
+      }
     },
     {
       "name": "Buckman's Emporium",
@@ -705,7 +734,12 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-09",
+        "decision": "needs-source",
+        "note": "No reliable named Neverwinter establishment source located. Do not confuse with Buckman NPCs from West Harbor."
+      }
     },
     {
       "name": "Sage's Shop",
@@ -2091,9 +2125,9 @@
           388
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "blackule-lane",
+      "status": "included",
+      "note": "Lore reviewed 2026-11-09; 1492 limitations and overview placement recorded in module. Website coordinate is an overview, not independent proof of a building."
     },
     {
       "name": "Deekin's Street",

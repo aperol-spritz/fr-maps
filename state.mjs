@@ -1,10 +1,11 @@
 import {layerMap,currentLayer,knownMap} from './layers.mjs';
+import {defaultMaps} from './defaults.mjs';
 export const ID='neverwinter-atlas';
 export const BUNDLED_MAP='modules/'+ID+'/assets/neverwinter.webp';
 export const mapPath=(layer=currentLayer())=>layerMap(layer);
 export const copy=value=>foundry.utils.deepClone(value);
 export const state=()=>game.settings.get(ID,'atlasState');
-export const mapState=map=>state().maps[map] ?? {color:'#a94328',size:34,ownership:{default:0},points:{}};
+export const mapState=map=>({color:'#a94328',size:34,ownership:{default:0},points:{},...copy(defaultMaps[map]??{}),...(state().maps[map]??{})});
 export const permission=(ownership,user=game.user)=>user.isGM?3:Number(ownership?.[user.id] ?? ownership?.default ?? 0);
 export const canViewMap=(map=mapPath())=>permission(mapState(map).ownership)>=2;
 export const canMove=place=>permission(place.record?.ownership)>=3 && (game.user.isGM || place.keepMarker || !(place.area || place.territoryOnly || place.shape?.points?.length>=3));
@@ -32,7 +33,7 @@ export function recordFor(place,map) {
   const local=language=>({name:place[language].name,lore:place.document?'':place[language].lore ?? ''});
   return {id:place.id,custom:Boolean(place.document || place.area),area:place.area,map,
     x:place.x,y:place.y,en:place.en,category:place.category,ru:local('ru'),uk:local('uk'),
-    aliases:place.aliases ?? [],period:place.period,position:copy(place.position),related:place.related ?? [],district:place.district,
+    aliases:place.aliases ?? [],asset:place.asset ?? '',color:place.color??null,size:place.size??null,period:place.period,position:copy(place.position),related:place.related ?? [],district:place.district,
     shape:place.shape?copy(place.shape):place.shape,territoryOnly:Boolean(place.territoryOnly),keepMarker:Boolean(place.keepMarker),omitEnglish:Boolean(place.omitEnglish),regionOrder:place.regionOrder ?? 0,regionLabel:copy(place.regionLabel ?? {enabled:false,audience:'all',size:16}),ownership:{default:0}};
 }
 export function patchPoint(place,map,patch) {
@@ -68,7 +69,7 @@ export function accessiblePlaces(base,map,custom) {
     const record=points[place.id];
     return {...place,aliases:place.aliases ?? [],...(record?{...(place.area?{en:record.en,category:record.category,ru:record.ru,uk:record.uk}:{}),x:record.x,y:record.y,color:record.color,size:record.size,asset:record.asset,regionOrder:record.regionOrder,regionLabel:record.regionLabel,
       position:record.position ?? place.position,shape:record.shape === undefined?place.shape:record.shape}:{}),
-      isCustom:Boolean(place.document || place.area),record};
+      asset:record?.asset ?? place.asset,color:record?.color===undefined?place.color:record.color,size:record?.size===undefined?place.size:record.size,isCustom:Boolean(place.document || place.area),record};
   });
 }
 export function visibility(place) {

@@ -3,6 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
+import {defaultMaps} from '../defaults.mjs';
 
 // Pure rows are shared by the portable builder and the legacy CLI.
 export function journalOperations(places) {
@@ -24,7 +25,7 @@ for(const place of places) {
 const operations = [];
 for (const language of ['ru','uk']) {
   const journalId = stableId(language);
-  const journal = {_id:journalId,name:language==='ru'?'Невервинтер · 1492 ЛД':'Невервінтер · 1492 ЛД',pages:[],flags:{'neverwinter-atlas':{language}}};
+  const journal = {_id:journalId,name:language==='ru'?'Невервинтер · 1492 ЛД':'Невервінтер · 1492 ЛД',pages:[],flags:{'neverwinter-atlas':{language,mapDefaults:Object.entries(defaultMaps).map(([map,defaults])=>({map,...structuredClone(defaults)}))}}};
   for (const place of places) {
     const local = place[language];
     const id = stableId(language + '/' + place.id);
@@ -44,8 +45,9 @@ for (const language of ['ru','uk']) {
     const sources=[{url:source,label:'Forgotten Realms Wiki'},...(place.sources ?? [])];
     const citations=sources.map(item=>'<a href="'+escape(item.url)+'" target="_blank" rel="noopener noreferrer">'+escape(item.label)+'</a>').join(' · ');
     const provenance='<hr><p>'+sourceLabel+' '+citations+'. '+escape(place.sourceDate ?? '2026-11-08')+'.</p>';
+    const media=place.asset ? '<figure><img src="'+escape(place.asset)+'" alt="'+escape(local.name)+'"></figure>' : '';
     const page = {_id:id,name:local.name+(place.omitEnglish?'':' ('+place.en+')'),type:'text',sort:journal.pages.length*1000,
-      flags:{'neverwinter-atlas':{key:place.id}},text:{format:1,content:'<p>'+escape(local.lore)+'</p>'+era+precision+services+details+organizations+links+provenance}};
+      flags:{'neverwinter-atlas':{key:place.id,location:structuredClone(place)}},text:{format:1,content:media+'<p>'+escape(local.lore)+'</p>'+era+precision+services+details+organizations+links+provenance}};
     journal.pages.push(id);
     operations.push({type:'put',key:'!journal.pages!'+journalId+'.'+id,value:page});
   }

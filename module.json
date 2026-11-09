@@ -2,7 +2,7 @@
   "id": "neverwinter-atlas",
   "title": "Neverwinter: City Map",
   "description": "Двуязычный атлас Невервинтера с доступом игроков, своими территориями, рисованием и линейкой. Открывается клавишей M.",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14.370"
