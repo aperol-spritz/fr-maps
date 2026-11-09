@@ -1,0 +1,10 @@
+node_modules/
+build/
+dist/
+packs/
+audit/
+tests/evidence/
+tests/*latest.json
+.env
+.env.*
+*.log

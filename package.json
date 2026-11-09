@@ -1,0 +1,23 @@
+{
+  "name": "neverwinter-atlas",
+  "version": "0.17.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "test": "node --test tests/node/*.test.mjs",
+    "build": "node tools/build.mjs",
+    "verify": "node tools/verify.mjs",
+    "release:prepare": "node tools/release/prepare.mjs",
+    "release:validate-tag": "node tools/release/tag.mjs",
+    "test:foundry:access": "node tests/access.mjs",
+    "test:foundry:city": "node tests/city.mjs"
+  },
+  "devDependencies": {
+    "classic-level": "3.0.0",
+    "fflate": "0.8.3",
+    "yaml": "2.9.1"
+  }
+}

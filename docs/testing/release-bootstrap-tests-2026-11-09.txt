@@ -1,0 +1,29 @@
+
+> neverwinter-atlas@0.17.0 test
+> node --test tests/node/*.test.mjs
+
+✔ stable tag validation rejects suffixes, leading zeros and shell/ref injection (423.6659ms)
+✔ resolve exact lightweight/annotated tag, not a same-named branch; reject nonexistent tag (814.2686ms)
+✔ real portable build has 2 journals and 100 pages; rows and sources survive round trip (60.4874ms)
+✔ release manifest comes from tag, preserves source identity and exact compatibility; source untouched (0.7471ms)
+✔ ZIP has manifest at root, original assets, runtime imports, only fresh compendium, no local/audit data (278.1265ms)
+✔ workflow has validated existing-tag dispatch, exact SHA checkout, scoped write token and explicit job dependency (10.2778ms)
+✔ publish uploads both assets into draft BEFORE publishing, then sends exact official Foundry payload (845.7225ms)
+✔ missing Foundry secret leaves GitHub release successful and emits a clear warning (272.9068ms)
+✔ complete immutable release is reused byte-for-byte and keeps maintainer notes (478.9574ms)
+✔ published mutable release backfills only missing matching asset and retains notes (264.8764ms)
+✔ mismatching existing manifest stops retry without asset replacement (143.3187ms)
+✔ incomplete immutable release fails safely without replacing or uploading assets (146.8592ms)
+✔ recover partial workflow draft, preserve generated notes and finish only automation-owned draft (257.3013ms)
+✔ human drafts and prereleases never submit to Foundry or get promoted automatically (917.4662ms)
+✔ moved tag and mismatching archive fail before remote mutations (178.5948ms)
+✔ Foundry HTTP failure retains completed GitHub assets and does not save a success receipt (307.803ms)
+✔ backfilling an older stable release does not replace latest (297.677ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5929.1447

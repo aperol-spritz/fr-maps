@@ -1,0 +1,270 @@
+{
+  "version": "0.10.0",
+  "date": "2026-11-09",
+  "status": "passed",
+  "userAcceptance": "pending",
+  "currentInputsVerified": true,
+  "access": {
+    "scope": "access-tools-migration",
+    "status": "passed",
+    "started": "2026-11-09T06:52:56.391Z",
+    "checks": [
+      "legacy-control-points-drawings-migrated-and-private-backup",
+      "unrelated-lore-preserved",
+      "no-service-journals",
+      "GM-drawings-user-private",
+      "published-territory-and-revocation",
+      "movable-nonmodal-editor",
+      "native-file-picker-in-front-movable-and-selection",
+      "individual-map-access-and-player-M",
+      "default-hidden-points",
+      "blocked-player-denied",
+      "global-style",
+      "hover-grow-and-return",
+      "instant-name",
+      "double-click-editor",
+      "picker-enables-style-and-persists",
+      "public-RU-UA-reader-no-journal",
+      "hidden-related-links",
+      "observer-drag-denied",
+      "server-world-write-denied",
+      "untrusted-move-request-rejected",
+      "GM-drag",
+      "authenticated-owner-drag-and-sync",
+      "GIF-scales-with-zoom-max100-hover200-and-return",
+      "PNG-GIF-JPG-real-upload-and-decoding",
+      "drawing-private-name-and-escaped-map-label",
+      "shared-caption-live-edit-without-private-name",
+      "selected-stroke-share-hide-and-player-reload",
+      "private-stroke-not-published",
+      "undo-unpublishes-deleted-stroke",
+      "drawing-toolbar-header-pencil",
+      "drawing-no-journal",
+      "Ctrl-Z-undo",
+      "drawing-and-style-and-move-reload",
+      "territory-editor-screenshot",
+      "district-type-change-denied-while-member-attached",
+      "territory-switch-cancel-and-discard-dirty-draft",
+      "territory-RU-UA-English-type-edit-preserves-shape-lore-access",
+      "territory-metadata-player-sync-and-GM-reload",
+      "legacy-custom-point-district-selection",
+      "custom-district-member-navigation",
+      "custom-publication-keeps-private-note",
+      "published-district-links-apply-permissions",
+      "district-edit-sync-preserves-public-text",
+      "territory-list-select-toggle-edit-delete",
+      "edit-district-south-vertex-with-unobstructed-map",
+      "insert-and-delete-vertex",
+      "create-custom-territory-no-journal",
+      "printed-scale-straight-ruler",
+      "freehand-route-ruler",
+      "custom-scale-calibration",
+      "Pirates-Skyhold-bilingual-lore-and-island-marker",
+      "default-access-individual-exception",
+      "point-revocation-live",
+      "map-revocation-live",
+      "player-no-GM-catalog",
+      "no-service-journal-after-all-tools"
+    ],
+    "foundry": "14.370",
+    "inputs": {
+      "atlas.mjs": "89ea3c2c9af9ff7fb3e74c4b59043f0504fa460379979e407a4cfce13f934fb2",
+      "access.mjs": "fcfed5de658ceb3aa592f1f1bbecac19560dd710e7a8ae4ceaf8af505e3cb197",
+      "state.mjs": "488e18610af617aa2f6b68f87021f76f6355dd9cd470629958669d1f38d61757",
+      "geometry.mjs": "2fe90a4eca2c0cab93e87f209b9d275f6773e9dc73007d236fa573816990ceaa",
+      "map-art.mjs": "cf24ac6af095c807dd139443f5da62aac0b67f6e354dc390c2a4db4ce49fe964",
+      "custom-points.mjs": "c272a611c915a72dc5178d02f20a1595edf7ec59dc60f61c5a14165c32ef9677",
+      "atlas.css": "c5c22046ca5ad427012225a1c21c6ed32c36522b9ae6d3af2e855089670b75b0",
+      "window.mjs": "fd9def844707c5a9d951fe32efdd6d8e78ddfe91162b3c65868249eb313d7150",
+      "data/places.json": "53bf8277695b0b7d32017de97a0fe46f356686f13531ba56888d96bfe12c0f1c",
+      "module.json": "2e337ace705121144650d51af80b10ea667e297c454d3ee1c11566742adfb5c7",
+      "tests/access.mjs": "f0e567acf804a7e5c76735830e10559b41a9c2de9b7865331ae3c1dcf8d301af",
+      "tests/pack-snapshot.mjs": "dd1abd3338fc01114e3f023efb8a6fd9abe55ec0f6a60f6bfa95d401a897a228"
+    },
+    "uploads": [
+      "worlds/gem-e2e-e70bd234/neverwinter-icons/pin.png",
+      "worlds/gem-e2e-e70bd234/neverwinter-icons/pin.gif",
+      "worlds/gem-e2e-e70bd234/neverwinter-icons/pin.jpg"
+    ],
+    "shape": {
+      "points": [
+        [
+          20,
+          57
+        ],
+        [
+          26.5,
+          54
+        ],
+        [
+          33,
+          51
+        ],
+        [
+          47,
+          49
+        ],
+        [
+          52,
+          65
+        ],
+        [
+          50,
+          86
+        ],
+        [
+          38.38401979565773,
+          91.89311594202898
+        ],
+        [
+          21,
+          76
+        ]
+      ],
+      "color": "#b45e3e",
+      "opacity": 0.15,
+      "hidden": false
+    },
+    "measurement": {
+      "expected": {
+        "straight": 1000,
+        "route": 1705,
+        "calibrated": 2000
+      },
+      "actual": {
+        "straight": 1000,
+        "route": 1705,
+        "calibrated": 2000
+      }
+    },
+    "cleanup": {
+      "serverStopped": true,
+      "packsPreserved": true,
+      "payloadRemoved": true,
+      "atlasPacksPreserved": true
+    },
+    "finished": "2026-11-09T06:54:25.369Z"
+  },
+  "city": {
+    "foundry": "14.370",
+    "status": "passed",
+    "checks": [
+      "standalone-local-map-42-pins",
+      "key-m-opens-atlas",
+      "user-river-default-exact-38-vertices",
+      "locations-labels",
+      "territory-right-click-no-context-menu",
+      "111-percent-stationary-at-large-viewport",
+      "42-pages-per-language",
+      "journal-source-links",
+      "journal-related-uuid-links",
+      "journal-period-labels",
+      "related-place-click",
+      "district-members-and-return",
+      "back-restores-query-category-map",
+      "back-cancels-marker-placement",
+      "navigation-preserves-language",
+      "historical-filter-9-33",
+      "period-filter-persistence",
+      "local-parchment-skin",
+      "nine-shops-three-services",
+      "service-keyword-search-ru-ua",
+      "historical-shop-period",
+      "mmo-stable-context",
+      "guild-alias-and-uncertain-date",
+      "new-river-lore-RU-UA-links-and-location-uncertainty",
+      "organization-search-RU-UA-linked-locations-and-1492-limits",
+      "organization-sections-in-built-journals",
+      "shard-renamed-for-1492",
+      "removed-wall-history",
+      "three-district-overviews",
+      "m-does-not-intercept-text-input",
+      "sealed-chasm",
+      "three-language-search",
+      "ukrainian-lore",
+      "zoom",
+      "temple-filter",
+      "open-journal",
+      "compact-launcher",
+      "window-drag",
+      "window-resize",
+      "maximize-restore",
+      "wheel-zoom-in-out",
+      "map-pan",
+      "custom-point-create-at-zoomed-position",
+      "custom-point-edit",
+      "custom-point-district-change-and-reload",
+      "custom-point-reload",
+      "escaped-custom-text",
+      "private-world-journal",
+      "window-view-persistence",
+      "custom-point-delete"
+    ],
+    "started": "2026-11-09T06:54:50.750Z",
+    "inputs": {
+      "module.json": "2e337ace705121144650d51af80b10ea667e297c454d3ee1c11566742adfb5c7",
+      "atlas.mjs": "89ea3c2c9af9ff7fb3e74c4b59043f0504fa460379979e407a4cfce13f934fb2",
+      "access.mjs": "fcfed5de658ceb3aa592f1f1bbecac19560dd710e7a8ae4ceaf8af505e3cb197",
+      "state.mjs": "488e18610af617aa2f6b68f87021f76f6355dd9cd470629958669d1f38d61757",
+      "geometry.mjs": "2fe90a4eca2c0cab93e87f209b9d275f6773e9dc73007d236fa573816990ceaa",
+      "map-art.mjs": "cf24ac6af095c807dd139443f5da62aac0b67f6e354dc390c2a4db4ce49fe964",
+      "window.mjs": "fd9def844707c5a9d951fe32efdd6d8e78ddfe91162b3c65868249eb313d7150",
+      "custom-points.mjs": "c272a611c915a72dc5178d02f20a1595edf7ec59dc60f61c5a14165c32ef9677",
+      "atlas.css": "c5c22046ca5ad427012225a1c21c6ed32c36522b9ae6d3af2e855089670b75b0",
+      "data/places.json": "53bf8277695b0b7d32017de97a0fe46f356686f13531ba56888d96bfe12c0f1c",
+      "data/river-default-source.json": "0e0029e1de4ee8c4d86815f0b7b01548d28c54dcb65663ba31225b6423620273",
+      "tools/build-pack.mjs": "38a044635920198cfc21ae94dc0b84ec2dbe2ecb1e05f7eec3f142a5349317b4",
+      "tests/city.mjs": "35dfca930f08f93fcbe2af221b6648edf5f274062d0fb1231d8bf0fd134b28e2",
+      "tests/pack-snapshot.mjs": "dd1abd3338fc01114e3f023efb8a6fd9abe55ec0f6a60f6bfa95d401a897a228",
+      "assets/parchment.png": "15182e703875e7dc5e755617bb5f4c281ba5b3e46472756903470e924a3687c0"
+    },
+    "zoom111": {
+      "frames": 60,
+      "maxDriftPx": 0
+    },
+    "content": {
+      "expected": {
+        "languages": [
+          "ru",
+          "uk"
+        ],
+        "pagesPerLanguage": 42,
+        "pins": 42
+      },
+      "actual": {
+        "languages": [
+          "ru",
+          "uk"
+        ],
+        "pageCounts": [
+          42,
+          42
+        ],
+        "pins": 42
+      }
+    },
+    "hotkey": {
+      "expected": "KeyM",
+      "actual": "KeyM"
+    },
+    "navigation": {
+      "expected": {
+        "historical": 9,
+        "withoutHistorical": 33,
+        "districtMembers": 10
+      },
+      "actual": {
+        "historical": 9,
+        "withoutHistorical": 33,
+        "districtMembers": 10
+      }
+    },
+    "cleanup": {
+      "serverStopped": true,
+      "packsPreserved": true,
+      "payloadRemoved": true,
+      "atlasSourcePacksPreserved": true
+    },
+    "finished": "2026-11-09T06:55:38.530Z"
+  }
+}

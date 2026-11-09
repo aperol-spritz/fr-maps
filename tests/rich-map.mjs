@@ -1,0 +1,94 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+const ID='neverwinter-atlas',MAP='modules/neverwinter-atlas/assets/neverwinter.webp';
+export async function richMap(gm,reader,blocked,fixture,report){
+  const atlas=gm.locator('.nw-atlas'),player=reader.locator('.nw-atlas'),settings=gm.locator('.nw-settings'),editor=reader.locator('.nw-settings');
+  const original=await gm.evaluate(({ID,MAP})=>foundry.utils.deepClone(game.settings.get(ID,'atlasState')),{ID,MAP});
+  const preferences=await gm.evaluate(ID=>game.settings.get(ID,'rulerPreferences'),ID);
+  const originalView=await gm.evaluate(ID=>game.settings.get(ID,'view'),ID);
+  const search=async(page,text)=>{await page.locator('.nw-atlas input[type=search]').fill(text);if(text)await page.locator('.nw-atlas nav button').click();};
+  const point=async(page,x,y)=>page.locator('.nw-stage').evaluate((e,[x,y])=>{const r=e.getBoundingClientRect();return{x:r.x+r.width*x/100,y:r.y+r.height*y/100};},[x,y]);
+  const draw=async(points)=>{const pixels=await Promise.all(points.map(([x,y])=>point(gm,x,y)));await gm.mouse.move(pixels[0].x,pixels[0].y);await gm.mouse.down();for(const p of pixels.slice(1))await gm.mouse.move(p.x,p.y,{steps:8});await gm.mouse.up();};
+  const grant=async level=>{await search(gm,'Castle Never');await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption(String(level));await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await reader.waitForFunction(({ID,MAP,user,level})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle.ownership[user]===level,{ID,MAP,user:fixture.users[0].id,level});};
+  for(const [level,name,color]of [[0,'none','rgb(182, 56, 50)'],[2,'view','rgb(36, 129, 72)'],[3,'owner','rgb(35, 141, 209)']]){
+    await grant(level);await gm.waitForFunction(({name,color})=>{const e=document.querySelector('[data-place=castle] .nw-access-icon');return e?.dataset.access===name && getComputedStyle(e).backgroundColor===color;},{name,color});
+  }
+  await search(reader,'Castle Never');await player.locator('[data-point-settings]').click();await editor.getByRole('button',{name:'Зберегти',exact:true}).waitFor();
+  await reader.screenshot({path:fileURLToPath(new URL('evidence/owner-editor-UA.png',import.meta.url))});
+  assert.equal(await editor.locator('[data-permissions]').count(),0,'Location owners do not receive permission controls');
+  await editor.locator('[name=colorHex]').fill('#3366cc');await editor.locator('[name=size]').fill('46');await editor.locator('[name=publicRu]').fill('Текст владельца.');await editor.locator('[name=publicUk]').fill('Текст власника.');await editor.locator('[type=submit]').click();await editor.waitFor({state:'detached'});
+  await gm.waitForFunction(({ID,MAP})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle.ru.lore==='Текст владельца.',{ID,MAP});
+  const ownerRecord=await gm.evaluate(({ID,MAP})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle,{ID,MAP});assert.equal(ownerRecord.color,'#3366cc');assert.equal(ownerRecord.size,46);assert.equal(ownerRecord.ownership[fixture.users[0].id],3);
+  async function forged(page,flag,data){const nonce='audit-'+Date.now()+'-'+Math.random();await page.evaluate(async({ID,MAP,flag,data,nonce})=>{await game.user.unsetFlag(ID,flag);await game.user.setFlag(ID,flag,{...data,map:MAP,nonce});},{ID,MAP,flag,data,nonce});await page.waitForFunction(({ID,MAP,nonce})=>game.settings.get(ID,'atlasState').maps[MAP].requestAcks?.[game.user.id]?.nonce===nonce,{ID,MAP,nonce});return page.evaluate(({ID,MAP})=>game.settings.get(ID,'atlasState').maps[MAP].requestAcks[game.user.id],{ID,MAP});}
+  assert.ok((await forged(reader,'pointEditRequest',{id:'castle',patch:{ownership:{default:3}}})).error);
+  assert.ok((await forged(reader,'pointEditRequest',{id:'river',patch:{shape:null}})).error,'Ownership never grants territory geometry');
+  await grant(2);await player.locator('[data-point-settings]').waitFor({state:'detached'});assert.ok((await forged(reader,'pointEditRequest',{id:'castle',patch:{color:'#ffffff'}})).error);await grant(3);
+  assert.ok((await forged(reader,'pointEditRequest',{id:'castle',patch:{ownership:{default:3},shape:null}})).error);
+  await player.locator('[data-point-settings]').click();await editor.locator('[name=publicUk]').fill('Повторне збереження власника.');await editor.locator('[type=submit]').click();await editor.waitFor({state:'detached'});
+  await gm.waitForFunction(({ID,MAP})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle.uk.lore==='Повторне збереження власника.',{ID,MAP});
+  assert.equal(await player.locator('.nw-summary').innerText(),'Повторне збереження власника.');
+  await gm.evaluate(async({ID,MAP,user})=>{const next=foundry.utils.deepClone(game.settings.get(ID,'atlasState'));next.maps[MAP].points.lake.ownership[user]=3;await game.settings.set(ID,'atlasState',next);},{ID,MAP,user:fixture.users[0].id});
+  assert.ok((await forged(reader,'pointEditRequest',{id:'lake',patch:{color:'#000000'}})).error,'Even a legacy level-3 territory grant does not enable location editing');
+  assert.equal(await reader.evaluate(id=>game.journal.get(id)?.testUserPermission(game.user,'OBSERVER') ?? false,fixture.custom._id),false,'GM note stays private');
+  report.checks.push('access-badge-red-green-blue','owner-public-text-color-size-native-authorized-save','observer-edit-denied-and-permission-escalation-denied','territory-shape-edit-denied-to-player','owner-cannot-read-private-GM-journal');
+  const actors=await gm.evaluate(async({ID,user})=>{
+    const previous=game.users.get(user).character?.id ?? null;
+    const [hero,other]=await Actor.createDocuments([{name:'Atlas Hero',type:'character',ownership:{default:0,[user]:3}},{name:'Atlas Other Hero',type:'character',ownership:{default:2}}]);
+    await game.users.get(user).update({character:hero.id});return {hero:hero.id,other:other.id,previous};
+  },{ID,user:fixture.users[0].id});
+  async function place(page,id,x,y){await page.locator('.nw-atlas [data-characters]').click();const form=page.locator('.nw-settings');await form.locator('[name=actorId]').selectOption(id);await form.locator('[type=submit]').click();await form.waitFor({state:'detached'});const p=await point(page,x,y);await page.mouse.click(p.x,p.y);await page.locator('[data-character="'+id+'"]').waitFor();}
+  await place(gm,actors.hero,40,40);await player.locator('[data-character="'+actors.hero+'"]').waitFor();
+  await player.locator('[data-character="'+actors.hero+'"]').click();await reader.waitForFunction(id=>[...foundry.applications.instances.values()].some(a=>a.rendered&&a.document?.id===id&&a.document?.documentName==='Actor'),actors.hero);
+  await reader.evaluate(async id=>{for(const a of foundry.applications.instances.values())if(a.document?.id===id)await a.close();},actors.hero);
+  await player.locator('[data-characters]').click();assert.equal(await editor.locator('[type=submit]').isDisabled(),true);assert.equal(await editor.locator('[name=actorId] option[value="'+actors.other+'"]').count(),0);await editor.locator('[data-cancel]').click();
+  await atlas.locator('[data-characters]').click();await settings.locator('[data-allow-characters]').check();await settings.locator('[data-cancel]').click();
+  await reader.waitForFunction(({ID,MAP})=>game.settings.get(ID,'atlasState').maps[MAP].allowCharacters,{ID,MAP});
+  const token=player.locator('[data-character="'+actors.hero+'"]'),box=await token.boundingBox();await reader.mouse.move(box.x+22,box.y+22);await reader.mouse.down();await reader.mouse.move(box.x+58,box.y+44,{steps:8});await reader.mouse.up();
+  await gm.waitForFunction(({ID,MAP,id})=>game.settings.get(ID,'atlasState').maps[MAP].characters[id].x>41,{ID,MAP,id:actors.hero});
+  await player.locator('.nw-viewport').focus();await reader.keyboard.press('Control+z');await gm.waitForFunction(({ID,MAP,id})=>Math.abs(game.settings.get(ID,'atlasState').maps[MAP].characters[id].x-40)<.1,{ID,MAP,id:actors.hero});
+  assert.ok((await forged(reader,'characterRequest',{action:'place',actorId:actors.other,x:50,y:50})).error);
+  assert.ok((await forged(blocked,'characterRequest',{action:'place',actorId:actors.hero,x:50,y:50})).error);
+  await place(reader,actors.hero,42,43);await gm.waitForFunction(({ID,MAP,id})=>Math.abs(game.settings.get(ID,'atlasState').maps[MAP].characters[id].x-42)<.25,{ID,MAP,id:actors.hero});
+  await gm.evaluate(({id,user})=>game.actors.get(id).update({ownership:{default:0,[user]:2}}),{id:actors.hero,user:fixture.users[0].id});
+  await reader.waitForFunction(id=>!game.actors.get(id).testUserPermission(game.user,'OWNER'),actors.hero);
+  assert.ok((await forged(reader,'characterRequest',{action:'move',actorId:actors.hero,x:80,y:80})).error);
+  await gm.evaluate(({id,user})=>game.actors.get(id).update({ownership:{default:0,[user]:3}}),{id:actors.hero,user:fixture.users[0].id});
+  // Export/restore the actor reference and position through the real backup form.
+  await atlas.locator('[data-settings]').click();await settings.locator('[data-backup]').click();const downloading=gm.waitForEvent('download');await settings.locator('[data-export-backup]').click();const data=JSON.parse(await fs.readFile(await (await downloading).path(),'utf8'));assert.equal(data.settings.characters[actors.hero].actorId,actors.hero);await settings.locator('[data-cancel]').click();
+  await gm.evaluate(async({ID,MAP,id})=>{const next=foundry.utils.deepClone(game.settings.get(ID,'atlasState'));next.maps[MAP].characters[id].x=80;await game.settings.set(ID,'atlasState',next);},{ID,MAP,id:actors.hero});
+  await atlas.locator('[data-settings]').click();await settings.locator('[data-backup]').click();await settings.locator('[name=backupFile]').setInputFiles({name:'characters.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(data))});await gm.waitForFunction(()=>!document.querySelector('.nw-settings [type=submit]').disabled);await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await gm.waitForFunction(({ID,MAP,id})=>Math.abs(game.settings.get(ID,'atlasState').maps[MAP].characters[id].x-42)<.25,{ID,MAP,id:actors.hero});
+  report.checks.push('world-character-placement-linked-to-native-Actor-sheet','player-character-placement-toggle-and-native-owner-movement-undo','foreign-actor-and-denied-map-token-requests-refused','character-reference-and-position-backup-restore');
+  await gm.screenshot({path:fileURLToPath(new URL('evidence/party-markers.png',import.meta.url))});
+  await search(gm,'');await atlas.locator('.nw-ruler-tools summary').click();assert.equal(await atlas.locator('[name=rulerMode]').inputValue(),'free');
+  await atlas.locator('[data-ruler]').click();await draw([[20,20],[39.53125,20],[39.53125,39.53125]]);
+  const feet=Number(await atlas.locator('[data-distance]').getAttribute('data-feet'));assert.ok(Math.abs(feet-1705)<15);assert.ok(Math.abs(Number(await atlas.locator('.nw-ruler-result').getAttribute('data-minutes'))-feet/300)<.001);
+  await gm.screenshot({path:fileURLToPath(new URL('evidence/ruler-route.png',import.meta.url))});
+  await atlas.locator('[name=travelPace]').selectOption('slow');assert.ok(Math.abs(Number(await atlas.locator('[data-distance]').getAttribute('data-minutes'))-feet/200)<.001);
+  await atlas.locator('[name=travelPace]').selectOption('fast');assert.ok(Math.abs(Number(await atlas.locator('[data-distance]').getAttribute('data-minutes'))-feet/400)<.001);
+  await atlas.locator('[name=travelSpeed]').fill('500');await atlas.locator('[name=rulerColorHex]').fill('#9852ce');assert.equal(await atlas.locator('.nw-ruler-line').evaluate(e=>getComputedStyle(e).stroke),'rgb(152, 82, 206)');
+  await atlas.locator('[data-calibrate]').click();for(const [x,y]of [[20,20],[39.53125,20]]){const p=await point(gm,x,y);await gm.mouse.click(p.x,p.y);}await settings.locator('[name=feet]').fill('10000');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
+  await atlas.locator('[data-ruler]').click();await draw([[20,20],[39.53125,20]]);assert.match(await atlas.locator('.nw-ruler-result').innerText(),/мил/);assert.match(await atlas.locator('.nw-ruler-result').innerText(),/км/);assert.ok(Math.abs(Number(await atlas.locator('[data-distance]').getAttribute('data-minutes'))-20)<.2);
+  await atlas.getByRole('button',{name:'UA',exact:true}).click();await atlas.getByRole('button',{name:'Завершити вимірювання',exact:true}).waitFor();assert.match(await atlas.locator('.nw-ruler-result').innerText(),/Пішки/);
+  await atlas.locator('[data-ruler]').click();await atlas.locator('.nw-ruler-tools summary').click();await search(gm,'Neverwinter River');await atlas.locator('[data-point-settings]').click();
+  await settings.getByRole('button',{name:'Зберегти',exact:true}).waitFor();assert.match(await settings.locator('h2').innerText(),/^Територія.*Річка Невервінтер/);assert.deepEqual(await settings.locator('[data-user=default] option').allTextContents(),['Немає доступу','Перегляд']);await settings.locator('[data-cancel]').click();
+  await atlas.locator('[data-territories]').click();await gm.locator('.nw-territory-manager').getByRole('button',{name:'Створити територію',exact:true}).waitFor();await gm.locator('.nw-territory-manager [data-remove-region=river]').click();
+  assert.equal(await gm.locator('[data-action=yes]').innerText(),'Так');assert.equal(await gm.locator('[data-action=no]').innerText(),'Скасувати');await gm.locator('[data-action=no]').click();await gm.locator('[data-action=no]').waitFor({state:'detached'});await gm.locator('.nw-territory-manager [data-dialog-close]').click();
+  await atlas.getByRole('button',{name:'RU',exact:true}).click();
+  report.checks.push('default-free-ruler-endpoint-distance-and-walking-time','slow-normal-fast-custom-pace','ruler-custom-color-dark-outline-and-mile-km-conversion','Ukrainian-ruler-permissions-territory-dialogs');
+  await search(gm,'');await atlas.locator('[data-position-filter]').selectOption('confirmed');assert.equal(await atlas.locator('nav button').count(),2);await atlas.locator('[data-position-filter]').selectOption('all');
+  await search(gm,'Merchant Square');assert.equal(await atlas.locator('.nw-position-status').getAttribute('data-precision'),'overview');await search(gm,"Dannar's");assert.equal(await atlas.locator('.nw-position-status').getAttribute('data-precision'),'unverified');await search(gm,'Castle Never');
+  for(let i=0;i<10;i++)await atlas.locator('[data-zoom="1"]').click();await search(gm,'Castle Never');await search(gm,'');await atlas.locator('[data-list-place=castle]').waitFor();assert.equal(await atlas.locator('[data-list-place=fisher]').count(),0);assert.ok(await atlas.locator('nav button').count()<20);
+  const pan=await atlas.locator('.nw-viewport').evaluate(e=>{const r=e.getBoundingClientRect();for(const [x,y]of [[.85,.3],[.85,.6],[.9,.5]]){const p={x:r.x+r.width*x,y:r.y+r.height*y};if(document.elementFromPoint(p.x,p.y)?.matches('img,polygon'))return p;}throw Error('No clear pan surface');});
+  await gm.mouse.move(pan.x,pan.y);await gm.mouse.down();await gm.mouse.move(pan.x-500,pan.y,{steps:10});await gm.mouse.up();await atlas.locator('[data-list-place=castle]').waitFor({state:'detached'});
+  const beforeWidth=await atlas.locator('.nw-viewport').evaluate(e=>e.clientWidth);await atlas.locator('[data-sidebar]').click();assert.equal(await atlas.locator('aside').isVisible(),false);await gm.waitForFunction(width=>document.querySelector('.nw-viewport').clientWidth>width+150,beforeWidth);
+  await atlas.locator('[data-close]').click();await gm.waitForFunction(ID=>game.settings.get(ID,'view').zoom===6,ID);await gm.locator('body').click({position:{x:550,y:20}});await gm.keyboard.press('KeyM');await atlas.waitFor();assert.equal(await atlas.locator('aside').isVisible(),false,'Collapsed panel survives reopening');
+  await gm.waitForFunction(()=>document.querySelector('.nw-stage>img')?.naturalWidth===3200 && parseFloat(document.querySelector('.nw-stage')?.style.width)>0);
+  const visiblePin=await atlas.locator('.nw-pin').evaluateAll(nodes=>{const v=document.querySelector('.nw-viewport').getBoundingClientRect();return nodes.find(e=>{const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;return x>v.left&&x<v.right&&y>v.top&&y<v.bottom&&document.elementFromPoint(x,y)?.closest('.nw-pin')===e;})?.dataset.place;});assert.ok(visiblePin);await atlas.locator('[data-place="'+visiblePin+'"]').click();assert.equal(await atlas.locator('aside').isVisible(),true);
+  for(let i=0;i<10;i++)await atlas.locator('[data-zoom="-1"]').click();await search(gm,'Castle Never');await search(gm,'');const blank=await point(gm,2,40);await gm.mouse.click(blank.x,blank.y,{button:'right'});assert.equal(await atlas.locator('article').isVisible(),false);assert.equal(await atlas.locator('.nw-pin[aria-pressed=true]').count(),0);
+  await gm.screenshot({path:fileURLToPath(new URL('evidence/rich-map.png',import.meta.url))});
+  report.checks.push('location-precision-card-and-filter','zoom-and-pan-list-excludes-offscreen-places','sidebar-collapse-persists-and-location-click-expands','blank-map-right-click-clears-selection');
+  await atlas.locator('.nw-ruler-tools summary').click();await atlas.locator('[name=travelPace]').selectOption('normal');await atlas.locator('[name=rulerColorHex]').fill('#197fc0');await atlas.locator('[data-ruler-clear]').click();await atlas.locator('.nw-ruler-tools summary').click();
+  await gm.evaluate(async({ID,original,actors,user,preferences,originalView})=>{await game.users.get(user).update({character:actors.previous});await Actor.deleteDocuments([actors.hero,actors.other]);await game.settings.set(ID,'atlasState',original);await game.settings.set(ID,'rulerPreferences',preferences);await game.settings.set(ID,'view',originalView);},{ID,original,actors,user:fixture.users[0].id,preferences,originalView});
+  await search(gm,'Castle Never');await player.getByRole('button',{name:'UA',exact:true}).click();assert.deepEqual(await gm.evaluate(id=>game.journal.get(id).toObject(),fixture.keep._id),fixture.keep);
+}

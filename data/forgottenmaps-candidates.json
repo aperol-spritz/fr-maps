@@ -1,0 +1,3057 @@
+{
+  "source": "https://forgottenmaps.web.app/map/Neverwinter",
+  "checked": "2026-11-09",
+  "image": {
+    "width": 1600,
+    "height": 1128,
+    "coordinateSystem": "image pixels, top-left origin"
+  },
+  "features": [
+    {
+      "name": "Castle Never",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          499,
+          550
+        ]
+      },
+      "moduleId": "castle",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Cloak Tower",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1391,
+          449
+        ]
+      },
+      "moduleId": "cloak",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Dolphin Bridge",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          610,
+          565
+        ]
+      },
+      "moduleId": "dolphin",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Graveyard- Neverdeath",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          775,
+          838
+        ]
+      },
+      "moduleId": "neverdeath",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Tower of Solace",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          583,
+          786
+        ]
+      },
+      "moduleId": "tower-solace",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Graveyard- Pauper's Field",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          686,
+          928
+        ]
+      },
+      "moduleId": "paupers",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Sleeping Dragon Bridge",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          455,
+          646
+        ]
+      },
+      "moduleId": "sleeping-dragon",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "The Wall",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          813,
+          690
+        ]
+      },
+      "moduleId": "wall",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Winged Wyvern Bridge",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          561,
+          635
+        ]
+      },
+      "moduleId": "wyvern",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Waterclock Guild's Crypts",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          771,
+          881
+        ]
+      },
+      "moduleId": "waterclock",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Tomb of the Betrayers",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          480,
+          731
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Starshine Academy",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          457,
+          389
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Scar Keep",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          937,
+          893
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Skull Fortress",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102,
+          120
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Pirate King's Retreat",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131,
+          89
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Neverwinter Archives",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          563,
+          477
+        ]
+      },
+      "moduleId": "archives",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Neverwinter Academy",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1033,
+          937
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Neverwinter Academy of Magic",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          458,
+          478
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Vellgard Manor",
+      "catalogue": "Places",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          524,
+          328
+        ]
+      },
+      "moduleId": "vellgard",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Hallowed Temple of Selûne",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          745,
+          456
+        ]
+      },
+      "moduleId": "hallowed-selune",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Hall of Justice",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          378,
+          666
+        ]
+      },
+      "moduleId": "justice",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Shard of Night",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          997,
+          273
+        ]
+      },
+      "moduleId": "shard",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Sacred Park of Sune",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1288,
+          290
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "House of Knowledge",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          767,
+          577
+        ]
+      },
+      "moduleId": "knowledge",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Twisted Fane",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1159,
+          737
+        ]
+      },
+      "moduleId": "twisted-fane",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Temple of Amaunator",
+      "catalogue": "Temples",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          583,
+          375
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Driftwood Tavern",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          354,
+          516
+        ]
+      },
+      "moduleId": "driftwood",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Beached Leviathan",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          318,
+          503
+        ]
+      },
+      "moduleId": "beached",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Moonstone Mask",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          186,
+          632
+        ]
+      },
+      "moduleId": "mask",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Iron Flagon Inn",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          565,
+          896
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "House of a Thousand Faces",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          683,
+          407
+        ]
+      },
+      "moduleId": "faces",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Shining Serpent Inn",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          876,
+          456
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Board Laid Bare",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1100,
+          175
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Fallen Tower",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1186,
+          295
+        ]
+      },
+      "moduleId": "fallen",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Sunken Flagon",
+      "catalogue": "Taverns",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          279,
+          688
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Claven's General Supplies and Armory",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          392,
+          788
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Manycoins Moneylending",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          297,
+          443
+        ]
+      },
+      "moduleId": "manycoins",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Tarmalune Trade House",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          335,
+          643
+        ]
+      },
+      "moduleId": "tarmalune",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Shining Knight Arms & Armor",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          745,
+          754
+        ]
+      },
+      "moduleId": "shining-knight",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Maskado's Maps & Legends",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1067,
+          762
+        ]
+      },
+      "moduleId": "maskado",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "The Mute Lute",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          464,
+          260
+        ]
+      },
+      "moduleId": "mute-lute",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Jaesor's Fineware Porcelain Works",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          504,
+          266
+        ]
+      },
+      "moduleId": "jaesor",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Dannar's Mechanical Marvels",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          478,
+          290
+        ]
+      },
+      "moduleId": "dannar",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Hazel's Apothecary",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          665,
+          342
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Brandis Vrye Rookery",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          955,
+          150
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Sand's Magic Shop",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          310,
+          656
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Trade of Blades",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          480,
+          731
+        ]
+      },
+      "moduleId": "blades",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Shaundakul Stables",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          505,
+          704
+        ]
+      },
+      "moduleId": "stables",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Astorio Arms",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          588,
+          734
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Buckman's Emporium",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420,
+          736
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Sage's Shop",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          364,
+          711
+        ]
+      },
+      "moduleId": "sage",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Allis Lhyssich's Hand Crafted Weapons and Magical Weapons for Noble Causes",
+      "catalogue": "Shops",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          486,
+          874
+        ]
+      },
+      "moduleId": "allis",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Plaguechanged Warrens",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1142,
+          755
+        ]
+      },
+      "moduleId": "plague-warrens",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Blacklake",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              659,
+              261
+            ],
+            [
+              678,
+              260
+            ],
+            [
+              689,
+              251
+            ],
+            [
+              699,
+              248
+            ],
+            [
+              708,
+              242
+            ],
+            [
+              728,
+              244
+            ],
+            [
+              734,
+              242
+            ],
+            [
+              741,
+              242
+            ],
+            [
+              746,
+              247
+            ],
+            [
+              748,
+              272
+            ],
+            [
+              744,
+              279
+            ],
+            [
+              735,
+              289
+            ],
+            [
+              720,
+              299
+            ],
+            [
+              712,
+              311
+            ],
+            [
+              698,
+              320
+            ],
+            [
+              679,
+              321
+            ],
+            [
+              661,
+              328
+            ],
+            [
+              645,
+              331
+            ],
+            [
+              633,
+              341
+            ],
+            [
+              618,
+              348
+            ],
+            [
+              585,
+              350
+            ],
+            [
+              578,
+              354
+            ],
+            [
+              569,
+              354
+            ],
+            [
+              566,
+              350
+            ],
+            [
+              564,
+              336
+            ],
+            [
+              562,
+              330
+            ],
+            [
+              562,
+              319
+            ],
+            [
+              558,
+              310
+            ],
+            [
+              560,
+              304
+            ],
+            [
+              568,
+              298
+            ],
+            [
+              578,
+              298
+            ],
+            [
+              584,
+              299
+            ],
+            [
+              589,
+              299
+            ],
+            [
+              597,
+              295
+            ],
+            [
+              604,
+              293
+            ],
+            [
+              612,
+              291
+            ],
+            [
+              625,
+              282
+            ],
+            [
+              632,
+              281
+            ],
+            [
+              647,
+              268
+            ],
+            [
+              650,
+              268
+            ],
+            [
+              659,
+              261
+            ]
+          ]
+        ]
+      },
+      "moduleId": "lake",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Neverwinter River",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1600,
+              550
+            ],
+            [
+              1584,
+              557
+            ],
+            [
+              1532,
+              555
+            ],
+            [
+              1480,
+              561
+            ],
+            [
+              1394,
+              561
+            ],
+            [
+              1387,
+              560
+            ],
+            [
+              1358,
+              564
+            ],
+            [
+              1326,
+              565
+            ],
+            [
+              1302,
+              569
+            ],
+            [
+              1191,
+              574
+            ],
+            [
+              1170,
+              579
+            ],
+            [
+              1112,
+              579
+            ],
+            [
+              1046,
+              566
+            ],
+            [
+              983,
+              559
+            ],
+            [
+              957,
+              559
+            ],
+            [
+              938,
+              562
+            ],
+            [
+              923,
+              567
+            ],
+            [
+              904,
+              569
+            ],
+            [
+              891,
+              572
+            ],
+            [
+              787,
+              550
+            ],
+            [
+              754,
+              545
+            ],
+            [
+              727,
+              542
+            ],
+            [
+              695,
+              549
+            ],
+            [
+              666,
+              549
+            ],
+            [
+              613,
+              592
+            ],
+            [
+              583,
+              645
+            ],
+            [
+              568,
+              659
+            ],
+            [
+              491,
+              670
+            ],
+            [
+              433,
+              657
+            ],
+            [
+              403,
+              612
+            ],
+            [
+              395,
+              607
+            ],
+            [
+              419,
+              591
+            ],
+            [
+              429,
+              608
+            ],
+            [
+              469,
+              632
+            ],
+            [
+              496,
+              633
+            ],
+            [
+              542,
+              624
+            ],
+            [
+              564,
+              607
+            ],
+            [
+              595,
+              566
+            ],
+            [
+              616,
+              537
+            ],
+            [
+              656,
+              517
+            ],
+            [
+              697,
+              507
+            ],
+            [
+              745,
+              512
+            ],
+            [
+              796,
+              523
+            ],
+            [
+              864,
+              540
+            ],
+            [
+              920,
+              539
+            ],
+            [
+              946,
+              532
+            ],
+            [
+              1005,
+              528
+            ],
+            [
+              1055,
+              526
+            ],
+            [
+              1114,
+              539
+            ],
+            [
+              1114,
+              539
+            ],
+            [
+              1209,
+              540
+            ],
+            [
+              1289,
+              536
+            ],
+            [
+              1383,
+              526
+            ],
+            [
+              1446,
+              528
+            ],
+            [
+              1507,
+              525
+            ],
+            [
+              1559,
+              523
+            ],
+            [
+              1600,
+              523
+            ],
+            [
+              1600,
+              550
+            ]
+          ]
+        ]
+      },
+      "moduleId": "river",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Chasm",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              874,
+              939
+            ],
+            [
+              874,
+              935
+            ],
+            [
+              882,
+              930
+            ],
+            [
+              898,
+              919
+            ],
+            [
+              897,
+              913
+            ],
+            [
+              901,
+              907
+            ],
+            [
+              912,
+              906
+            ],
+            [
+              916,
+              903
+            ],
+            [
+              919,
+              903
+            ],
+            [
+              920,
+              907
+            ],
+            [
+              926,
+              906
+            ],
+            [
+              936,
+              904
+            ],
+            [
+              945,
+              905
+            ],
+            [
+              950,
+              896
+            ],
+            [
+              946,
+              886
+            ],
+            [
+              952,
+              878
+            ],
+            [
+              956,
+              869
+            ],
+            [
+              967,
+              863
+            ],
+            [
+              973,
+              862
+            ],
+            [
+              977,
+              854
+            ],
+            [
+              977,
+              849
+            ],
+            [
+              992,
+              837
+            ],
+            [
+              999,
+              835
+            ],
+            [
+              1006,
+              834
+            ],
+            [
+              1012,
+              829
+            ],
+            [
+              1017,
+              824
+            ],
+            [
+              1017,
+              816
+            ],
+            [
+              1016,
+              810
+            ],
+            [
+              1017,
+              805
+            ],
+            [
+              1020,
+              800
+            ],
+            [
+              1025,
+              800
+            ],
+            [
+              1029,
+              796
+            ],
+            [
+              1032,
+              791
+            ],
+            [
+              1041,
+              784
+            ],
+            [
+              1050,
+              783
+            ],
+            [
+              1054,
+              787
+            ],
+            [
+              1059,
+              786
+            ],
+            [
+              1062,
+              783
+            ],
+            [
+              1076,
+              781
+            ],
+            [
+              1082,
+              772
+            ],
+            [
+              1080,
+              766
+            ],
+            [
+              1105,
+              756
+            ],
+            [
+              1112,
+              734
+            ],
+            [
+              1118,
+              729
+            ],
+            [
+              1118,
+              710
+            ],
+            [
+              1119,
+              700
+            ],
+            [
+              1134,
+              692
+            ],
+            [
+              1161,
+              691
+            ],
+            [
+              1177,
+              684
+            ],
+            [
+              1175,
+              676
+            ],
+            [
+              1177,
+              666
+            ],
+            [
+              1183,
+              660
+            ],
+            [
+              1194,
+              659
+            ],
+            [
+              1235,
+              656
+            ],
+            [
+              1245,
+              646
+            ],
+            [
+              1259,
+              644
+            ],
+            [
+              1275,
+              647
+            ],
+            [
+              1285,
+              642
+            ],
+            [
+              1289,
+              631
+            ],
+            [
+              1311,
+              618
+            ],
+            [
+              1311,
+              610
+            ],
+            [
+              1320,
+              604
+            ],
+            [
+              1339,
+              592
+            ],
+            [
+              1333,
+              603
+            ],
+            [
+              1321,
+              612
+            ],
+            [
+              1321,
+              622
+            ],
+            [
+              1310,
+              633
+            ],
+            [
+              1311,
+              643
+            ],
+            [
+              1312,
+              647
+            ],
+            [
+              1303,
+              658
+            ],
+            [
+              1292,
+              663
+            ],
+            [
+              1287,
+              680
+            ],
+            [
+              1272,
+              683
+            ],
+            [
+              1260,
+              688
+            ],
+            [
+              1249,
+              688
+            ],
+            [
+              1238,
+              696
+            ],
+            [
+              1235,
+              711
+            ],
+            [
+              1210,
+              722
+            ],
+            [
+              1210,
+              730
+            ],
+            [
+              1199,
+              737
+            ],
+            [
+              1190,
+              749
+            ],
+            [
+              1190,
+              756
+            ],
+            [
+              1179,
+              765
+            ],
+            [
+              1169,
+              768
+            ],
+            [
+              1167,
+              785
+            ],
+            [
+              1160,
+              790
+            ],
+            [
+              1154,
+              789
+            ],
+            [
+              1143,
+              800
+            ],
+            [
+              1145,
+              807
+            ],
+            [
+              1125,
+              821
+            ],
+            [
+              1110,
+              819
+            ],
+            [
+              1090,
+              830
+            ],
+            [
+              1082,
+              830
+            ],
+            [
+              1068,
+              838
+            ],
+            [
+              1068,
+              849
+            ],
+            [
+              1054,
+              864
+            ],
+            [
+              1054,
+              868
+            ],
+            [
+              1031,
+              878
+            ],
+            [
+              1027,
+              879
+            ],
+            [
+              1013,
+              888
+            ],
+            [
+              1011,
+              895
+            ],
+            [
+              1001,
+              900
+            ],
+            [
+              989,
+              900
+            ],
+            [
+              986,
+              898
+            ],
+            [
+              975,
+              908
+            ],
+            [
+              974,
+              913
+            ],
+            [
+              960,
+              919
+            ],
+            [
+              958,
+              922
+            ],
+            [
+              949,
+              924
+            ],
+            [
+              944,
+              927
+            ],
+            [
+              934,
+              927
+            ],
+            [
+              918,
+              926
+            ],
+            [
+              910,
+              928
+            ],
+            [
+              906,
+              932
+            ],
+            [
+              894,
+              935
+            ],
+            [
+              883,
+              936
+            ],
+            [
+              874,
+              939
+            ]
+          ]
+        ]
+      },
+      "moduleId": "chasm-rift",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Cauldron of Blue Fire",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1176,
+          723
+        ]
+      },
+      "moduleId": "blue-cauldron",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Scalefather's Hollow",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74,
+          97
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Vilebog",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80,
+          107
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Fisher's Float",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              85,
+              1085
+            ],
+            [
+              88,
+              1081
+            ],
+            [
+              102,
+              1078
+            ],
+            [
+              115,
+              1076
+            ],
+            [
+              120,
+              1066
+            ],
+            [
+              123,
+              1045
+            ],
+            [
+              119,
+              1039
+            ],
+            [
+              123,
+              1035
+            ],
+            [
+              121,
+              1034
+            ],
+            [
+              116,
+              1037
+            ],
+            [
+              113,
+              1033
+            ],
+            [
+              113,
+              1026
+            ],
+            [
+              108,
+              1022
+            ],
+            [
+              107,
+              1018
+            ],
+            [
+              110,
+              1013
+            ],
+            [
+              112,
+              1009
+            ],
+            [
+              109,
+              1003
+            ],
+            [
+              106,
+              1003
+            ],
+            [
+              103,
+              1000
+            ],
+            [
+              96,
+              998
+            ],
+            [
+              90,
+              997
+            ],
+            [
+              86,
+              994
+            ],
+            [
+              81,
+              994
+            ],
+            [
+              78,
+              998
+            ],
+            [
+              73,
+              993
+            ],
+            [
+              71,
+              994
+            ],
+            [
+              74,
+              1000
+            ],
+            [
+              75,
+              1009
+            ],
+            [
+              72,
+              1015
+            ],
+            [
+              68,
+              1016
+            ],
+            [
+              64,
+              1012
+            ],
+            [
+              61,
+              1015
+            ],
+            [
+              66,
+              1019
+            ],
+            [
+              67,
+              1024
+            ],
+            [
+              67,
+              1031
+            ],
+            [
+              64,
+              1035
+            ],
+            [
+              64,
+              1039
+            ],
+            [
+              66,
+              1043
+            ],
+            [
+              66,
+              1051
+            ],
+            [
+              65,
+              1056
+            ],
+            [
+              69,
+              1060
+            ],
+            [
+              69,
+              1065
+            ],
+            [
+              67,
+              1071
+            ],
+            [
+              72,
+              1082
+            ],
+            [
+              80,
+              1083
+            ],
+            [
+              85,
+              1085
+            ]
+          ]
+        ]
+      },
+      "moduleId": "fisher",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Pirates' Skyhold",
+      "catalogue": "Geo",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69,
+              79
+            ],
+            [
+              84,
+              76
+            ],
+            [
+              90,
+              71
+            ],
+            [
+              94,
+              69
+            ],
+            [
+              118,
+              71
+            ],
+            [
+              126,
+              73
+            ],
+            [
+              132,
+              73
+            ],
+            [
+              138,
+              78
+            ],
+            [
+              143,
+              79
+            ],
+            [
+              147,
+              83
+            ],
+            [
+              145,
+              85
+            ],
+            [
+              150,
+              90
+            ],
+            [
+              154,
+              91
+            ],
+            [
+              158,
+              104
+            ],
+            [
+              156,
+              109
+            ],
+            [
+              151,
+              112
+            ],
+            [
+              149,
+              118
+            ],
+            [
+              154,
+              120
+            ],
+            [
+              154,
+              123
+            ],
+            [
+              151,
+              126
+            ],
+            [
+              147,
+              124
+            ],
+            [
+              143,
+              126
+            ],
+            [
+              130,
+              130
+            ],
+            [
+              131,
+              134
+            ],
+            [
+              126,
+              137
+            ],
+            [
+              121,
+              132
+            ],
+            [
+              115,
+              133
+            ],
+            [
+              99,
+              134
+            ],
+            [
+              89,
+              126
+            ],
+            [
+              85,
+              121
+            ],
+            [
+              76,
+              117
+            ],
+            [
+              71,
+              113
+            ],
+            [
+              69,
+              104
+            ],
+            [
+              64,
+              96
+            ],
+            [
+              66,
+              85
+            ],
+            [
+              69,
+              79
+            ]
+          ]
+        ]
+      },
+      "moduleId": "pirates-skyhold",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Street Of Storms",
+      "catalogue": "Street",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          456,
+          293
+        ]
+      },
+      "moduleId": "mute-lute",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Hantor's Lane",
+      "catalogue": "Street",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          528,
+          275
+        ]
+      },
+      "moduleId": "mute-lute",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Blackule Lane",
+      "catalogue": "Street",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          478,
+          388
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Deekin's Street",
+      "catalogue": "Street",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          605,
+          934
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Coriol Street",
+      "catalogue": "Street",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          652,
+          825
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Tymor Street",
+      "catalogue": "Street",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          384,
+          698
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    },
+    {
+      "name": "Blacklake District",
+      "catalogue": "Districts",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              255,
+              472
+            ],
+            [
+              269,
+              452
+            ],
+            [
+              380,
+              319
+            ],
+            [
+              489,
+              231
+            ],
+            [
+              522,
+              209
+            ],
+            [
+              703,
+              124
+            ],
+            [
+              773,
+              126
+            ],
+            [
+              770,
+              135
+            ],
+            [
+              748,
+              150
+            ],
+            [
+              729,
+              177
+            ],
+            [
+              721,
+              197
+            ],
+            [
+              724,
+              202
+            ],
+            [
+              752,
+              210
+            ],
+            [
+              767,
+              220
+            ],
+            [
+              783,
+              250
+            ],
+            [
+              781,
+              281
+            ],
+            [
+              764,
+              309
+            ],
+            [
+              745,
+              326
+            ],
+            [
+              729,
+              340
+            ],
+            [
+              724,
+              351
+            ],
+            [
+              728,
+              382
+            ],
+            [
+              728,
+              392
+            ],
+            [
+              714,
+              401
+            ],
+            [
+              703,
+              400
+            ],
+            [
+              698,
+              409
+            ],
+            [
+              698,
+              418
+            ],
+            [
+              707,
+              428
+            ],
+            [
+              703,
+              455
+            ],
+            [
+              712,
+              466
+            ],
+            [
+              715,
+              481
+            ],
+            [
+              702,
+              503
+            ],
+            [
+              672,
+              507
+            ],
+            [
+              633,
+              522
+            ],
+            [
+              614,
+              538
+            ],
+            [
+              594,
+              557
+            ],
+            [
+              573,
+              595
+            ],
+            [
+              548,
+              616
+            ],
+            [
+              516,
+              626
+            ],
+            [
+              493,
+              630
+            ],
+            [
+              465,
+              626
+            ],
+            [
+              453,
+              623
+            ],
+            [
+              447,
+              610
+            ],
+            [
+              431,
+              602
+            ],
+            [
+              417,
+              586
+            ],
+            [
+              424,
+              569
+            ],
+            [
+              419,
+              557
+            ],
+            [
+              390,
+              541
+            ],
+            [
+              390,
+              541
+            ],
+            [
+              374,
+              532
+            ],
+            [
+              367,
+              532
+            ],
+            [
+              359,
+              532
+            ],
+            [
+              340,
+              530
+            ],
+            [
+              340,
+              530
+            ],
+            [
+              265,
+              490
+            ]
+          ]
+        ]
+      },
+      "moduleId": "blacklake-district",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Tower District",
+      "catalogue": "Districts",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              773,
+              126
+            ],
+            [
+              770,
+              135
+            ],
+            [
+              748,
+              150
+            ],
+            [
+              729,
+              177
+            ],
+            [
+              721,
+              197
+            ],
+            [
+              724,
+              202
+            ],
+            [
+              752,
+              210
+            ],
+            [
+              767,
+              220
+            ],
+            [
+              783,
+              250
+            ],
+            [
+              781,
+              281
+            ],
+            [
+              764,
+              309
+            ],
+            [
+              745,
+              326
+            ],
+            [
+              729,
+              340
+            ],
+            [
+              724,
+              351
+            ],
+            [
+              728,
+              382
+            ],
+            [
+              728,
+              392
+            ],
+            [
+              714,
+              401
+            ],
+            [
+              703,
+              400
+            ],
+            [
+              698,
+              409
+            ],
+            [
+              698,
+              418
+            ],
+            [
+              707,
+              428
+            ],
+            [
+              703,
+              455
+            ],
+            [
+              712,
+              466
+            ],
+            [
+              715,
+              481
+            ],
+            [
+              702,
+              503
+            ],
+            [
+              708,
+              505
+            ],
+            [
+              752,
+              516
+            ],
+            [
+              790,
+              520
+            ],
+            [
+              846,
+              539
+            ],
+            [
+              879,
+              536
+            ],
+            [
+              908,
+              541
+            ],
+            [
+              934,
+              535
+            ],
+            [
+              957,
+              531
+            ],
+            [
+              957,
+              531
+            ],
+            [
+              1014,
+              524
+            ],
+            [
+              1025,
+              524
+            ],
+            [
+              1035,
+              524
+            ],
+            [
+              1060,
+              530
+            ],
+            [
+              1060,
+              530
+            ],
+            [
+              1133,
+              541
+            ],
+            [
+              1181,
+              541
+            ],
+            [
+              1243,
+              534
+            ],
+            [
+              1318,
+              532
+            ],
+            [
+              1377,
+              526
+            ],
+            [
+              1407,
+              526
+            ],
+            [
+              1436,
+              527
+            ],
+            [
+              1477,
+              524
+            ],
+            [
+              1389,
+              302
+            ],
+            [
+              1380,
+              290
+            ],
+            [
+              1251,
+              212
+            ],
+            [
+              1239,
+              205
+            ],
+            [
+              1080,
+              152
+            ],
+            [
+              1039,
+              143
+            ],
+            [
+              1039,
+              143
+            ],
+            [
+              933,
+              128
+            ],
+            [
+              928,
+              126
+            ],
+            [
+              922,
+              125
+            ],
+            [
+              791,
+              126
+            ],
+            [
+              791,
+              126
+            ]
+          ]
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": "Historical district equivalence requires review; no contour imported."
+    },
+    {
+      "name": "Protector's Enclave",
+      "catalogue": "Districts",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              222,
+              710
+            ],
+            [
+              236,
+              703
+            ],
+            [
+              284,
+              669
+            ],
+            [
+              284,
+              669
+            ],
+            [
+              310,
+              639
+            ],
+            [
+              339,
+              620
+            ],
+            [
+              354,
+              617
+            ],
+            [
+              368,
+              608
+            ],
+            [
+              378,
+              609
+            ],
+            [
+              393,
+              606
+            ],
+            [
+              403,
+              611
+            ],
+            [
+              413,
+              633
+            ],
+            [
+              425,
+              641
+            ],
+            [
+              430,
+              656
+            ],
+            [
+              464,
+              668
+            ],
+            [
+              464,
+              668
+            ],
+            [
+              497,
+              673
+            ],
+            [
+              507,
+              670
+            ],
+            [
+              518,
+              668
+            ],
+            [
+              565,
+              657
+            ],
+            [
+              565,
+              657
+            ],
+            [
+              582,
+              643
+            ],
+            [
+              606,
+              598
+            ],
+            [
+              631,
+              570
+            ],
+            [
+              662,
+              548
+            ],
+            [
+              687,
+              548
+            ],
+            [
+              724,
+              544
+            ],
+            [
+              758,
+              546
+            ],
+            [
+              801,
+              552
+            ],
+            [
+              804,
+              586
+            ],
+            [
+              806,
+              607
+            ],
+            [
+              830,
+              810
+            ],
+            [
+              832,
+              941
+            ],
+            [
+              741,
+              940
+            ],
+            [
+              740,
+              1006
+            ],
+            [
+              627,
+              1004
+            ],
+            [
+              543,
+              980
+            ],
+            [
+              503,
+              965
+            ],
+            [
+              369,
+              866
+            ],
+            [
+              247,
+              731
+            ]
+          ]
+        ]
+      },
+      "moduleId": "protector",
+      "status": "included",
+      "note": ""
+    },
+    {
+      "name": "Beggar's Nest",
+      "catalogue": "Districts",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              749,
+              1003
+            ],
+            [
+              749,
+              1003
+            ],
+            [
+              809,
+              1013
+            ],
+            [
+              813,
+              1013
+            ],
+            [
+              817,
+              1013
+            ],
+            [
+              1011,
+              980
+            ],
+            [
+              1011,
+              980
+            ],
+            [
+              1142,
+              982
+            ],
+            [
+              1188,
+              976
+            ],
+            [
+              1268,
+              951
+            ],
+            [
+              1281,
+              943
+            ],
+            [
+              1347,
+              903
+            ],
+            [
+              1362,
+              892
+            ],
+            [
+              1415,
+              783
+            ],
+            [
+              1441,
+              726
+            ],
+            [
+              1450,
+              697
+            ],
+            [
+              1459,
+              658
+            ],
+            [
+              1463,
+              630
+            ],
+            [
+              1474,
+              568
+            ],
+            [
+              1463,
+              568
+            ],
+            [
+              1437,
+              568
+            ],
+            [
+              1421,
+              563
+            ],
+            [
+              1389,
+              559
+            ],
+            [
+              1359,
+              562
+            ],
+            [
+              1321,
+              566
+            ],
+            [
+              1277,
+              569
+            ],
+            [
+              1277,
+              569
+            ],
+            [
+              1225,
+              574
+            ],
+            [
+              1222,
+              574
+            ],
+            [
+              1218,
+              574
+            ],
+            [
+              1199,
+              572
+            ],
+            [
+              1199,
+              572
+            ],
+            [
+              1167,
+              578
+            ],
+            [
+              1125,
+              581
+            ],
+            [
+              1098,
+              574
+            ],
+            [
+              1079,
+              576
+            ],
+            [
+              1079,
+              576
+            ],
+            [
+              1050,
+              567
+            ],
+            [
+              1044,
+              567
+            ],
+            [
+              1038,
+              567
+            ],
+            [
+              1017,
+              565
+            ],
+            [
+              1017,
+              565
+            ],
+            [
+              991,
+              561
+            ],
+            [
+              964,
+              558
+            ],
+            [
+              937,
+              563
+            ],
+            [
+              894,
+              573
+            ],
+            [
+              894,
+              573
+            ],
+            [
+              884,
+              569
+            ],
+            [
+              878,
+              569
+            ],
+            [
+              871,
+              569
+            ],
+            [
+              853,
+              567
+            ],
+            [
+              848,
+              566
+            ],
+            [
+              843,
+              565
+            ],
+            [
+              822,
+              559
+            ],
+            [
+              822,
+              559
+            ],
+            [
+              801,
+              552
+            ],
+            [
+              804,
+              586
+            ],
+            [
+              806,
+              607
+            ],
+            [
+              830,
+              810
+            ],
+            [
+              832,
+              941
+            ],
+            [
+              741,
+              940
+            ],
+            [
+              740,
+              1002
+            ]
+          ]
+        ]
+      },
+      "moduleId": null,
+      "status": "pending-lore-and-1492-review",
+      "note": ""
+    }
+  ]
+}

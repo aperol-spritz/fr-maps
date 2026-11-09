@@ -1,0 +1,10 @@
+export const ROOT='modules/neverwinter-atlas/';
+export const CITY_MAP=ROOT+'assets/neverwinter.webp';
+export const EVERNIGHT_MAP=ROOT+'assets/evernight.jpg';
+export const UNDERGROUND_PENDING=ROOT+'assets/underground-pending.svg';
+export const layerIds=['evernight','city','underground'];
+export const currentLayer=()=>game.settings.get('neverwinter-atlas','activeLayer') || 'city';
+export const layerMap=id=>id==='evernight'?(game.settings.get('neverwinter-atlas','evernightMap') || EVERNIGHT_MAP):id==='underground'?(game.settings.get('neverwinter-atlas','undergroundMap') || UNDERGROUND_PENDING):(game.settings.get('neverwinter-atlas','baseMap') || CITY_MAP);
+export const knownMap=map=>layerIds.some(id=>layerMap(id)===map);
+export const layerName=(id,lang='ru')=>(lang==='uk'?{city:'Невервінтер (Neverwinter)',evernight:'Евернайт (Evernight)',underground:'Каналізації, тунелі й печери'}:{city:'Невервинтер (Neverwinter)',evernight:'Эвернайт (Evernight)',underground:'Канализации, тоннели и пещеры'})[id];
+export const pendingMap=map=>map===UNDERGROUND_PENDING;

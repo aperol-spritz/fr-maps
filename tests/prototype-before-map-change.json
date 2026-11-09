@@ -1,0 +1,18 @@
+{
+  "foundry": "14.370",
+  "status": "passed",
+  "checks": [
+    "standalone-city-map-eight-pins",
+    "sealed-chasm",
+    "three-language-search",
+    "ukrainian-lore",
+    "zoom",
+    "temple-filter",
+    "open-journal"
+  ],
+  "cleanup": {
+    "serverStopped": true,
+    "packsPreserved": true,
+    "payloadRemoved": true
+  }
+}
