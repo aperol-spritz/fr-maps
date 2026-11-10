@@ -1,0 +1,20 @@
+{
+  "format": 1,
+  "lastPublishedVersion": "0.18.1",
+  "tag": "v0.18.1",
+  "commit": "86dc4e0fda3012cf9829881040b6456c5f003008",
+  "zipSha256": "c84b60df4e60885e6f9e9696d9483d4a642a7b38a083966f8b6e3f0818e79892",
+  "release": "https://github.com/aperol-spritz/fr-maps/releases/tag/v0.18.1",
+  "report": "docs/testing/0.18.1-live-2026-11-10.json",
+  "runtimeChanges": [
+    "atlas.mjs",
+    "atlas.css",
+    "characters.mjs"
+  ],
+  "compiledContentSources": [
+    "data/places.json",
+    "tools/build-pack.mjs"
+  ],
+  "nodeTestsPassed": 26,
+  "foundryVerified": "14.370"
+}

@@ -40,6 +40,17 @@ verified against the exact tag commit and passed the disposable Foundry 14.370
 browser scenario. See [release notes](releases/0.18.0.md) and
 [public-asset/runtime evidence](testing/0.18.0-live-2026-11-09.json).
 
+Version [0.18.1](https://github.com/aperol-spritz/fr-maps/releases/tag/v0.18.1)
+publishes the accumulated runtime/UI fixes and revised journal prose through
+the existing [workflow](https://github.com/aperol-spritz/fr-maps/actions/runs/42822058272).
+All 26 portable tests passed. The downloaded public ZIP matches the release
+commit and passed the disposable Foundry 14.370 scenario. The stable manifest
+was independently confirmed to return 0.18.1. See
+[release notes](releases/0.18.1.md) and
+[public verification](testing/0.18.1-live-2026-11-10.json).
+`data/module-release-baseline.json` records successful publication separately
+from the world-authoring baseline.
+
 The immutable-release settings endpoint returned HTTP 401 without authenticated
 administration read access. Its setting is **unknown**, not assumed disabled.
 The workflow probes it read-only and warns if unavailable; its asset strategy is
