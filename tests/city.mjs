@@ -95,7 +95,7 @@ try {
     for(const item of journal.pages) {
       if(item.key==='mask-earthmote')assert.equal(item.name,journal.language==='ru'?'Маска Лунного Камня':'Маска Місячного Каменю');else assert.match(item.name,/\(.+\)/,'English in page name');
       assert.match(item.content,/forgottenrealms.fandom.com\/wiki\//);
-      assert.match(item.content,journal.language==='ru'?/Период сведений/:/Період відомостей/,'Period appears in the built journal page');
+      assert.doesNotMatch(item.content,/Период сведений|Період відомостей/,'Development metadata stays off journal pages');
       assert.match(item.content,journal.language==='ru'?/Расположение —/:/Розташування —/,'Coordinate confidence is included in the built journal');
       if(item.key==='justice') {assert.match(item.content,/Wintershield watchmen/);assert.match(item.content,/1489/);assert.match(item.content,/1496/);assert.match(item.content,/wiki\/Wintershield_watchmen/);}
       if(item.key==='justice')assert.match(item.content,journal.language==='ru'?/переехал в частную виллу/:/переїхав до приватної вілли/);
@@ -129,7 +129,7 @@ try {
   await atlas.locator('[data-category]').selectOption('shop');
   await newSearch.fill("Dannar's");
   await atlas.locator('nav button').click();
-  assert.match(await atlas.locator('.nw-era').innerText(),/пережила 1451 год/);
+  assert.equal(await atlas.locator('.nw-era').count(),0);
   await atlas.locator('[data-zoom="1"]').click();
   const returnPosition=await atlas.locator('.nw-viewport').evaluate(e=>({x:e.scrollLeft,y:e.scrollTop}));
   await atlas.locator('article [data-go="jaesor"]').click();
@@ -162,18 +162,7 @@ try {
   assert.equal(await atlas.locator('footer output').innerText(),'100%');
   await newSearch.fill('');
   await atlas.locator('[data-category]').selectOption('all');
-  await period.selectOption('hide');
-  const withoutHistorical=await atlas.locator('nav button').count();
-  assert.equal(withoutHistorical,43);
-  assert.equal(await atlas.locator('[data-place="dannar"]').count(),0);
-  assert.equal(await atlas.locator('[data-place="beached"]').count(),1,'Uncertain date remains distinguishable from historical');
-  await period.selectOption('historical');
-  const historical=await atlas.locator('nav button').count();
-  assert.equal(historical,17);
-  assert.equal(await atlas.locator('[data-place="wall"]').count(),1);
-  assert.equal(await atlas.locator('[data-place="justice"]').count(),0);
-  await atlas.locator('[data-place="shining-knight"]').click();
-  assert.match(await atlas.locator('.nw-era').innerText(),/XIV/);
+  assert.equal(await period.isVisible(),false);
   const paper=await page.evaluate(()=>getComputedStyle(document.querySelector('.nw-atlas'),'::before').borderImageSource);
   assert.match(paper,/parchment\.png/);
   await page.evaluate(async()=>{
@@ -185,16 +174,11 @@ try {
   await fs.mkdir(new URL('evidence/',import.meta.url),{recursive:true});
   await page.screenshot({path:new URL('evidence/parchment-atlas.png',import.meta.url).pathname.replace(/^\/([A-Z]:)/,'$1')});
   await atlas.locator('[data-close]').click();
-  await page.waitForFunction(()=>game.settings.get('neverwinter-atlas','periodFilter')==='historical');
+
   await page.locator('body').click({position:{x:500,y:20}});
   await page.keyboard.press('KeyM');
   await atlas.locator('[data-place="dannar"]').waitFor();
-  assert.equal(await period.inputValue(),'historical');
-  assert.equal(await atlas.locator('.nw-pin').count(),16);
-  await period.selectOption('all');
   assert.equal(await atlas.locator('.nw-pin').count(),48);
-  report.navigation={expected:{historical:17,withoutHistorical:43,districtMembers:16},actual:{historical,withoutHistorical,districtMembers}};
-  report.checks.push('related-place-click','district-members-and-return','back-restores-query-category-map','back-cancels-marker-placement','navigation-preserves-language','historical-filter-17-43','period-filter-persistence','local-parchment-skin');
   await atlas.locator('[data-category]').selectOption('shop');
   assert.equal(await atlas.locator('nav button').count(),10);
   await atlas.locator('[data-category]').selectOption('service');
@@ -228,7 +212,7 @@ try {
   report.checks.push('ten-shops-seven-services','service-keyword-search-ru-ua','historical-shop-period','mmo-stable-context','guild-alias-and-uncertain-date');
   await newSearch.fill('Merchant Square');await atlas.locator('nav button').click();
   assert.match(await atlas.locator('.nw-summary').innerText(),/1479/);
-  assert.match(await atlas.locator('.nw-era').innerText(),/1492/);
+  assert.equal(await atlas.locator('.nw-era').count(),0);
   assert.match(await atlas.locator('.nw-period').innerText(),/точное место.*не подтверждено/);
   await atlas.locator('[data-go=merchant-guild]').click();assert.match(await atlas.locator('h3').innerText(),/Merchant Guild Hall/);
   await atlas.getByRole('button',{name:'UA',exact:true}).click();assert.match(await atlas.locator('.nw-summary').innerText(),/Багатьох Стріл/);
@@ -286,7 +270,7 @@ try {
   assert.equal(await atlas.locator('h3').innerText(),'Разлом (The Chasm)');
   assert.match(await atlas.locator('article').innerText(),/1492 году Разлом магически запечатан/);
   assert.equal(await atlas.locator('[data-place="chasm-rift"]').count(),1);
-  await atlas.getByRole('button',{name:'Открыть журнал',exact:true}).click();
+  await atlas.locator('[data-open-journal]').click();
   await page.waitForFunction(()=>[...foundry.applications.instances.values()].some(a=>a.rendered && a.document?.documentName==='JournalEntry' && a.element.innerText.includes('1492 году Разлом магически запечатан')));
   await page.evaluate(async()=>{for(const a of foundry.applications.instances.values())if(a.document?.documentName==='JournalEntry')await a.close();});
   await atlas.getByRole('button',{name:'UA',exact:true}).click();assert.equal(await atlas.locator('h3').innerText(),'Розлом (The Chasm)');
@@ -319,7 +303,7 @@ try {
   await atlas.locator('[data-category]').selectOption('all');
   await atlas.getByRole('button',{name:'RU',exact:true}).click();
   const before=await atlas.boundingBox();
-  await atlas.locator('header h2').hover();
+  await atlas.locator('header').hover();
   await page.mouse.down();
   await page.mouse.move(before.x+150,before.y+110,{steps:8});
   await page.mouse.up();
@@ -415,11 +399,7 @@ try {
   await fs.mkdir(new URL('evidence/',import.meta.url),{recursive:true});
   await atlas.locator('[data-maximize]').click();
   await page.screenshot({path:new URL('evidence/atlas-custom-point.png',import.meta.url).pathname.replace(/^\/([A-Z]:)/,'$1')});
-  await atlas.locator('[data-period-filter]').selectOption('hide');
-  assert.equal(await atlas.locator('.nw-custom').count(),1,'Own point remains visible when historical records are hidden');
-  await atlas.locator('[data-period-filter]').selectOption('historical');
-  assert.equal(await atlas.locator('.nw-custom').count(),0);
-  await atlas.locator('[data-period-filter]').selectOption('all');
+  assert.equal(await atlas.locator('[data-period-filter]').isVisible(),false);
   await atlas.locator('.nw-custom').click();
   await atlas.locator('[data-delete]').click();
   await page.locator('[data-action=yes]').click();

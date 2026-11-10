@@ -1,0 +1,387 @@
+{
+  "version": "0.18.1",
+  "status": "passed",
+  "comparisonTag": "v0.18.0",
+  "moduleInventory": {
+    "comparisonRef": "v0.18.0",
+    "comparisonCommit": "0f97157e3f3d32b7a9d03e2e87abed9f1307cb8f",
+    "head": "380b1068ad25a41976142e5aa0f33eb1ef2a2677",
+    "changedFiles": 19,
+    "runtimeChangeFiles": 3,
+    "categories": {
+      "runtime-code-styles": 3,
+      "content-source-or-baseline": 2,
+      "documentation": 8,
+      "tests": 5,
+      "build-release-tooling": 1
+    },
+    "changes": [
+      {
+        "file": "atlas.css",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "bff46f8babd68df9820d6c9837d19a44a9ed03c0696346901bc9c2218708c1a1"
+      },
+      {
+        "file": "atlas.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "641401ac761d105fb09a5c06f066567a18417840bd5fd3ed4e567e885e99741b"
+      },
+      {
+        "file": "characters.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "c568f13f7e2ea1402929193e7e90fb3a896c50427846a47e108fd8fd75844f03"
+      },
+      {
+        "file": "data/atlas-sync-baseline.json",
+        "status": "M",
+        "untracked": false,
+        "category": "content-source-or-baseline",
+        "exists": true,
+        "symlink": false,
+        "sha256": "987e550448213ba4347b2e64ba75126ca94154c5a4a2a488cf72a84ec5904255"
+      },
+      {
+        "file": "data/places.json",
+        "status": "M",
+        "untracked": false,
+        "category": "content-source-or-baseline",
+        "exists": true,
+        "symlink": false,
+        "sha256": "8527c65913085ca5e240b7ce99e1388f2b30c95bcecfb0e60275bf48378a44be"
+      },
+      {
+        "file": "docs/development/location-editorial-notes.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "3fcd97dc0e3ae03211e1c8e874d70864513ccf4378d374838107f7ef6ac3e087"
+      },
+      {
+        "file": "docs/map-controls.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a84ae662949bf57ec7a79b204b3796f0ee1630fc16b1d8f040cbf2ffa870e77d"
+      },
+      {
+        "file": "docs/releases.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "5eff91733261b8df426506698d892da5db51e250cebbfd6589eca92a2de692e4"
+      },
+      {
+        "file": "docs/testing/0.18.0-live-2026-11-09.json",
+        "status": "A",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a12d552704f514a06e3f0cba19cc0e4891b3b53d20f6418d5dc994d6827a57c1"
+      },
+      {
+        "file": "docs/testing/sync-2026-11-10-node-tests.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "8aa9eee57b89c46bba4edbef77e86b9427c4f3454a84241b770f563cf8f48fb0"
+      },
+      {
+        "file": "docs/testing/sync-2026-11-10-recheck.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0304f4dbfadf347b96edbc487cd21127cb8c3c323a8d4044940708610993b1c6"
+      },
+      {
+        "file": "docs/testing/sync-2026-11-10.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "c420ae49ee08baa6b9cfc9a47bfaf926b61151b6c9de831a156395399e63747d"
+      },
+      {
+        "file": "docs/testing/ui-cleanup-2026-11-10.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "931b18051f31e2093d4f4881daf1497a902025f90a4e0a8200000e12a9822316"
+      },
+      {
+        "file": "tests/access.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "55a150b99e9c5c2c8605d1f2fbea9c66c5d7196914a3e8bec4ce6fca080e45e7"
+      },
+      {
+        "file": "tests/city.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0e55726860221698b70283abf4b36e52bb6f4bd71190bb3da1287ec5959f1e38"
+      },
+      {
+        "file": "tests/layers-position.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "fa4649272fe2ee654e682351c1bf27532deea40a2cb365aa7d97a77004c05aea"
+      },
+      {
+        "file": "tests/lore-summaries.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "cffcad88d6f34c22d24c8874a5bb9e28022b81b4dbec302090b0eb4792d3e46e"
+      },
+      {
+        "file": "tests/node/lore.test.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0b3ba2bb9177bac357098e118474196c4abeae68e350034f1996b6b89835fc08"
+      },
+      {
+        "file": "tools/build-pack.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "build-release-tooling",
+        "exists": true,
+        "symlink": false,
+        "sha256": "4a66f9c1bf8056baa52966af2c269572a2570a45f054c04a2dad605777de351b"
+      }
+    ]
+  },
+  "worldComparison": {
+    "newWorldAuthoringChanges": 0,
+    "newCustomJournals": 0,
+    "drawings": [
+      0
+    ],
+    "sourceWorldModified": false
+  },
+  "nodeTests": {
+    "passed": 26,
+    "failed": 0
+  },
+  "runtime": {
+    "status": "passed",
+    "foundry": "14.370",
+    "zipSha256": "420cddb4aab8bc0928afb626f22270752ae110dc4e164623ae322a7b4ecfe140",
+    "audit": {
+      "journals": 2,
+      "pages": 120,
+      "pageTypes": {
+        "text": 120
+      },
+      "media": [
+        {
+          "location": "city:!journal.pages!83116acf18e4dc44.003f20b65ee6c4b4.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/chasm-rift.gif"
+        },
+        {
+          "location": "city:!journal.pages!83116acf18e4dc44.20e5d4a77529d8ec.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/mask.gif"
+        },
+        {
+          "location": "city:!journal.pages!83116acf18e4dc44.416c3c6ebf2058e5.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/shard.gif"
+        },
+        {
+          "location": "city:!journal.pages!83116acf18e4dc44.4968be0d7fec1c43.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/castle.gif"
+        },
+        {
+          "location": "city:!journal.pages!83116acf18e4dc44.a3978cef5c0c35b4.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/beached.gif"
+        },
+        {
+          "location": "city:!journal.pages!83116acf18e4dc44.acc228d6a78483b4.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/knowledge.gif"
+        },
+        {
+          "location": "city:!journal.pages!ed5ad332c1060437.31e2c85d151b7aec.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/chasm-rift.gif"
+        },
+        {
+          "location": "city:!journal.pages!ed5ad332c1060437.38326938dd81629b.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/knowledge.gif"
+        },
+        {
+          "location": "city:!journal.pages!ed5ad332c1060437.4bae6f7c7ba638cd.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/beached.gif"
+        },
+        {
+          "location": "city:!journal.pages!ed5ad332c1060437.4f054758ca7fdf0f.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/castle.gif"
+        },
+        {
+          "location": "city:!journal.pages!ed5ad332c1060437.8ae7767a3fefe86f.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/shard.gif"
+        },
+        {
+          "location": "city:!journal.pages!ed5ad332c1060437.dfa4ad81bdc0b6d9.text.content",
+          "path": "modules/neverwinter-atlas/assets/journals/pins/mask.gif"
+        }
+      ],
+      "internalLinks": 392,
+      "externalLinks": [
+        "https://forgottenmaps.web.app/map/Neverwinter",
+        "https://forgottenrealms.fandom.com/wiki/Adventurer%27s_Guild_%28Neverwinter%29",
+        "https://forgottenrealms.fandom.com/wiki/Allis_Lhyssich%27s_Hand_Crafted_Weapons_and_Magical_Weapons_for_Noble_Causes",
+        "https://forgottenrealms.fandom.com/wiki/Augustavus_Cale",
+        "https://forgottenrealms.fandom.com/wiki/Beached_Leviathan",
+        "https://forgottenrealms.fandom.com/wiki/Bishop",
+        "https://forgottenrealms.fandom.com/wiki/Blacklake",
+        "https://forgottenrealms.fandom.com/wiki/Blackule_Lane",
+        "https://forgottenrealms.fandom.com/wiki/Castle_Never",
+        "https://forgottenrealms.fandom.com/wiki/Cauldron_of_Blue_Fire",
+        "https://forgottenrealms.fandom.com/wiki/Church_of_Sune",
+        "https://forgottenrealms.fandom.com/wiki/Church_of_Tyr",
+        "https://forgottenrealms.fandom.com/wiki/Cloak_Tower",
+        "https://forgottenrealms.fandom.com/wiki/Dannar%27s_Mechanical_Marvels",
+        "https://forgottenrealms.fandom.com/wiki/Death_of_a_Sailorman",
+        "https://forgottenrealms.fandom.com/wiki/Dolphin_Bridge",
+        "https://forgottenrealms.fandom.com/wiki/Doomguide",
+        "https://forgottenrealms.fandom.com/wiki/Driftwood_Tavern",
+        "https://forgottenrealms.fandom.com/wiki/Fallen_Tower",
+        "https://forgottenrealms.fandom.com/wiki/Fisher%27s_Float",
+        "https://forgottenrealms.fandom.com/wiki/Hall_of_Justice",
+        "https://forgottenrealms.fandom.com/wiki/Hallowed_Temple_of_Sel%C3%BBne",
+        "https://forgottenrealms.fandom.com/wiki/Harpers",
+        "https://forgottenrealms.fandom.com/wiki/House_of_Knowledge_(Neverwinter)",
+        "https://forgottenrealms.fandom.com/wiki/House_of_a_Thousand_Faces",
+        "https://forgottenrealms.fandom.com/wiki/Jaesor%27s_Fineware_Porcelain_Works",
+        "https://forgottenrealms.fandom.com/wiki/Kalach-Cha",
+        "https://forgottenrealms.fandom.com/wiki/Luskan_Threat_to_Neverwinter",
+        "https://forgottenrealms.fandom.com/wiki/Many-Starred_Cloak",
+        "https://forgottenrealms.fandom.com/wiki/Manycoins_Moneylending",
+        "https://forgottenrealms.fandom.com/wiki/Manycoins_services",
+        "https://forgottenrealms.fandom.com/wiki/Merchant_Guild_Hall",
+        "https://forgottenrealms.fandom.com/wiki/Merchant_Square_%28Neverwinter%29",
+        "https://forgottenrealms.fandom.com/wiki/Moonstone_Mask",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter/Blacklake_District",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter/Chasm",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter/Docks_District",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter/Neverdeath",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter/Protector%27s_Enclave",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter/River_District",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter_Academy",
+        "https://forgottenrealms.fandom.com/wiki/Neverwinter_Guard",
+        "https://forgottenrealms.fandom.com/wiki/New_Neverwinter",
+        "https://forgottenrealms.fandom.com/wiki/Pirates%27_Skyhold",
+        "https://forgottenrealms.fandom.com/wiki/Plaguechanged",
+        "https://forgottenrealms.fandom.com/wiki/Plaguechanged_Warrens",
+        "https://forgottenrealms.fandom.com/wiki/Qara",
+        "https://forgottenrealms.fandom.com/wiki/Sand_%28individual%29",
+        "https://forgottenrealms.fandom.com/wiki/Shard_of_Night",
+        "https://forgottenrealms.fandom.com/wiki/Shining_Knight_Arms_%26_Armor",
+        "https://forgottenrealms.fandom.com/wiki/Shining_Serpent_Inn",
+        "https://forgottenrealms.fandom.com/wiki/Sleeping_Dragon_Bridge",
+        "https://forgottenrealms.fandom.com/wiki/Sons_of_Alagondar",
+        "https://forgottenrealms.fandom.com/wiki/Starshine_Academy",
+        "https://forgottenrealms.fandom.com/wiki/Tarmalune_Trade_House",
+        "https://forgottenrealms.fandom.com/wiki/Temple_of_Waukeen_%28Neverwinter%29",
+        "https://forgottenrealms.fandom.com/wiki/The_Mute_Lute",
+        "https://forgottenrealms.fandom.com/wiki/The_Wall_(Neverwinter)",
+        "https://forgottenrealms.fandom.com/wiki/Theryis",
+        "https://forgottenrealms.fandom.com/wiki/Tower_of_Solace",
+        "https://forgottenrealms.fandom.com/wiki/Trade_of_Blades",
+        "https://forgottenrealms.fandom.com/wiki/Twisted_Fane",
+        "https://forgottenrealms.fandom.com/wiki/Vanteen%27s_Siphon",
+        "https://forgottenrealms.fandom.com/wiki/Vellgard_Manor",
+        "https://forgottenrealms.fandom.com/wiki/Waterclock_Guild",
+        "https://forgottenrealms.fandom.com/wiki/Waterclock_Guild%27s_Crypts",
+        "https://forgottenrealms.fandom.com/wiki/Winged_Wyvern_Bridge",
+        "https://forgottenrealms.fandom.com/wiki/Wintershield_watchmen",
+        "https://housegriffon.com/RPG/Games/DnD/add2/ForgottenRealms/Volo%27s%20Guide%20to%20the%20North.pdf",
+        "https://neverwinter.fandom.com/wiki/Sage%27s_Shop",
+        "https://neverwinter.fandom.com/wiki/Shaundakul_Stables",
+        "https://nwn2.fandom.com/wiki/Sunken_Flagon",
+        "https://www.patreon.com/EdGreenwood/posts/best-lesser-in-84837350",
+        "https://www.sageadvice.eu/perchance-blackule-lane-in-neverwinter-is-located-in-the-blacklake-district/"
+      ],
+      "dependencies": []
+    },
+    "checks": [
+      "ZIP-installed",
+      "module-enabled",
+      "no-startup-import",
+      "titles-page-order-types-rich-text-match",
+      "all-UUID-links-resolve",
+      "opened-from-compendium-sidebar",
+      "opened-journal-sheet",
+      "captured-five-point-coordinates",
+      "captured-pin-colors-and-sizes",
+      "bundled-calibration-and-compendium-location-metadata",
+      "journal-GIF-renders",
+      "six-default-pin-GIFs-load",
+      "existing-record-image-default-and-explicit-removal",
+      "character-search-finds-offline-world-actor",
+      "character-drag-tracks-every-pointer-step",
+      "vertical-sidebar-toggle",
+      "hidden-header-title",
+      "character-search-and-empty-online-default",
+      "60-bilingual-summary-pages",
+      "ten-lore-facts-and-era-limits-RU-UA",
+      "search-opens-localized-summary-cards",
+      "editorial-metadata-kept-off-player-surface",
+      "academy-temple-linked-navigation-distinguishes-historical-sites",
+      "summary-opens-ukrainian-journal",
+      "pack-reopens-after-reload"
+    ],
+    "cleanup": {
+      "serverStopped": true,
+      "disposablePayloadRemoved": true
+    },
+    "finished": "2026-11-10T13:08:42.170Z"
+  },
+  "skillUpdate": {
+    "scope": "all-module-changes",
+    "explicitInvocationPublishes": true,
+    "inventoryFixturePassed": true,
+    "formatValidation": "passed"
+  },
+  "limitations": [
+    "Full city/access suites not rerun in this pass",
+    "Broader multi-online-character, multi-zoom badge and intermittent stacking coverage remains pending"
+  ]
+}

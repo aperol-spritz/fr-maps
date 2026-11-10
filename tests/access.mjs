@@ -127,7 +127,7 @@ try {
   await settings.locator('[data-cancel]').click();
   await reader.locator('[data-place=castle]').click();assert.equal(await reader.locator('.nw-summary').innerText(),'Открытая крепость.');
   await reader.getByRole('button',{name:'UA',exact:true}).click();assert.equal(await reader.locator('.nw-summary').innerText(),'Відкрита фортеця.');
-  await reader.getByRole('button',{name:'Відкрити журнал',exact:true}).click();assert.equal(await reader.locator('.nw-public-reader p').innerText(),'Відкрита фортеця.');
+  await reader.locator('[data-open-journal]').click();assert.equal(await reader.locator('.nw-public-reader p').innerText(),'Відкрита фортеця.');
   await reader.locator('.nw-public-reader > button').click();assert.equal(await reader.locator('[data-go=justice]').count(),0);
   report.checks.push('individual-map-access-and-player-M','default-hidden-points','blocked-player-denied','global-style','hover-grow-and-return','instant-name','double-click-editor','picker-enables-style-and-persists','public-RU-UA-reader-no-journal','hidden-related-links');
   async function coordinates(p){return p.evaluate(({ID,MAP})=>{const p=game.settings.get(ID,'atlasState').maps[MAP].points.castle;return {x:p.x,y:p.y};},{ID,MAP});}
@@ -339,7 +339,7 @@ try {
   await atlas.locator('[data-ruler]').click();await atlas.locator('[name=rulerMode]').selectOption('line');await draw(gm,[[20,20],[39.53125,20]]);
   const calibrated=Number(await atlas.locator('[data-distance]').getAttribute('data-feet'));assert.ok(Math.abs(calibrated-2000)<12,calibrated);await atlas.locator('[data-ruler]').click();
   report.checks.push('printed-scale-straight-ruler','freehand-route-ruler','custom-scale-calibration');report.measurement={expected:{straight:1000,route:1705,calibrated:2000},actual:{straight,route,calibrated}};
-  await select("Pirates' Skyhold");assert.match(await atlas.locator('.nw-summary').innerText(),/100 футах/);assert.match(await atlas.locator('.nw-era').innerText(),/1492/);
+  await select("Pirates' Skyhold");assert.match(await atlas.locator('.nw-summary').innerText(),/100 футах/);assert.equal(await atlas.locator('.nw-era').count(),0);
   assert.ok(await atlas.locator('[data-zone=pirates-skyhold]').count());report.checks.push('Pirates-Skyhold-bilingual-lore-and-island-territory');
   await backupFlow(gm,fixture,report);
   await atlas.locator('[data-settings]').click();await settings.locator('[data-user=default]').selectOption('2');await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('-1');await settings.locator('[data-user="'+fixture.users[1].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});

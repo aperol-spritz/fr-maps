@@ -38,8 +38,6 @@ for (const language of ['ru','uk']) {
     const details=local.details ? '<h3>1492 ЛД</h3><p>'+escape(local.details)+'</p>' : '';
     const services=local.services ? '<h3>'+(language==='ru'?'Услуги':'Послуги')+'</h3><p>'+escape(local.services)+'</p>' : '';
     const organizations=local.organizations ? '<h3>'+(language==='ru'?'Организации и 1492 год':'Організації та 1492 рік')+'</h3><p>'+escape(local.organizations)+'</p>' : '';
-    const precision=place.position?'<p><strong>'+(language==='ru'?'Расположение':'Розташування')+' — '+escape(place.position[language])+'</strong></p>':'';
-    const era='<p><strong>'+(language==='ru'?'Период сведений':'Період відомостей')+' — '+escape(place.period[language])+'</strong></p>';
     const links=related ? '<h3>'+(language==='ru'?'Связанные локации':'Пов’язані локації')+'</h3><p>'+related+'</p>' : '';
     const sourceLabel=language==='ru'?'Краткая справка и перевод по статье':'Коротка довідка й переклад за статтею';
     const sources=[{url:source,label:'Forgotten Realms Wiki'},...(place.sources ?? [])];
@@ -47,7 +45,7 @@ for (const language of ['ru','uk']) {
     const provenance='<hr><p>'+sourceLabel+' '+citations+'. '+escape(place.sourceDate ?? '2026-11-08')+'.</p>';
     const media=place.asset ? '<figure><img src="'+escape(place.asset)+'" alt="'+escape(local.name)+'"></figure>' : '';
     const page = {_id:id,name:local.name+(place.omitEnglish?'':' ('+place.en+')'),type:'text',sort:journal.pages.length*1000,
-      flags:{'neverwinter-atlas':{key:place.id,location:structuredClone(place)}},text:{format:1,content:media+'<p>'+escape(local.lore)+'</p>'+era+precision+services+details+organizations+links+provenance}};
+      flags:{'neverwinter-atlas':{key:place.id,location:structuredClone(place)}},text:{format:1,content:media+'<p>'+escape(local.lore)+'</p>'+(local.description?'<p>'+escape(local.description)+'</p>':'')+services+details+organizations+links+provenance}};
     journal.pages.push(id);
     operations.push({type:'put',key:'!journal.pages!'+journalId+'.'+id,value:page});
   }

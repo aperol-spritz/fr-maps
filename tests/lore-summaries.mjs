@@ -17,7 +17,7 @@ export const loreCases=[
 export async function loreSummaries(page,report){
   await page.locator('body').click({position:{x:500,y:20}});await page.keyboard.press('KeyM');
   const atlas=page.locator('.nw-atlas');await atlas.waitFor();
-  await atlas.locator('[data-period-filter]').selectOption('all');
+  assert.equal(await atlas.locator('[data-period-filter]').isVisible(),false);
   const stored=await page.evaluate(async()=>{
     const journals=await game.packs.get('neverwinter-atlas.city').getDocuments();
     return journals.map(j=>({language:j.getFlag('neverwinter-atlas','language'),pages:j.pages.contents.map(p=>({key:p.getFlag('neverwinter-atlas','key'),id:p.id,html:p.text.content}))}));
@@ -26,7 +26,7 @@ export async function loreSummaries(page,report){
   for(const journal of stored){
     assert.equal(journal.pages.length,60);
     for(const item of loreCases){
-      const p=journal.pages.find(p=>p.key===item.id);assert.ok(p);assert.match(p.html,item.fact[journal.language]);assert.match(p.html,item.era);assert.match(p.html,/1492/);
+      const p=journal.pages.find(p=>p.key===item.id);assert.ok(p);assert.match(p.html,item.fact[journal.language]);assert.doesNotMatch(p.html,/Расположение —|Розташування —|Период сведений —|Період відомостей —/);
     }
   }
   for(const language of ['ru','uk']){
@@ -36,19 +36,10 @@ export async function loreSummaries(page,report){
       const entry=atlas.locator(`nav [data-list-place="${item.id}"]`);await entry.click();
       assert.equal(await atlas.locator('article h3').first().innerText(),`${item[language]} (${item.en})`);
       assert.match(await atlas.locator('.nw-summary').innerText(),item.fact[language]);
-      assert.match(await atlas.locator('.nw-era').innerText(),item.era);
-      assert.equal(await atlas.locator('.nw-position-status').getAttribute('data-precision'),'overview');
+      assert.equal(await atlas.locator('.nw-era').count(),0);
+      assert.equal(await atlas.locator('.nw-position-status').count(),0);
     }
   }
-  // Exercise the existing historical filter: destroyed establishments are not
-  // presented as current services, while post-catastrophe school lore remains.
-  for(const item of loreCases){
-    await atlas.locator('[data-period-filter]').selectOption('all');
-    await atlas.locator('input[type=search]').fill(item.en);
-    await atlas.locator('[data-period-filter]').selectOption('hide');
-    assert.equal(await atlas.locator(`nav [data-list-place="${item.id}"]`).count(),item.historical?0:1);
-  }
-  await atlas.locator('[data-period-filter]').selectOption('all');
   await atlas.locator('input[type=search]').fill('Neverwinter Academy of Magic');
   await atlas.locator('nav [data-list-place="magic-academy"]').click();
   await atlas.locator('article [data-go="waukeen-temple"]').click();
@@ -57,9 +48,31 @@ export async function loreSummaries(page,report){
   assert.equal(await atlas.locator('article h3').first().innerText(),'Невервінтерська академія магії (Neverwinter Academy of Magic)');
   await atlas.locator('input[type=search]').fill('Starshine Academy');
   await atlas.locator('nav button').filter({hasText:'Starshine Academy'}).click();
-  await atlas.getByRole('button',{name:'Відкрити журнал',exact:true}).click();
+  await atlas.locator('[data-open-journal]').click();
   await page.waitForFunction(()=>[...document.querySelectorAll('.journal-entry')].some(el=>el.innerText.includes('Академія Зоряного сяйва')&&el.innerText.includes('садівництва')));
   await page.evaluate(async()=>{for(const app of foundry.applications.instances.values())if(app.document?.documentName==='JournalEntry')await app.close();});
+  assert.equal(await atlas.locator('header>h2').isVisible(),false);
+  assert.equal(await atlas.locator('[data-position-filter]').isVisible(),false);
+  assert.equal(await atlas.locator('[data-edit-position]').count(),0);
+  const toggle=await atlas.locator('[data-sidebar]').boundingBox(),body=await atlas.locator('.nw-body').boundingBox();
+  assert.ok(toggle.height>body.height*.9 && toggle.width<=24);
+  await atlas.locator('[data-sidebar]').click();assert.equal(await atlas.locator('aside').isVisible(),false);
+  await atlas.locator('[data-sidebar]').click();assert.equal(await atlas.locator('aside').isVisible(),true);
+  await atlas.locator('[data-characters]').click();
+  const settings=page.locator('.nw-settings');
+  assert.equal(await settings.locator('[name=characterSearch]').count(),1);
+  assert.equal(await settings.locator('[name=actorId] option').count(),0);
+  await settings.locator('[data-cancel]').click();
+  const actor=await page.evaluate(async()=>{const actor=await Actor.create({name:'Atlas motion test',type:'character'});const {changeCharacter}=await import('/modules/neverwinter-atlas/characters.mjs');await changeCharacter('modules/neverwinter-atlas/assets/neverwinter.webp','place',actor.id,50,50);return actor.id;});
+  await atlas.locator('[data-characters]').click();await settings.locator('[name=characterSearch]').fill('Atlas motion');
+  assert.equal(await settings.locator('[name=actorId] option').count(),1);assert.equal(await settings.locator('[name=actorId]').inputValue(),actor);
+  await settings.locator('[data-cancel]').click();
+  const token=atlas.locator(`[data-character="${actor}"]`);await token.waitFor();const start=await token.boundingBox();
+  await page.mouse.move(start.x+start.width/2,start.y+start.height/2);await page.mouse.down();
+  for(let i=1;i<=8;i++){await page.mouse.move(start.x+start.width/2+i*5,start.y+start.height/2+i*3);const r=await token.boundingBox();assert.ok(Math.abs(r.x-start.x-i*5)<2 && Math.abs(r.y-start.y-i*3)<2,'Marker follows pointer without easing lag');}
+  await page.mouse.up();await page.evaluate(async id=>{const {changeCharacter}=await import('/modules/neverwinter-atlas/characters.mjs');await changeCharacter('modules/neverwinter-atlas/assets/neverwinter.webp','remove',id);await game.actors.get(id).delete();},actor);
+  report.checks.push('character-search-finds-offline-world-actor','character-drag-tracks-every-pointer-step');
+  report.checks.push('vertical-sidebar-toggle','hidden-header-title','character-search-and-empty-online-default');
   await atlas.locator('[data-close]').click();
-  report.checks.push('60-bilingual-summary-pages','ten-lore-facts-and-era-limits-RU-UA','search-opens-localized-summary-cards','historical-filter-keeps-current-school-hides-old-venues','academy-temple-linked-navigation-distinguishes-historical-sites','summary-opens-ukrainian-journal');
+  report.checks.push('60-bilingual-summary-pages','ten-lore-facts-and-era-limits-RU-UA','search-opens-localized-summary-cards','editorial-metadata-kept-off-player-surface','academy-temple-linked-navigation-distinguishes-historical-sites','summary-opens-ukrainian-journal');
 }

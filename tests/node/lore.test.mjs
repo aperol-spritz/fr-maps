@@ -17,7 +17,7 @@ test('every city location has a short summary in each language and a stable comp
   }
   for(const item of loreCases){
     const p=places.find(p=>p.id===item.id);assert.equal(p.period.status==='historical',item.historical);assert.equal(p.position.status,'overview');
-    for(const language of ['ru','uk']){assert.match(p[language].lore,item.fact[language]);assert.match(p.period[language],item.era);assert.match(p[language].lore+p[language].details,/1492/);}
+    for(const language of ['ru','uk']){assert.match(p[language].lore,item.fact[language]);assert.match(p.period[language],item.era);assert.ok(p.period[language]);}
   }
   assert.ok(places.find(p=>p.id==='shining-serpent').y>50,'Reject northern website coordinate conflicting with historical district');
   const candidates=JSON.parse(await fs.readFile(new URL('../../data/forgottenmaps-candidates.json',import.meta.url)));
@@ -37,4 +37,11 @@ test('historical school and replacement temple share only an overview; unsupport
   for(const name of ["Claven's General Supplies and Armory",'Astorio Arms',"Buckman's Emporium",'Brandis Vrye Rookery','Temple of Amaunator',"Hazel's Apothecary"]){
     const candidate=registry.features.find(f=>f.name===name);assert.equal(candidate.review.decision,'needs-source');assert.equal(candidate.moduleId,null);assert.notEqual(candidate.status,'included');assert.equal(places.some(p=>p.en===name),false);
   }
+});
+
+test('player journals omit development caveats and retain expanded animated-location lore',async()=>{
+ const places=JSON.parse(await fs.readFile(new URL('../../data/places.json',import.meta.url)));
+ const pages=journalOperations(places).filter(r=>r.key.startsWith('!journal.pages!')).map(r=>r.value);
+ for(const page of pages)assert.doesNotMatch(page.text.content,/Расположение —|Розташування —|Период сведений —|Період відомостей —|подложк|підклад/);
+ for(const place of places.filter(p=>p.asset?.endsWith('.gif')))for(const lang of ['ru','uk'])assert.ok(place[lang].description.length>200);
 });

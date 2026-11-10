@@ -34,10 +34,17 @@ export function registerCharacters(){
 }
 export function characterTools(map,onPlace,onLocate){
   const actors=game.actors.filter(a=>a.type==='character'&&(game.user.isGM || owner(a)));
-  const ui=formDialog('Персонажи на карте','<label>Персонаж<select name="actorId" required></select></label><small>Щелчок по маркеру открывает лист персонажа с его обычными правами Foundry.</small><section data-character-list></section>',async form=>{onPlace(form.elements.actorId.value);},{gmOnly:false});
-  for(const actor of actors)ui.form.elements.actorId.add(new Option(actor.name,actor.id));
-  if(actors.some(a=>a.id===game.user.character?.id))ui.form.elements.actorId.value=game.user.character.id;
-  ui.form.querySelector('[type=submit]').textContent='Поставить на карту';ui.form.querySelector('[type=submit]').disabled=!actors.length || !allowedPlace(map);
+  const ui=formDialog('Персонажи на карте','<label>Поиск персонажа<input type="search" name="characterSearch" placeholder="Имя персонажа"></label><label>Персонаж<select name="actorId" required></select></label><small>Щелчок по маркеру открывает лист персонажа с его обычными правами Foundry.</small><section data-character-list></section>',async form=>{onPlace(form.elements.actorId.value);},{gmOnly:false});
+  const refresh=()=>{
+    const query=ui.form.elements.characterSearch.value.trim().toLocaleLowerCase();
+    const online=new Set(game.users.filter(user=>!user.isGM && user.active).map(user=>user.character?.id));
+    const sorted=actors.filter(actor=>query?actor.name.toLocaleLowerCase().includes(query):online.has(actor.id)).sort((a,b)=>a.name.localeCompare(b.name,game.i18n.lang));
+    const shown=query?sorted:sorted.slice(0,3);
+    ui.form.elements.actorId.replaceChildren(...shown.map(actor=>new Option(actor.name,actor.id)));
+    ui.form.querySelector('[type=submit]').disabled=!shown.length || !allowedPlace(map);
+  };
+  ui.form.elements.characterSearch.oninput=refresh;refresh();
+  ui.form.querySelector('[type=submit]').textContent='Поставить на карту';
   if(game.user.isGM){
     const label=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=Boolean(mapState(map).allowCharacters);check.dataset.allowCharacters='';
     label.append(check,document.createTextNode('Игроки могут размещать своих персонажей'));ui.form.querySelector('[data-character-list]').before(label);

@@ -203,3 +203,18 @@
 .nw-lever-dot { display:grid; place-items:center; flex:0 0 22px; height:23px; width:22px; font-size:12px; border:1px solid #dbc59c; background:#e1c99d; color:#513823; box-shadow:0 2px 3px #0008; }
 .nw-layer-switch [data-layer-name] { position:absolute; left:36px; width:max-content; max-width:230px; padding:6px 8px; color:#fff2d7; background:#423121; border:1px solid #b3945f; border-radius:4px; visibility:hidden; pointer-events:none; }
 .nw-layer-switch button:hover [data-layer-name],.nw-layer-switch button:focus-visible [data-layer-name] { visibility:visible; }
+
+/* Compact player-facing controls. */
+.nw-atlas header>h2,.nw-atlas header>span { display:none; }
+.nw-body { grid-template-columns:minmax(0,1fr) 20px minmax(230px,29%); }
+.nw-atlas.nw-sidebar-collapsed .nw-body { grid-template-columns:minmax(0,1fr) 20px; }
+.nw-atlas [data-sidebar] { align-self:stretch; width:20px; padding:0; margin:10px 0 0; display:grid; place-items:center; }
+.nw-location-heading { display:flex; align-items:center; gap:8px; }
+.nw-atlas .nw-location-heading [data-open-journal] { flex:1; text-align:left; font:inherit; border:0; background:transparent; padding:0; }
+.nw-atlas .nw-location-heading [data-open-journal]:hover { text-decoration:underline; }
+.nw-card-access { display:grid; place-items:center; border-radius:50%; background:#b63832; color:white; width:24px; height:24px; flex-shrink:0; font-size:12px; }
+.nw-card-access[data-access=view] { background:#248148; }
+.nw-card-access[data-access=owner] { background:#238dd1; }
+.nw-atlas [data-settings] { font-size:19px; }
+.nw-pin .nw-access-icon { width:calc(var(--nw-pin-size)*.4); height:calc(var(--nw-pin-size)*.4); font-size:calc(var(--nw-pin-size)*.23); }
+.nw-stage[data-gesture=pin] .nw-character { transition:none!important; will-change:left,top; }

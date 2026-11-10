@@ -1,5 +1,4 @@
 import {layerIds,currentLayer,layerMap,layerName,pendingMap} from './layers.mjs';
-import {positionSettings} from './position.mjs';
 import {watchUI,tr,confirmUI} from './i18n.mjs';
 import {configureWindow,configureMap,showFloatingDialog} from './window.mjs';
 import {customPlaces,editPoint} from './custom-points.mjs';
@@ -53,7 +52,7 @@ async function createAtlas() {
   if(game.user.isGM) {await migrateLegacy();if(baseMap===bundledMap)await syncTerritoryDefaults(basePlaces,baseMap);}
   const el=document.createElement('dialog');
   el.className='nw-atlas';el.dataset.layer=layerId;
-  el.innerHTML=`<header><h2></h2><span>1492 ЛД</span><div class="nw-tools"><details class="nw-drawing-tools"><summary title="Рисование" aria-label="Рисование"><i class="fas fa-pencil-alt"></i></summary><div><strong>Рисование</strong><button data-draw aria-pressed="false" title="Карандаш" aria-label="Карандаш"><i class="fas fa-pencil-alt"></i></button><input name="drawColor" type="color" value="#b12e21" aria-label="Цвет рисунка"><input name="drawWidth" type="number" min="1" max="12" value="3" aria-label="Толщина линии"><button data-undo title="Отменить штрих — Ctrl+Z" aria-label="Отменить штрих"><i class="fas fa-undo"></i></button><button data-clear title="Очистить рисунки" aria-label="Очистить рисунки"><i class="fas fa-trash"></i></button><section class="nw-stroke-list" data-stroke-list></section></div></details><button class="nw-territory-tools" data-territories title="Территории" aria-label="Территории"><i class="fas fa-draw-polygon"></i></button><details class="nw-ruler-tools"><summary title="Линейка" aria-label="Линейка"><i class="fas fa-ruler"></i></summary><div><button data-ruler aria-pressed="false">Измерять</button><select name="rulerMode" aria-label="Способ измерения"><option value="line">Прямая</option><option value="free">Свободный маршрут</option></select><button data-calibrate>Калибровка</button><button data-ruler-clear>Сбросить</button><output data-distance>0 ft · 0 м</output></div></details><button data-settings title="Настройки карты">⚙</button><button data-lang="ru">RU</button><button data-lang="uk">UA</button><button data-maximize aria-pressed="false">⛶</button><button data-close>×</button></div></header>
+  el.innerHTML=`<header><h2></h2><span>1492 ЛД</span><div class="nw-tools"><details class="nw-drawing-tools"><summary title="Рисование" aria-label="Рисование"><i class="fas fa-pencil-alt"></i></summary><div><strong>Рисование</strong><button data-draw aria-pressed="false" title="Карандаш" aria-label="Карандаш"><i class="fas fa-pencil-alt"></i></button><input name="drawColor" type="color" value="#b12e21" aria-label="Цвет рисунка"><input name="drawWidth" type="number" min="1" max="12" value="3" aria-label="Толщина линии"><button data-undo title="Отменить штрих — Ctrl+Z" aria-label="Отменить штрих"><i class="fas fa-undo"></i></button><button data-clear title="Очистить рисунки" aria-label="Очистить рисунки"><i class="fas fa-trash"></i></button><section class="nw-stroke-list" data-stroke-list></section></div></details><button class="nw-territory-tools" data-territories title="Территории" aria-label="Территории"><i class="fas fa-draw-polygon"></i></button><details class="nw-ruler-tools"><summary title="Линейка" aria-label="Линейка"><i class="fas fa-ruler"></i></summary><div><button data-ruler aria-pressed="false">Измерять</button><select name="rulerMode" aria-label="Способ измерения"><option value="line">Прямая</option><option value="free">Свободный маршрут</option></select><button data-calibrate>Калибровка</button><button data-ruler-clear>Сбросить</button><output data-distance>0 ft · 0 м</output></div></details><button data-settings title="Настройки карты" aria-label="Настройки карты"><i class="fas fa-cog"></i></button><button data-lang="ru">RU</button><button data-lang="uk">UA</button><button data-maximize aria-pressed="false">⛶</button><button data-close>×</button></div></header>
     <div class="nw-body"><section class="nw-viewport"><div class="nw-map-space"><div class="nw-stage"><img draggable="false"></div></div></section>
     <aside><input type="search"><select data-category></select><select data-period-filter></select><div class="nw-sidebar-tools"><button data-back></button><button data-add></button></div><article></article><nav></nav></aside></div>
     <footer><small></small><div><button data-zoom="-1" aria-label="−">−</button><output>100%</output><button data-zoom="1" aria-label="+">+</button></div></footer><span class="nw-resize"></span><div class="nw-tooltip" role="tooltip" hidden></div>`;
@@ -61,8 +60,8 @@ async function createAtlas() {
   for(const id of layerIds){const button=document.createElement('button');button.type='button';button.dataset.layer=id;button.innerHTML='<span class="nw-lever-dot"><i class="fas fa-'+({evernight:'moon',city:'sun',underground:'dungeon'}[id])+'" aria-hidden="true"></i></span><span data-layer-name></span>';rail.append(button);button.onclick=async()=>{if(id===layerId)return;if(regions?.active() || document.querySelector('.nw-point-editor[open]')){ui.notifications.warn(tr('Завершите или закройте редактор перед сменой карты'));return;}if(!canViewMap(layerMap(id)))return;await new Promise(resolve=>{el.addEventListener('close',resolve,{once:true});el.close();});await game.settings.set(ID,'activeLayer',id);await openAtlas();};}
   const empty=document.createElement('section');empty.className='nw-layer-empty';empty.hidden=!pending;el.querySelector('.nw-viewport').append(empty);
   const manager=document.createElement('dialog');manager.className='nw-point-editor nw-territory-manager';
-  const sidebarButton=document.createElement('button');sidebarButton.dataset.sidebar='';sidebarButton.setAttribute('aria-label','Скрыть панель');sidebarButton.innerHTML='<i class="fas fa-sidebar"></i>';el.querySelector('[data-settings]').before(sidebarButton);
-  const characterButton=document.createElement('button');characterButton.dataset.characters='';characterButton.title='Персонажи';characterButton.innerHTML='<i class="fas fa-users"></i>';sidebarButton.before(characterButton);
+  const sidebarButton=document.createElement('button');sidebarButton.dataset.sidebar='';sidebarButton.setAttribute('aria-label','Скрыть панель');sidebarButton.innerHTML='<i class="fas fa-sidebar"></i>';el.querySelector('aside').before(sidebarButton);
+  const characterButton=document.createElement('button');characterButton.dataset.characters='';characterButton.title='Персонажи';characterButton.innerHTML='<i class="fas fa-users"></i>';el.querySelector('[data-settings]').before(characterButton);
   const accuracy=document.createElement('select');accuracy.dataset.positionFilter='';el.querySelector('[data-period-filter]').after(accuracy);
   const count=document.createElement('small');count.className='nw-list-count';el.querySelector('nav').before(count);
   manager.innerHTML='<h2>Территории</h2><div class="nw-territory-content"><button data-new-region>Создать территорию</button><button data-outline-selected disabled>Контур выбранной локации</button><label class="nw-check"><input data-show-regions type="checkbox" checked>Показать контуры</label><section class="nw-region-list" data-region-list></section><section data-region-editor-host></section></div>';
@@ -71,7 +70,7 @@ async function createAtlas() {
   const stage=find('.nw-stage'),viewport=find('.nw-viewport'),input=find('input[type=search]'),select=find('[data-category]'),periodFilter=find('[data-period-filter]'),img=find('img');
   viewport.tabIndex=0;
   img.src=foundry.utils.getRoute(baseMap);
-  periodFilter.add(new Option('',game.settings.get(ID,'periodFilter')));
+  periodFilter.add(new Option('','all'));periodFilter.hidden=true;accuracy.hidden=true;
   let language=game.settings.get(ID,'language'),selectedId,placing=false,map;
   let placingCharacter,listed=[],sidebarCollapsed=game.settings.get(ID,'sidebarCollapsed');
   function sidebar(collapsed){sidebarCollapsed=collapsed;el.classList.toggle('nw-sidebar-collapsed',collapsed);sidebarButton.setAttribute('aria-expanded',String(!collapsed));sidebarButton.setAttribute('aria-label',collapsed?'Показать панель':'Скрыть панель');sidebarButton.innerHTML='<i class="fas '+(collapsed?'fa-angles-left':'fa-angles-right')+'"></i>';game.settings.set(ID,'sidebarCollapsed',collapsed).catch(error=>ui.notifications.error(tr(error.message)));}
@@ -132,8 +131,7 @@ async function createAtlas() {
     if(panel.open) for(const other of toolPanels) if(other!==panel) other.open=false;
   });
   const editMarker=place=>pointSettings(place,baseMap).catch(error=>ui.notifications.error(tr(error.message)));
-  const matchesPeriod=place=>periodFilter.value==='all' ||
-    (periodFilter.value==='hide' ? place.period?.status!=='historical' : place.period?.status==='historical');
+  const matchesPeriod=()=>true;
   function choose(place,{center=false,reveal=false}={}) {
     if(sidebarCollapsed)sidebar(false);
     if(selectedId!==place.id) history.push({
@@ -207,7 +205,7 @@ async function createAtlas() {
     find('[data-add]').setAttribute('aria-pressed',String(placing));
     viewport.classList.toggle('nw-placing',placing || Boolean(placingCharacter));
     const nav=find('nav');nav.replaceChildren();
-    const selectedAccuracy=accuracy.value || 'all';accuracy.replaceChildren(...[['all',language==='uk'?'Точність: усі':'Точность: все'],['confirmed',language==='uk'?'Підтверджена прив’язка':'Подтверждённая привязка'],['overview',language==='uk'?'Оглядова позначка':'Обзорная метка'],['unverified',language==='uk'?'Потребує звірки':'Требует сверки'],['custom',language==='uk'?'Власні локації':'Свои локации']].map(([key,text])=>new Option(text,key)));accuracy.value=selectedAccuracy;
+    const selectedAccuracy='all';accuracy.replaceChildren(...[['all',language==='uk'?'Точність: усі':'Точность: все'],['confirmed',language==='uk'?'Підтверджена прив’язка':'Подтверждённая привязка'],['overview',language==='uk'?'Оглядова позначка':'Обзорная метка'],['unverified',language==='uk'?'Потребує звірки':'Требует сверки'],['custom',language==='uk'?'Власні локації':'Свои локации']].map(([key,text])=>new Option(text,key)));accuracy.value=selectedAccuracy;
     stage.querySelectorAll('.nw-pin').forEach(pin=>pin.remove());
     const query=normalize(input.value);
     const visible=places().filter(place=>matchesPeriod(place) && (selectedAccuracy==='all'||(selectedAccuracy==='custom'?place.isCustom:(place.position?.status ?? (place.isCustom?'custom':'unverified'))===selectedAccuracy)) && (category==='all'||place.category===category) &&
@@ -268,8 +266,8 @@ async function createAtlas() {
     const parsed=new DOMParser().parseFromString(page?.text?.content ?? '','text/html');
     summary.textContent=selected.document ? parsed.body.innerText : page?parsed.querySelector('p')?.textContent:selected[language].lore;
     const button=document.createElement('button');button.textContent=t.full;
-    button.onclick=()=>{
-      if(selected.document || (game.user.isGM && !selected.area)) (selected.document ?? books.get(language)).sheet.render({force:true,pageId:page?.id,mode:1});
+    button.onclick=async()=>{
+      if(selected.document || (game.user.isGM && !selected.area)) {const sheet=(selected.document ?? books.get(language)).sheet;await sheet.render({force:true,pageId:page?.id,mode:1});sheet.bringToFront();}
       else {
         const reader=document.createElement('dialog');reader.className='nw-point-editor nw-public-reader';
         const heading=document.createElement('h2');heading.textContent=nameFor(selected,language);
@@ -278,25 +276,16 @@ async function createAtlas() {
         reader.append(heading,text,close);reader.onclose=()=>reader.remove();showFloatingDialog(reader);
       }
     };
-    card.append(heading,summary,button);
-    const era=document.createElement('p');era.className='nw-era';
-    era.textContent=selected.isCustom ? t.own : t.periodLabel+' — '+(selected.period?.[language] ?? t.own);
-    card.insertBefore(era,summary);
-    const position=document.createElement('p');position.className='nw-position-status';position.dataset.precision=selected.position?.status ?? (selected.isCustom?'custom':'unverified');
-    const positionNames=language==='uk'?{confirmed:'Підтверджена прив’язка',overview:'Оглядова позначка',unverified:'Потребує звірки',custom:'Власна локація'}:{confirmed:'Подтверждённая привязка',overview:'Обзорная метка',unverified:'Требует сверки',custom:'Своя локация'};
-    position.textContent=positionNames[position.dataset.precision]+(selected.position?.[language]?' — '+selected.position[language]:'');card.insertBefore(position,summary);
-    if(selected.position?.source && /^https:\/\//.test(selected.position.source)){const source=document.createElement('a');source.href=selected.position.source;source.target='_blank';source.rel='noopener noreferrer';source.textContent=language==='uk'?'Джерело прив’язки':'Источник привязки';source.dataset.positionSource='';card.insertBefore(source,summary);}
+    button.hidden=true;heading.className='nw-location-heading';const titleButton=document.createElement('button');titleButton.dataset.openJournal='';titleButton.textContent=heading.textContent;titleButton.onclick=button.onclick;heading.replaceChildren(titleButton);card.append(heading,summary,button);
     if(game.user.isGM) {
       const state=visibility(selected);
-      const access=document.createElement('p');access.className='nw-access-status';
-      access.textContent=state.open?(state.level>=3?'◉ Владение у игроков':'◉ Доступно игрокам')+(state.names.length?' — '+state.names.join(', '):''):'◌ Скрыто от игроков';
-      const settings=document.createElement('button');settings.dataset.pointSettings='';settings.textContent=!selected.keepMarker && (selected.area || selected.territoryOnly || selected.shape?.points?.length>=3)?'Текст и доступ территории':'Вид значка и доступ';
-      settings.onclick=()=>editMarker(selected);
-      card.append(access,settings);
-      const precision=document.createElement('button');precision.dataset.editPosition='';precision.textContent=language==='uk'?'Точність розташування':'Точность расположения';precision.onclick=()=>positionSettings(selected,baseMap);card.append(precision);
-
+      const access=document.createElement('i');access.className='fas fa-eye nw-card-access';access.dataset.access=state.level>=3?'owner':state.open?'view':'none';
+      access.title=state.level>=3?'Владение у игроков':state.open?'Доступно игрокам':'Скрыто от игроков';access.setAttribute('aria-label',access.title);
+      const settings=document.createElement('button');settings.dataset.pointSettings='';settings.innerHTML='<i class="fas fa-cog"></i>';settings.title='Настройки локации';settings.setAttribute('aria-label',settings.title);settings.onclick=()=>editMarker(selected);
+      heading.append(settings,access);
     }
-    else if(canEditLocation(selected)){const settings=document.createElement('button');settings.dataset.pointSettings='';settings.textContent=language==='uk'?'Оформлення та публічний текст':'Оформление и публичный текст';settings.onclick=()=>editMarker(selected);card.append(settings);}
+    else if(canEditLocation(selected)){const settings=document.createElement('button');settings.dataset.pointSettings='';settings.innerHTML='<i class="fas fa-cog"></i>';settings.title='Настройки локации';settings.onclick=()=>editMarker(selected);heading.append(settings);}
+
     if(selected[language].details) {
       const details=document.createElement('p');
       details.className='nw-period';

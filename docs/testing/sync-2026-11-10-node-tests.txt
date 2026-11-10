@@ -1,0 +1,38 @@
+
+> neverwinter-atlas@0.18.0 test
+> node --test tests/node/*.test.mjs
+
+✔ audits image, audio, video, PDF pages and inline HTML, srcset, CSS media with exact casing (3.2721ms)
+✔ resolves journal and page UUIDs, reports citation links, rejects broken and external document links (1.0872ms)
+✔ rejects missing, duplicate and orphan pages in the compiled pack (0.2208ms)
+✔ a territory label background color in packaged metadata is not a media path (0.2807ms)
+✔ all six uploaded pin GIFs retain bytes and appear in both journal languages with portable paths (55.4097ms)
+✔ every city location has a short summary in each language and a stable compiled page (12.8692ms)
+✔ historical school and replacement temple share only an overview; unsupported shops stay candidates (3.6771ms)
+✔ player journals omit development caveats and retain expanded animated-location lore (7.6002ms)
+✔ stable tag validation rejects suffixes, leading zeros and shell/ref injection (1494.1822ms)
+✔ resolve exact lightweight/annotated tag, not a same-named branch; reject nonexistent tag (1000.6676ms)
+✔ real portable build preserves both journals and all source pages through round trip (69.818ms)
+✔ release manifest comes from tag, preserves source identity and exact compatibility; source untouched (1.3603ms)
+✔ ZIP has manifest at root, original assets, runtime imports, only fresh compendium, no local/audit data (2284.036ms)
+✔ workflow has validated existing-tag dispatch, exact SHA checkout, scoped write token and explicit job dependency (12.8572ms)
+✔ publish uploads both assets into draft BEFORE publishing, then sends exact official Foundry payload (3923.2217ms)
+✔ missing Foundry secret leaves GitHub release successful and emits a clear warning (1308.8597ms)
+✔ complete immutable release is reused byte-for-byte and keeps maintainer notes (2392.8316ms)
+✔ published mutable release backfills only missing matching asset and retains notes (1297.1307ms)
+✔ mismatching existing manifest stops retry without asset replacement (685.0372ms)
+✔ incomplete immutable release fails safely without replacing or uploading assets (588.3561ms)
+✔ recover partial workflow draft, preserve generated notes and finish only automation-owned draft (1261.9641ms)
+✔ human drafts and prereleases never submit to Foundry or get promoted automatically (4549.808ms)
+✔ moved tag and mismatching archive fail before remote mutations (572.763ms)
+✔ Foundry HTTP failure retains completed GitHub assets and does not save a success receipt (1257.7644ms)
+✔ backfilling an older stable release does not replace latest (1246.1501ms)
+✔ GitHub-only mode ignores even a configured Foundry token and creates no receipt (1241.4901ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25472.0839

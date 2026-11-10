@@ -10,6 +10,11 @@ drawings, character markers, permissions and a distance/travel-time ruler.
 Version 0.18.0 includes 60 locations, 120 RU/UA journal pages, six animated pin
 images, and the authored location positions, styles and ruler calibration.
 
+Version 0.18.1 packages the character-drag fix, journal-opening changes,
+character search and compact sidebar controls, together with updated RU/UA prose.
+See [the release notes](https://github.com/aperol-spritz/fr-maps/blob/main/docs/releases/0.18.1.md)
+for verification scope and remaining coverage limits.
+
 See [map controls](https://github.com/aperol-spritz/fr-maps/blob/main/docs/map-controls.md), [lore sources](https://github.com/aperol-spritz/fr-maps/blob/main/docs/content-1492.md),
 [location review](https://github.com/aperol-spritz/fr-maps/blob/main/docs/forgottenmaps-review.md), and [release setup](https://github.com/aperol-spritz/fr-maps/blob/main/docs/releases.md).
 
