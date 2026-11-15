@@ -57,6 +57,19 @@ The workflow probes it read-only and warns if unavailable; its asset strategy is
 safe for either setting and never disables immutability. A maintainer can check
 GitHub Settings → General → Releases before the first publication.
 
+Version [0.19.0](https://github.com/aperol-spritz/fr-maps/releases/tag/v0.19.0)
+was published through the existing GitHub-only
+[workflow](https://github.com/aperol-spritz/fr-maps/actions/runs/43733766019).
+It includes the 66-location/132-page prose expansion, grouped lists, bulk marker
+access, journal stacking fix, two parchment designs and the reveal animation.
+All 41 portable tests passed. The exact local release ZIP passed the full
+80-check scenario on both dnd5e 6.1.0 and 6.0.6 with separate copied systems;
+the downloaded public ZIP passed all 80 checks on the current 6.1.0 baseline.
+Public files were verified against the exact tag commit and the stable manifest
+was confirmed to return 0.19.0. See [release notes](releases/0.19.0.md),
+[preflight matrix](testing/0.19.0-2026-11-15/preflight.json) and
+[public verification](testing/0.19.0-2026-11-15/release-verification.json).
+
 Maintainer setup:
 
 1. Initial bootstrap is complete for this repository. For a new clone/fork,
