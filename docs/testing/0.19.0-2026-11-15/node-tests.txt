@@ -1,0 +1,53 @@
+
+> neverwinter-atlas@0.19.0 test
+> node --test tests/node/*.test.mjs
+
+✔ audits image, audio, video, PDF pages and inline HTML, srcset, CSS media with exact casing (3.8655ms)
+✔ resolves journal and page UUIDs, reports citation links, rejects broken and external document links (2.0572ms)
+✔ rejects missing, duplicate and orphan pages in the compiled pack (0.3499ms)
+✔ a territory label background color in packaged metadata is not a media path (0.4478ms)
+✔ all six uploaded pin GIFs retain bytes and appear in both journal languages with portable paths (69.1801ms)
+✔ functional groups override coarse categories and sort localized names without mutation (12.147ms)
+✔ indicator describes actual player visibility, inherited grants and mixed ownership (1.2298ms)
+✔ quick cycle persists default view, owner, hidden without losing player exceptions or prose (1.3639ms)
+✔ quick cycle rejects a player and leaves settings untouched (0.6395ms)
+✔ reference paragraphs reach existing public records without replacing campaign edits (0.7325ms)
+✔ historical Beggars Nest resolves to existing Chasm without creating a sixth district or changing its contour (11.5437ms)
+✔ historical academy and inn link to Chasm while Paupers Section remains a different cemetery place (16.7262ms)
+✔ every canonical city record has a valid default map representation without hidden or missing geometry (3.9668ms)
+✔ two surface island records have bilingual lore, parent links and overview positions (22.7052ms)
+✔ Tower District is an eastern-part search alias with unchanged district and island contours (5.6059ms)
+✔ underground island candidates remain deferred without adding cave or dungeon records (3.944ms)
+✔ new surface lore is bilingual and street anchors do not invent routes or exact structures (18.9219ms)
+✔ Iron Flagon remains explicitly unresolved instead of becoming an unsupported canonical venue (4.0933ms)
+✔ player lore is developed prose, retains identities and excludes editorial instructions and later events (19.6595ms)
+✔ every city location has a short summary in each language and a stable compiled page (8.2406ms)
+✔ historical school and replacement temple share only an overview; unsupported shops stay candidates (2.8689ms)
+✔ player journals omit development caveats and retain expanded animated-location lore (7.4314ms)
+✔ stable tag validation rejects suffixes, leading zeros and shell/ref injection (1743.0093ms)
+✔ resolve exact lightweight/annotated tag, not a same-named branch; reject nonexistent tag (894.1818ms)
+✔ real portable build preserves both journals and all source pages through round trip (59.1183ms)
+✔ release manifest comes from tag, preserves source identity and exact compatibility; source untouched (1.1065ms)
+✔ ZIP has manifest at root, original assets, runtime imports, only fresh compendium, no local/audit data (3915.9099ms)
+✔ workflow has validated existing-tag dispatch, exact SHA checkout, scoped write token and explicit job dependency (27.5244ms)
+✔ publish uploads both assets into draft BEFORE publishing, then sends exact official Foundry payload (6939.4929ms)
+✔ missing Foundry secret leaves GitHub release successful and emits a clear warning (2331.0697ms)
+✔ complete immutable release is reused byte-for-byte and keeps maintainer notes (4268.3808ms)
+✔ published mutable release backfills only missing matching asset and retains notes (2245.0887ms)
+✔ mismatching existing manifest stops retry without asset replacement (1053.9298ms)
+✔ incomplete immutable release fails safely without replacing or uploading assets (1007.777ms)
+✔ recover partial workflow draft, preserve generated notes and finish only automation-owned draft (2177.7056ms)
+✔ human drafts and prereleases never submit to Foundry or get promoted automatically (7983.7792ms)
+✔ moved tag and mismatching archive fail before remote mutations (995.4407ms)
+✔ Foundry HTTP failure retains completed GitHub assets and does not save a success receipt (2251.7872ms)
+✔ backfilling an older stable release does not replace latest (2238.7029ms)
+✔ GitHub-only mode ignores even a configured Foundry token and creates no receipt (2279.9374ms)
+✔ native window raise invalidates Foundry cached active app so same journal can rise again (26.329ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 41
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42813.4949

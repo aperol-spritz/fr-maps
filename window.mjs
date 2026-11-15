@@ -3,6 +3,10 @@ import {watchUI} from './i18n.mjs';
 export function raiseWindow(element) {
   const App=foundry.applications.api.ApplicationV2;
   element.style.zIndex=String(++App._maxZ);
+  // Native atlas dialogs are outside ApplicationV2's frontApp tracking. Without
+  // invalidating the shared active-window marker, bringToFront may reuse the
+  // journal's old z-index after this dialog has overtaken it.
+  ui.activeWindow=null;
 }
 export function showFloatingDialog(dialog) {
   if(!dialog.isConnected)document.body.append(dialog);

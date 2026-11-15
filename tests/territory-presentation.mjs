@@ -58,7 +58,7 @@ export async function territoryPresentation(gm,reader,fixture,report){
   await labelSize(gm,'24px');assert.equal(await gm.evaluate(({ID,MAP,low})=>game.settings.get(ID,'atlasState').maps[MAP].points[low].regionOrder,{ID,MAP,low}),20);
   assert.deepEqual(await gm.evaluate(({ID,MAP,low})=>game.settings.get(ID,'atlasState').maps[MAP].points[low].regionLabel,{ID,MAP,low}),expectedLabel);
   await gm.waitForFunction(id=>{const e=document.querySelector('[data-region-label="'+id+'"]');return e && getComputedStyle(e).backgroundColor==='rgba(247, 214, 154, 0.35)';},low);
-  await atlas.locator('input[type=search]').fill('Lower Region');await atlas.locator('nav button').click();await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
+  await atlas.locator('input[type=search]').fill('Lower Region');await atlas.locator('nav button').click();await atlas.locator('.nw-card-access').dblclick();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await playerAtlas.locator('[data-region-label="'+low+'"]').waitFor({state:'detached'});await playerAtlas.locator('[data-zone="'+low+'"]').waitFor({state:'detached'});assert.equal(await playerAtlas.locator('[data-zone="'+high+'"]').count(),1);
   await reader.getByRole('button',{name:'RU',exact:true}).click();
   await gm.evaluate(({ID,original})=>game.settings.set(ID,'atlasState',original),{ID,original});

@@ -1,17 +1,26 @@
 # Bundled city journals
 
 The existing root manifest already declares `city`, label
-**Neverwinter: City Map · RU / UA**, type `JournalEntry`, at `packs/city-v17`.
+**Neverwinter: City Map · RU / UA**, type `JournalEntry`, at `packs/city-prose-20261115`.
 Its collection ID is `neverwinter-atlas.city`. That declaration and the
-existing content are preserved; a duplicate pack is unnecessary.
+existing journal/page identities are preserved. The new directory allows local
+installation without rewriting the previous `packs/city-v17` database in place.
 
 ## Sources and identity
 
-`data/places.json` is the editable canonical source (60 locations, RU and UA).
+`data/places.json` is the editable canonical source (66 locations, RU and UA).
 `tools/build-pack.mjs` generates **Невервинтер · 1492 ЛД** and
-**Невервінтер · 1492 ЛД**, with 60 text pages each. The two lore supplements
-append ten pages per language while preserving the original page identities
+**Невервінтер · 1492 ЛД**, with 66 text pages each. The lore supplements
+append sixteen pages per language while preserving the original page identities
 and order. Each location has a short summary in RU and UA.
+The player-prose pass replaces editorial reconstruction blocks with two developed
+paragraphs per location: an introduction and its history or character. Source
+and related-location links appear in a footer at 80% of the body font size.
+Development dates, instructions to the GM and source-research caveats are absent
+from the rendered articles. Historical dates remain where they tell the story.
+Unknown survival is not converted into an operating shop or restored building.
+Editorial context and previous wording are retained outside the installable
+module in [the editorial report](lore-player-prose-2026-11-15.md).
 Journal IDs use SHA-256(language), and
 page IDs use SHA-256(language/location ID), truncated to 16 hexadecimal
 characters. Editing prose does not change identity. Preserve location IDs and
@@ -81,15 +90,15 @@ Verification opens a temporary copy of the built/archived database, not the
 input database, and compares every row to the canonical source.
 
 Ordinary external citation hyperlinks are preserved and reported separately.
-There are 75 distinct citation URLs, including the linked Volo book PDF; that
+There are 83 distinct citation URLs, including the linked Volo book PDF; that
 PDF is an external bibliography link, not an embedded PDF page. Following these
 citations requires Internet access and their continued availability is not
-verified. Reading the bundled journals and following their 392 internal links
+verified. Reading the bundled journals and following their 450 internal links
 requires no external content or other module.
 
 ## Automated Foundry ZIP scenario
 
-With the licensed Foundry 14.370 / dnd5e 6.0.6 environment and pinned Playwright
+With the licensed Foundry 14.370 / dnd5e 6.1.0 environment and pinned Playwright
 1.62.1 used by the retained repository browser tests:
 
 ```sh
@@ -115,3 +124,8 @@ in cleanup. Results go to ignored `tests/journals-latest.json`; copy a successfu
 report into `docs/testing/` when retaining release evidence.
 
 The existing `tests/access.mjs` and `tests/city.mjs` scenarios remain intact.
+
+Current verified system baseline: **dnd5e 6.1.0**, recorded on 2026-11-15.
+Evidence and limits: [compatibility report](testing/dnd5e-6.1.0-2026-11-15/README.md).
+The isolated ZIP/journal suite uses `tests/environment.mjs`; historical 6.0.6
+reports describe earlier runs and are retained unchanged.

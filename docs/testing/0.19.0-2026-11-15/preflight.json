@@ -1,0 +1,1101 @@
+{
+  "status": "passed",
+  "version": "0.19.0",
+  "comparisonTag": "v0.18.1",
+  "moduleInventory": {
+    "comparisonRef": "v0.18.1",
+    "comparisonCommit": "86dc4e0fda3012cf9829881040b6456c5f003008",
+    "head": "98054fdc779602e03fa00b92ac6c19302a0036e6",
+    "changedFiles": 111,
+    "runtimeChangeFiles": 7,
+    "categories": {
+      "runtime-code-styles": 7,
+      "documentation": 71,
+      "media": 1,
+      "content-source-or-baseline": 3,
+      "localization": 1,
+      "manifest-dependencies": 1,
+      "tests": 26,
+      "build-release-tooling": 1
+    },
+    "changes": [
+      {
+        "file": "access.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "adc8257e970692dd5341acdac6eb570cd871f247793303813a4a3dd88f8b6644"
+      },
+      {
+        "file": "AGENTS.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "e56c203bb12e6844d808c22895d0485e644ac8886c3d7397dd4f7c75d096ddb4"
+      },
+      {
+        "file": "ASSET_NOTES.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "aa2a676f00672af954f4ac854c3bedad2b76c6a089504dbc604b96114040213f"
+      },
+      {
+        "file": "assets/parchment-aged.png",
+        "status": "A",
+        "untracked": true,
+        "category": "media",
+        "exists": true,
+        "symlink": false,
+        "sha256": "8b5a57efb25b10702b941bd4a9260887f32b48d0cece7a9e7198b9376ab0f872"
+      },
+      {
+        "file": "atlas.css",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "926b15f9a98b51e3788754ce745cec580fc942c6f217cd4c03f22080f61a2bfe"
+      },
+      {
+        "file": "atlas.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "116de0ed178d2176e9a8000c188a6fc553f0c1901d3617ef0f97645126541d13"
+      },
+      {
+        "file": "data/forgottenmaps-candidates.json",
+        "status": "M",
+        "untracked": false,
+        "category": "content-source-or-baseline",
+        "exists": true,
+        "symlink": false,
+        "sha256": "4c1fc2dcdab5f57cf781be1907fabeb0944b084a4cf14104fefcbdee22c808bc"
+      },
+      {
+        "file": "data/module-release-baseline.json",
+        "status": "A",
+        "untracked": false,
+        "category": "content-source-or-baseline",
+        "exists": true,
+        "symlink": false,
+        "sha256": "ac90f5939e6fe2aa27f248a029ecb103d8d964e20ef625969f364648efab2f8c"
+      },
+      {
+        "file": "data/places.json",
+        "status": "M",
+        "untracked": false,
+        "category": "content-source-or-baseline",
+        "exists": true,
+        "symlink": false,
+        "sha256": "bfdcb417629dc588cd1ed1d2a2bd7fa1afb35e36c382f6168f3477d9896d8afc"
+      },
+      {
+        "file": "docs/content-1492.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "79460e5e2a93d2f3700a6f04b92c4ea14249f2ab85cc32f47207847b355fc5c4"
+      },
+      {
+        "file": "docs/editorial/journal-prose-before-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "6005da3210befff3dda1a66e756e1f5e932c68879f733e926db9415dae5a62f2"
+      },
+      {
+        "file": "docs/forgottenmaps-review.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "9b780d76be0ef821b49c9ee350bf5e6d34c40bf9194e7d6510e341c8a8a3dc6b"
+      },
+      {
+        "file": "docs/journals.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "861d07dcc9e5e044782d0140cecd3afb55d54624c6472641ff5c089768b7d4ad"
+      },
+      {
+        "file": "docs/lore-beggars-nest-2026-11-15.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "cbb65fc528c219a6a38a3402e4e0a8893dca32871b5099715a0b91e02ec67842"
+      },
+      {
+        "file": "docs/lore-player-prose-2026-11-15.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "dad4671096eea9acffcb6fa69becbc4f29911b9b35fa054efde7505e2804eb22"
+      },
+      {
+        "file": "docs/lore-reference-1492-2026-11-15.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "25d957acd543b1535ee17d74db60fc4def98c175816a0cbbf8d268a9bfc219dd"
+      },
+      {
+        "file": "docs/lore-skyhold-2026-11-15.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "6ec54b2d73339ce4fbf76fe95ce49fb8b4eb02f43292b74e0d45acf75b819b4e"
+      },
+      {
+        "file": "docs/lore-streets-2026-11-15.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "ceb8c53257fd989fa1aa00d407e63c8e64ad57af91d41503a1baab46506e1b35"
+      },
+      {
+        "file": "docs/map-controls.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "cdc0bf71929b77c1bc372ff436f8cb044052f087b4ca8301e853ce0d2e40ef88"
+      },
+      {
+        "file": "docs/releases.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "1653afaa76feed1656d03c2039023648ba80614b87494dc98f5a9839be7d6df3"
+      },
+      {
+        "file": "docs/testing/0.18.1-live-2026-11-10.json",
+        "status": "A",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "583cf6acfa59a73674193950c03a11b6cd8162a21d78e83a70215caf1424c5c5"
+      },
+      {
+        "file": "docs/testing/bulk-marker-access-2026-11-13.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "36b5643ec3dbbe056316ca6d46d73d86abeed4004d116507d6485ebaab55fbc2"
+      },
+      {
+        "file": "docs/testing/design-2026-11-15/aged-maximized.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0ad83ae76a9f9ed1b0ab9024b69b94bf397535b75d8eb0647c696a52c5bab004"
+      },
+      {
+        "file": "docs/testing/design-2026-11-15/aged.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a7045517c0d54d4fca324752c01885bf67b861760ce8473b9823b97937279736"
+      },
+      {
+        "file": "docs/testing/design-2026-11-15/classic.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "ff4b5dbf240fe54a8d7ae7bd249addad94389ca333985ba24b3563b5d5dadd6e"
+      },
+      {
+        "file": "docs/testing/design-2026-11-15/foundry.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0a742d14727c3bf23fdf7f46245757188d0978dc429d8f02e787e79db657b260"
+      },
+      {
+        "file": "docs/testing/design-2026-11-15/node-tests.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "e3247b316eff0acb43ab0102faf51693150d8f8484f0116656cc2ac8c6a86ef4"
+      },
+      {
+        "file": "docs/testing/design-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "6207245d1ef6521d1045cd63760382d0416a44724df1db70c32d31abda70dda9"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/aged-compact.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a70b55e880f35d752850d7743c811b5b4ec2a283ec7a745d1e07419df16504bb"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/aged-maximized.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "32568b265c61cbdadf4cdfc3ec0c3522edbe1103b7b2481168603fdb3170dbea"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/aged.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "8c3f3efe1a156440bc8e9d4f67d7051828f09aef134151bb51793b7cd8a1cc47"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/classic-compact.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "b7b2bb53f8dab3b9b79deeffb8e7974c39085d7a2f4148a05afab989ab46c3f1"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/classic-maximized.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "d85dbeda88c659d51be117adc24a437887c1fa59a80c3b1a53f49921e51f4526"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/classic.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "65f55eb217d843235a2410cacb9bff9dd6d079c9076e615c2c341a48ccb167bf"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/foundry.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "06a6b7b980401480f008a7e052837b3713a561704b49262076644b2b9eb6f62d"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/menu-aged.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "6e4831b25aac83b34721d0dda4f9a2168623c9b1c28e923130506334359f205d"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/menu-classic.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "2d56b17cd7f31b5f0792f475cf6198bbbdbada81e0ea9e5055d582274ea1b72a"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/node-tests.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "1d09fab8f080f0408192b8d9205f9602b0a1de870fa5788e33d8e2cb3cd2e356"
+      },
+      {
+        "file": "docs/testing/design-menu-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "111f3764fe4c3f6f2fd938322c3422352d40c2214d2c019ad0ac2b1b3da0dda9"
+      },
+      {
+        "file": "docs/testing/dnd5e-6.1.0-2026-11-15/foundry-report.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "1e87bcc98962870b151ac3d6b5efc53704263a1e036b0f0ff2272956252e8f96"
+      },
+      {
+        "file": "docs/testing/dnd5e-6.1.0-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "498a947715f98c92b9c846c7a352b486a346fce683e90fe51abfd44d49ec0d76"
+      },
+      {
+        "file": "docs/testing/grouped-list-2026-11-15/dnd5e-606.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "50cbae6a74acd4c697cdf972081c5f04d37bb390a765a63926649876f359c8fa"
+      },
+      {
+        "file": "docs/testing/grouped-list-2026-11-15/dnd5e-610.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "24e50cced0d7354fb62926d1d77747b19fc74a913a07166fa375f4096bd25309"
+      },
+      {
+        "file": "docs/testing/grouped-list-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "710ad79cc8c2c3f5dd1e95049e2da8310db3a1635393d051324be6685bc5e654"
+      },
+      {
+        "file": "docs/testing/journal-stack-2026-11-15/full-foundry-report.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "bc6b6035138c3fcb0f4222f913e5cabe04868ba7f8eb5fdeb1249ad71c89c2f8"
+      },
+      {
+        "file": "docs/testing/journal-stack-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "2051b9a443c32c735be2c785a14dac18677cc7a086a2f1b599d433672dff052f"
+      },
+      {
+        "file": "docs/testing/journal-stack-2026-11-15/targeted-foundry-report.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "e4c9d923c69937016b67089d5c6c0117110958607290f72188e8c0bf05a368cf"
+      },
+      {
+        "file": "docs/testing/location-panel-2026-11-15/foundry-report.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "b15b3ed9a497c183c021424613f4c31bf7e713c59a75da99920fe75b070e66db"
+      },
+      {
+        "file": "docs/testing/location-panel-2026-11-15/node-tests.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "b5eddc9c77e58f8ea9f328c1641db0907b67c99f0a7df32415200222251cd377"
+      },
+      {
+        "file": "docs/testing/location-panel-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "e26ea0b4870d861ab649c371f38962642e8ecb791c0a176fc7d099cd16211b26"
+      },
+      {
+        "file": "docs/testing/location-panel-2026-11-15/selected-card.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "2e8de0c7e4bedb006a7d1554ffa15ebe371822e503827bb7b20b97e80389f62b"
+      },
+      {
+        "file": "docs/testing/location-panel-2026-11-15/verification.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "fa84197dd8a3f1581c06f6b76eb06012048d0c568c7c2f89858821f61baa7033"
+      },
+      {
+        "file": "docs/testing/lore-beggars-nest-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "863b479016a4ea59be0519cd8d1afa6c2122518aab4c0c03c31c1efd18e2cbe0"
+      },
+      {
+        "file": "docs/testing/lore-beggars-nest-foundry-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "ec79383dc7e813bcaae89d395bd4d3fc1e43cabe4e79f0fb2655afc57abd1d49"
+      },
+      {
+        "file": "docs/testing/lore-beggars-nest-tests-2026-11-15.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0a72b3dab6483ad5ae2136406e7f2a97cfa8a1524fdba93bcf7a4ef48550a5d8"
+      },
+      {
+        "file": "docs/testing/lore-skyhold-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a9d89405e4773e9a851080a0a4a02872156702e2b549829b04c0929ce866a11e"
+      },
+      {
+        "file": "docs/testing/lore-skyhold-foundry-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "e41898c4f1660de3dbf60e88bf2efdf7570df1f40c98ae04c621841e4ae14968"
+      },
+      {
+        "file": "docs/testing/lore-skyhold-tests-2026-11-15.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "45878eac8b84005047795492537c79dc6b6a2b59539c2ee2edcc587af5e5b4ad"
+      },
+      {
+        "file": "docs/testing/lore-streets-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "d9a9614ddbcbbe928dc07d25cd95c4651c245621ed1396bd89fa9bfd59f62a63"
+      },
+      {
+        "file": "docs/testing/lore-streets-foundry-2026-11-15.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "aa0c9c57ca64f5c373a0d90c5bd2ecf7b075d016f9e71155fe568eb318b93730"
+      },
+      {
+        "file": "docs/testing/lore-streets-tests-2026-11-15.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "baf3dc1dc30fc47d0cb65c8ffd74f463e5856aec55923ce1e4d0ffc2fe3f5540"
+      },
+      {
+        "file": "docs/testing/player-prose-2026-11-15/foundry.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "c18ec7a551c8cbe9cf34b8901be2e14162315b1d262eb283d1ce6ba1a858ed71"
+      },
+      {
+        "file": "docs/testing/player-prose-2026-11-15/node-tests.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "f94f8566c095daa082c95c82d5fb30481d30dd8f9cc31a8d6baeee0f3522f197"
+      },
+      {
+        "file": "docs/testing/player-prose-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "8483736234ea8807f6937b534330cb1dd9f47d1587e1c228b6773698e37dc899"
+      },
+      {
+        "file": "docs/testing/player-prose-2026-11-15/ru-lake.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "55fa1a8b77205ebb4d86d7b6c61224ee026a97ddfaed46004f53ae77312a22d4"
+      },
+      {
+        "file": "docs/testing/player-prose-2026-11-15/uk-lake.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "4ee454d34e53498d37a9fbf78951a580fe065e4c1837478b4a16c5955734fdc0"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/aged-end.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "b2b27ecdbef2691b6e58acd5e3791783b3da454824e0f1902d6471b8ed8ee619"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/aged-middle.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "45ae9f06c26ee5121f61e628732ddfb62143d305412238358383443f3e94dc3d"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/aged-quarter.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "383f876991b7617f540ddcd03144affa565dceba865c13454ee67d053b868825"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/aged-start.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a4897d9eb5f7f539e308b788c5b6bd15c0a1a7430aad916a60b30d26de749cc1"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/classic-end.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0909fa0ae0bbd41824dc8c60499221694b7147a50d43f69b062711fa1fcdf1c4"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/classic-middle.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "ee002f5ddc4474ea6864a807f9676d70bd17aa195bfd84de952d8af403d46fc7"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/classic-quarter.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "5ea707848fa2dade40777d66ffd90d9c028642af336556a8e4199d8eed0ff865"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/classic-start.png",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "210ea426457330a86f1b1a2c92f94e3e11ddc238f2a82c50335db6eeca482509"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/foundry.json",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "5eda5d2344e1377c532111b0dbb0ab02a2614b3cc6ff3923af6970ebace1be35"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/node-tests.txt",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "49c34adb191720aa9caa18694f790520e0d39a5e40c041fa9678b15ccf3cca3f"
+      },
+      {
+        "file": "docs/testing/unroll-2026-11-15/README.md",
+        "status": "A",
+        "untracked": true,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "492aef46d2d399991d715856b525285b62fa9a9feb60ba0878c4684d43379cc6"
+      },
+      {
+        "file": "lang/uk-ui.json",
+        "status": "M",
+        "untracked": false,
+        "category": "localization",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0c26db35248b60ed22bbc94076d32599a030376a9263aa2485030859ed4285a2"
+      },
+      {
+        "file": "list-groups.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a716c3992fb300dcbbcbfdb5f5dee000b0de47ec8e4886f398ad38cf6720f818"
+      },
+      {
+        "file": "module.json",
+        "status": "M",
+        "untracked": false,
+        "category": "manifest-dependencies",
+        "exists": true,
+        "symlink": false,
+        "sha256": "53f7eeea68ff75d2dd8585d95405d8f7e0df8db6ed312f1272ee07ca68bf434e"
+      },
+      {
+        "file": "PROJECT_PLAN.md",
+        "status": "M",
+        "untracked": false,
+        "category": "documentation",
+        "exists": true,
+        "symlink": false,
+        "sha256": "426748757ca5f965c0a19a885b0748eb6c4316e8335c8531dc89a22398ef90db"
+      },
+      {
+        "file": "state.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "07b12bb1d779923efb41b62fcce43559a5884a01d6b23536efb3a0378c44c5a4"
+      },
+      {
+        "file": "tests/access.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "52b8d184bae0bb294c4eb36bcc57bd478e18c86cd27944734189eb62e41312a6"
+      },
+      {
+        "file": "tests/bulk-access.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "d1feb3db93b5f86e7305848ff9dd1e43321439c43e2d89b18040e9837a536ed0"
+      },
+      {
+        "file": "tests/city.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "4cd232842bdae702e85289af9b321b7041c8587e1e2cfe91de12a4710e8392e7"
+      },
+      {
+        "file": "tests/design.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "62cfef56606b8ae3b86b4fa064fcd302c011d5601e1fe2feb00e45e245ecfe82"
+      },
+      {
+        "file": "tests/environment.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "6321db5b5cb2711bf2d4a27e6b89edfb6be2f34b8a7c25c46ce62294fbb40ef6"
+      },
+      {
+        "file": "tests/grouped-list.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "8dea2d981d13a15af4c1a7d1938b440e22c8aa9d4a8a32782e515e0de7f24824"
+      },
+      {
+        "file": "tests/journals.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "6af1b7c0c5bb57ca464dbd674b49d90e5c384866f9bdfa6a0b16e8db1e196c7a"
+      },
+      {
+        "file": "tests/layers-position.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "20656eb085bc2d60e5c3264eac57c31d1f0834cb24e2a6426620a76587bf0fed"
+      },
+      {
+        "file": "tests/location-panel.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "35f3998765eef6288c1a7e6d180806f8936e1df99ade098843825274d3580aba"
+      },
+      {
+        "file": "tests/lore-beggars-nest.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "1748e9cc94df948301f1f6eff9a712071444767033a0566ed7a4ef31684d8d79"
+      },
+      {
+        "file": "tests/lore-skyhold.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "0cc233e981ba1ca8649001f45ab92fe7b4ab5a2b5359bf4216e48774b68b0481"
+      },
+      {
+        "file": "tests/lore-streets.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "189ba80e311a68c6250394f62bdf2438be9a257e4b1f2c610b436414a86e331f"
+      },
+      {
+        "file": "tests/lore-summaries.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "1135e24ad326c6e21efd3ae9d7035d7b3a8c4dacfadf50c8534a86fea064be14"
+      },
+      {
+        "file": "tests/move-undo.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "148cb54659efbbd97ee7190b5c015f4b0bd0c2d7e663a539d9fb9a39ccb5f7f9"
+      },
+      {
+        "file": "tests/node/list-groups.test.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "201572e3b5c7ec33ba1e07f5b68252315df643f9e9656f20406a9f872cf368dc"
+      },
+      {
+        "file": "tests/node/location-access.test.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "525e1247a759440c23d3c2153ddc4b33ed8ddaa36d865443e92fe2fb066f5a2c"
+      },
+      {
+        "file": "tests/node/lore-beggars-nest.test.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "66475afaae8b25d2f7fe2996b9552e67bbd593f8ee1a82f47445490fbfeeac81"
+      },
+      {
+        "file": "tests/node/lore-skyhold.test.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "00c4e13e47459f2b1dcfbaa59fb4263157306f6ddcffa77f500b3d8c80ab075c"
+      },
+      {
+        "file": "tests/node/lore-streets.test.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "563221170d048319840438426bf3b26651e87770b5d8e98b0d4205c9144cd5db"
+      },
+      {
+        "file": "tests/node/lore.test.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "7409c33ef8cf276b97111b4bf13b25b9e807b6584770dbac9c75dffc55623c24"
+      },
+      {
+        "file": "tests/node/release.test.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "118547ae96cd3bb9fdfe4ef431b684a1eae984861b31da1c95cfbba414768f10"
+      },
+      {
+        "file": "tests/node/window-stack.test.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "5889a5f920a88c16bbc706641a3a8121d6bce5f4dc2aba51a4dcedbbadafab72"
+      },
+      {
+        "file": "tests/player-prose.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "a1bd45acd662c0d8f7e7b2f177c0423b3565695a026c1d1f7cf1a438e16a92c3"
+      },
+      {
+        "file": "tests/rich-map.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "9a3812c06fa317a7fc0c9393aef8da2a73ff502bc96593649df9e19cf5f04152"
+      },
+      {
+        "file": "tests/territory-presentation.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "64b3f3db5bdcc714b0f390bbaa714756ef01a70d8547ae1d8a82fcc5860853f3"
+      },
+      {
+        "file": "tests/unroll.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "tests",
+        "exists": true,
+        "symlink": false,
+        "sha256": "721f39f864ec52d0e5e054d381eaed6fc0c4c9dd805594efba8775b54ff18bb1"
+      },
+      {
+        "file": "tools/build-pack.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "build-release-tooling",
+        "exists": true,
+        "symlink": false,
+        "sha256": "40593683b7141b152971dbdcb77becf2259678264fbe744659677507c5f675e2"
+      },
+      {
+        "file": "unroll.mjs",
+        "status": "A",
+        "untracked": true,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "abce2b41fb3814d05b4259f7255336057d376ec7786a02f3a50b908d56426749"
+      },
+      {
+        "file": "window.mjs",
+        "status": "M",
+        "untracked": false,
+        "category": "runtime-code-styles",
+        "exists": true,
+        "symlink": false,
+        "sha256": "20ebe2f09b6ff7ef9b89d249c35c0fc6ad38af7355e0bd76984ff8881caa7359"
+      }
+    ]
+  },
+  "worldComparison": {
+    "newManualEdits": 0,
+    "recognizedArchivedProseFields": 95,
+    "matchingCurrentFields": 2,
+    "unresolved": 0,
+    "customJournals": 0,
+    "drawings": [
+      {
+        "map": "modules/neverwinter-atlas/assets/neverwinter.webp",
+        "count": 0
+      }
+    ],
+    "media": [
+      {
+        "id": "knowledge",
+        "sha256": "7a2296fe5df0e3e534b0be328775aecf027c59b1b0af2797d2336609530306b4",
+        "unchanged": true
+      },
+      {
+        "id": "beached",
+        "sha256": "57c98749f817de90743d00d3d6ecf7909d9896591b66ca741f77e1a5200d5bec",
+        "unchanged": true
+      },
+      {
+        "id": "castle",
+        "sha256": "c657238080faee6fe545f99269ebad5b89f9767a3834ab337106d841846d7a07",
+        "unchanged": true
+      },
+      {
+        "id": "mask",
+        "sha256": "137288e1b5e7cf981cee9434f8dda67cbcfe967c8ddf091e120bfaf851028075",
+        "unchanged": true
+      },
+      {
+        "id": "shard",
+        "sha256": "caa6de59135f402323047b4508802ac852e26d6d2cd74a672065f511c2e6c7b8",
+        "unchanged": true
+      },
+      {
+        "id": "chasm-rift",
+        "sha256": "4efd478afe13a6294f5599b343c864b7047cd2384c2fef053d96bc10690fd12d",
+        "unchanged": true
+      }
+    ]
+  },
+  "newModuleMedia": {
+    "path": "assets/parchment-aged.png",
+    "sha256": "8b5a57efb25b10702b941bd4a9260887f32b48d0cece7a9e7198b9376ab0f872"
+  },
+  "nodeTests": {
+    "passed": 41,
+    "failed": 0
+  },
+  "artifact": {
+    "path": "build/local-lzRC2K/module.zip",
+    "sha256": "628fa16db903d5833df1d12952f08402792012c678bb1579806f2922f2cc7bc8",
+    "bytes": 28391296
+  },
+  "matrix": [
+    {
+      "dnd5e": "6.1.0",
+      "checks": 80,
+      "status": "passed"
+    },
+    {
+      "dnd5e": "6.0.6",
+      "checks": 80,
+      "status": "passed"
+    }
+  ],
+  "testSynchronizationFix": {
+    "file": "tests/location-panel.mjs",
+    "reason": "Await effective client grants and expected marker before assertions; excluded player still must have no marker",
+    "passingAndFailingRuntimeIdentical": true
+  },
+  "historicalScreenshotsPreserved": 19,
+  "sourceCampaignModified": false,
+  "installedPacksOpened": false
+}

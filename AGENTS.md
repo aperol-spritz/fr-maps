@@ -15,3 +15,10 @@ Foundry behavior tests in addition to portable checks.
 Read `docs/releases.md` before changing release automation. Preserve notes and
 existing assets; never use clobber on release recovery. Do not publish a tag,
 GitHub release or Foundry listing without explicit user authorization.
+
+Current verified Atlas test baseline (2026-11-15): Foundry 14.370 / dnd5e
+6.1.0. `tests/environment.mjs` owns the current system version for the isolated
+ZIP/journal suite. See `docs/testing/dnd5e-6.1.0-2026-11-15/README.md` for evidence
+and scope. Older reports remain historical; sibling GEM has an independent baseline.
+
+Current baseline 6.1.0 does not exclude dnd5e 6.0.6. The Atlas test matrix supports both versions; use separate copied systems for compatibility runs.

@@ -5,6 +5,10 @@ The original map files and their visible author notices are preserved:
 - `assets/neverwinter.webp`: the existing base map of the project.
 - `assets/evernight.jpg`: the user-supplied Evernight image, unchanged.
 - `assets/parchment.png`: existing interface decoration.
+- `assets/parchment-aged.png`: transparent alternate interface parchment,
+  edited from the user-supplied `1qbemh1qbemh.jpg` on 2026-11-15 with the
+  built-in image editor. The exterior white background was removed; the
+  original parchment decoration remains available as the default design.
 - `assets/underground-pending.svg`: a neutral placeholder, not a geographic map.
 - `assets/journals/pins/*.gif`: six user-uploaded animated location images,
   copied unchanged from the koban world's `neverwinter-icons` folder. Included

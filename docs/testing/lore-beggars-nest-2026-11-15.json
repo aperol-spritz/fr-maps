@@ -1,0 +1,812 @@
+{
+  "status": "passed",
+  "date": "2026-11-15",
+  "scope": "Historical Beggar’s Nest correspondence and current city map coverage; no Evernight or underground changes",
+  "node": "v24.22.1",
+  "locations": 66,
+  "pages": 132,
+  "districts": 5,
+  "internalLinks": 450,
+  "citationUrls": 83,
+  "updated": [
+    "chasm",
+    "paupers",
+    "neverwinter-academy",
+    "shining-serpent"
+  ],
+  "addedLocations": [],
+  "mapCoverage": {
+    "locations": 66,
+    "pins": 54,
+    "territories": 12,
+    "pinIds": [
+      "allis",
+      "archives",
+      "beached",
+      "blackule-lane",
+      "blades",
+      "blue-cauldron",
+      "board-laid-bare",
+      "castle",
+      "chasm-rift",
+      "cloak",
+      "coriol-street",
+      "craftsmans-rest",
+      "dannar",
+      "deekin-street",
+      "dolphin",
+      "driftwood",
+      "faces",
+      "fallen",
+      "hallowed-selune",
+      "jaesor",
+      "justice",
+      "knowledge",
+      "magic-academy",
+      "manycoins",
+      "mask",
+      "maskado",
+      "merchant-guild",
+      "merchant-square",
+      "mute-lute",
+      "neverwinter-academy",
+      "plague-warrens",
+      "sage",
+      "sand-shop",
+      "scar-keep",
+      "seven-suns-market",
+      "shard",
+      "shining-knight",
+      "shining-serpent",
+      "skull-fortress",
+      "sleeping-dragon",
+      "stables",
+      "starshine",
+      "sune-park",
+      "sunken-flagon",
+      "tarmalune",
+      "tower-solace",
+      "twisted-fane",
+      "tymor-street",
+      "vellgard",
+      "vilebog",
+      "wall",
+      "waterclock",
+      "waukeen-temple",
+      "wyvern"
+    ],
+    "territoryIds": [
+      "blacklake-district",
+      "chasm",
+      "docks",
+      "fisher",
+      "lake",
+      "mask-earthmote",
+      "neverdeath",
+      "paupers",
+      "pirates-skyhold",
+      "protector",
+      "river",
+      "river-district"
+    ],
+    "unrepresented": [],
+    "scope": "Bundled Neverwinter defaults, GM, no search/category filter, regions enabled; does not audit an existing campaign world."
+  },
+  "registry": {
+    "total": 71,
+    "included": 61,
+    "remaining": 10
+  },
+  "preserved": {
+    "identitiesAndOrder": true,
+    "coordinatesContoursCategoriesImagesAndMarkerModes": true,
+    "installedPackFilesChecked": 70,
+    "installedPackFilesUnchanged": true,
+    "evernightAndUndergroundImagesUnchanged": true,
+    "regionReferencesUnchanged": true
+  },
+  "validation": {
+    "portable": {
+      "command": "npm test",
+      "passed": 41,
+      "failed": 0,
+      "log": "lore-beggars-nest-tests-2026-11-15.txt"
+    },
+    "build": "npm run build -- build/lore-beggars-nest-2026-11-15/module",
+    "verify": "npm run verify -- build/lore-beggars-nest-2026-11-15/module",
+    "foundry": {
+      "status": "passed",
+      "version": "14.370",
+      "dnd5e": "6.1.0",
+      "checks": 70,
+      "report": "lore-beggars-nest-foundry-2026-11-15.json",
+      "cleanup": {
+        "serverStopped": true,
+        "disposablePayloadRemoved": true
+      }
+    }
+  },
+  "artifact": {
+    "path": "build/local-SD2ahv/module.zip",
+    "sha256": "16067a157080b9f384534f02e0bbb6750ba9d0bf7ef404a64ccc92471a1e195f",
+    "canonicalPlacesMatch": true,
+    "sourceFilesChangedSincePackaging": []
+  },
+  "baselineFilesChangedOutsideLore": [],
+  "inventory": [
+    {
+      "id": "castle",
+      "ru": "Замок Невер",
+      "uk": "Замок Невер",
+      "representation": "pin",
+      "x": 31.1875,
+      "y": 48.758865248226954,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "justice",
+      "ru": "Зал Правосудия",
+      "uk": "Зала Правосуддя",
+      "representation": "pin",
+      "x": 23.625,
+      "y": 59.04255319148936,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "knowledge",
+      "ru": "Дом знаний",
+      "uk": "Дім знань",
+      "representation": "pin",
+      "x": 48.02335773070312,
+      "y": 51.173003955760066,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "lake",
+      "ru": "Голубое озеро",
+      "uk": "Блакитне озеро",
+      "representation": "territory",
+      "x": 41.20536460543404,
+      "y": 25.739143122913895,
+      "accuracy": "confirmed",
+      "period": "dated"
+    },
+    {
+      "id": "river",
+      "ru": "Река Невервинтер",
+      "uk": "Річка Невервінтер",
+      "representation": "territory",
+      "x": 73.43189330112995,
+      "y": 48.1623731459797,
+      "accuracy": "confirmed",
+      "period": "dated"
+    },
+    {
+      "id": "docks",
+      "ru": "Доковый район",
+      "uk": "Портовий район",
+      "representation": "territory",
+      "x": 16.3125,
+      "y": 57.180851063829785,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "chasm",
+      "ru": "Район Разлома",
+      "uk": "Район Розлому",
+      "representation": "territory",
+      "x": 69.3125,
+      "y": 70.78900709219859,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "chasm-rift",
+      "ru": "Разлом",
+      "uk": "Розлом",
+      "representation": "pin",
+      "x": 69.17051485766741,
+      "y": 69.90052546349847,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "mask",
+      "ru": "Маска Лунного Камня",
+      "uk": "Маска Місячного Каменя",
+      "representation": "pin",
+      "x": 11.31561850200479,
+      "y": 55.71798163709928,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "sleeping-dragon",
+      "ru": "Мост Спящего дракона",
+      "uk": "Міст Сплячого дракона",
+      "representation": "pin",
+      "x": 28.4375,
+      "y": 57.269503546099294,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "dolphin",
+      "ru": "Мост Дельфина",
+      "uk": "Міст Дельфіна",
+      "representation": "pin",
+      "x": 38.125,
+      "y": 50.0886524822695,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "wyvern",
+      "ru": "Мост Крылатой виверны",
+      "uk": "Міст Крилатої віверни",
+      "representation": "pin",
+      "x": 35.0625,
+      "y": 56.294326241134755,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "driftwood",
+      "ru": "Таверна «Топляк»",
+      "uk": "Таверна «Плавник»",
+      "representation": "pin",
+      "x": 22.125,
+      "y": 45.744680851063826,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "beached",
+      "ru": "Выброшенный на берег Левиафан",
+      "uk": "Викинутий на берег Левіафан",
+      "representation": "pin",
+      "x": 19.875,
+      "y": 44.59219858156028,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "fallen",
+      "ru": "Упавшая башня",
+      "uk": "Впала вежа",
+      "representation": "pin",
+      "x": 74.3125,
+      "y": 26.152482269503547,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "faces",
+      "ru": "Дом тысячи лиц",
+      "uk": "Дім тисячі облич",
+      "representation": "pin",
+      "x": 42.6875,
+      "y": 36.08156028368794,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "blacklake-district",
+      "ru": "Район Голубого озера",
+      "uk": "Район Блакитного озера",
+      "representation": "territory",
+      "x": 35.9375,
+      "y": 19.06028368794326,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "river-district",
+      "ru": "Речной район",
+      "uk": "Річковий район",
+      "representation": "territory",
+      "x": 71.25,
+      "y": 33.244680851063826,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "protector",
+      "ru": "Анклав Защитника",
+      "uk": "Анклав Захисника",
+      "representation": "territory",
+      "x": 32.8125,
+      "y": 66.93262411347517,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "cloak",
+      "ru": "Башня Плаща",
+      "uk": "Вежа Плаща",
+      "representation": "pin",
+      "x": 87.25,
+      "y": 39.804964539007095,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "shard",
+      "ru": "Осколок Луны",
+      "uk": "Уламок Місяця",
+      "representation": "pin",
+      "x": 62.3125,
+      "y": 24.20212765957447,
+      "accuracy": "unverified",
+      "period": "dated"
+    },
+    {
+      "id": "neverdeath",
+      "ru": "Кладбище Невердэт",
+      "uk": "Кладовище Невердет",
+      "representation": "territory",
+      "x": 48.4375,
+      "y": 74.29078014184397,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "paupers",
+      "ru": "Поле нищих",
+      "uk": "Поле жебраків",
+      "representation": "territory",
+      "x": 42.875,
+      "y": 82.26950354609929,
+      "accuracy": "overview",
+      "period": "dated"
+    },
+    {
+      "id": "waterclock",
+      "ru": "Гробницы Гильдии водяных часов",
+      "uk": "Гробниці Гільдії водяних годинників",
+      "representation": "pin",
+      "x": 48.1875,
+      "y": 78.10283687943263,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "fisher",
+      "ru": "Прибежище рыбака",
+      "uk": "Прихисток рибалки",
+      "representation": "territory",
+      "x": 4.9375,
+      "y": 89.22872340425532,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "wall",
+      "ru": "Место разобранной Стены",
+      "uk": "Місце розібраної Стіни",
+      "representation": "pin",
+      "x": 50.8125,
+      "y": 61.170212765957444,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "tarmalune",
+      "ru": "Торговый дом Тармалюна",
+      "uk": "Торговий дім Тармалуни",
+      "representation": "pin",
+      "x": 20.9375,
+      "y": 57.00354609929078,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "shining-knight",
+      "ru": "Оружие и доспехи «Сияющий рыцарь»",
+      "uk": "Зброя та обладунки «Сяйний лицар»",
+      "representation": "pin",
+      "x": 46.5625,
+      "y": 66.84397163120568,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "dannar",
+      "ru": "Механические чудеса Даннара",
+      "uk": "Механічні дива Даннара",
+      "representation": "pin",
+      "x": 29.875,
+      "y": 25.70921985815603,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "jaesor",
+      "ru": "Фарфоровая мастерская Джесора",
+      "uk": "Порцелянова майстерня Джесора",
+      "representation": "pin",
+      "x": 31.5,
+      "y": 23.581560283687942,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "mute-lute",
+      "ru": "Безмолвная лютня",
+      "uk": "Мовчазна лютня",
+      "representation": "pin",
+      "x": 29,
+      "y": 23.04964539007092,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "manycoins",
+      "ru": "Мультивалютные ссуды",
+      "uk": "Мультивалютні позики",
+      "representation": "pin",
+      "x": 18.5625,
+      "y": 39.273049645390074,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "allis",
+      "ru": "Оружейная мастерская Аллиса Лиссича",
+      "uk": "Зброярська майстерня Алліса Ліссіча",
+      "representation": "pin",
+      "x": 30.375,
+      "y": 77.48226950354609,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "hallowed-selune",
+      "ru": "Священный храм Селунэ",
+      "uk": "Священний храм Селуне",
+      "representation": "pin",
+      "x": 46.5625,
+      "y": 40.42553191489362,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "blades",
+      "ru": "Торговля клинками",
+      "uk": "Торгівля клинками",
+      "representation": "pin",
+      "x": 30,
+      "y": 64.80496453900709,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "stables",
+      "ru": "Конюшни Шаундакула",
+      "uk": "Стайні Шаундакула",
+      "representation": "pin",
+      "x": 31.5625,
+      "y": 62.4113475177305,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "sage",
+      "ru": "Лавка мудреца",
+      "uk": "Крамниця мудреця",
+      "representation": "pin",
+      "x": 22.75,
+      "y": 63.03191489361702,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "maskado",
+      "ru": "Карты и легенды Маскадо",
+      "uk": "Мапи й легенди Маскадо",
+      "representation": "pin",
+      "x": 66.6875,
+      "y": 67.55319148936171,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "pirates-skyhold",
+      "ru": "Небесная твердыня пиратов",
+      "uk": "Небесна твердиня піратів",
+      "representation": "territory",
+      "x": 6.5,
+      "y": 9.2,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "merchant-square",
+      "ru": "Торговая площадь",
+      "uk": "Торгова площа",
+      "representation": "pin",
+      "x": 67.5,
+      "y": 32,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "merchant-guild",
+      "ru": "Зал торговой гильдии",
+      "uk": "Зала торгової гільдії",
+      "representation": "pin",
+      "x": 72.5,
+      "y": 30,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "craftsmans-rest",
+      "ru": "Покой ремесленников",
+      "uk": "Спочинок ремісників",
+      "representation": "pin",
+      "x": 51,
+      "y": 80,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "seven-suns-market",
+      "ru": "Рынок «Семи солнц»",
+      "uk": "Ринок «Семи сонць»",
+      "representation": "pin",
+      "x": 34,
+      "y": 71,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "mask-earthmote",
+      "ru": "Маска Лунного Камня",
+      "uk": "Маска Місячного Каменю",
+      "representation": "territory",
+      "x": 12.3,
+      "y": 55.5,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "tower-solace",
+      "ru": "Башня Утешения",
+      "uk": "Вежа Розради",
+      "representation": "pin",
+      "x": 36.4375,
+      "y": 69.68085106382979,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "vellgard",
+      "ru": "Поместье Веллгард",
+      "uk": "Маєток Веллґард",
+      "representation": "pin",
+      "x": 32.75,
+      "y": 29.078014184397162,
+      "accuracy": "unverified",
+      "period": "uncertain"
+    },
+    {
+      "id": "archives",
+      "ru": "Архивы Невервинтера",
+      "uk": "Архіви Невервінтера",
+      "representation": "pin",
+      "x": 35.1875,
+      "y": 42.28723404255319,
+      "accuracy": "unverified",
+      "period": "historical"
+    },
+    {
+      "id": "twisted-fane",
+      "ru": "Искажённое святилище",
+      "uk": "Спотворене святилище",
+      "representation": "pin",
+      "x": 72.4375,
+      "y": 65.33687943262412,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "plague-warrens",
+      "ru": "Логова изменённых Чумой",
+      "uk": "Лігва змінених Чумою",
+      "representation": "pin",
+      "x": 71.375,
+      "y": 66.93262411347519,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "blue-cauldron",
+      "ru": "Котёл синего огня",
+      "uk": "Казан синього вогню",
+      "representation": "pin",
+      "x": 73.5,
+      "y": 64.09574468085107,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "starshine",
+      "ru": "Академия Звёздного сияния",
+      "uk": "Академія Зоряного сяйва",
+      "representation": "pin",
+      "x": 28.5625,
+      "y": 34.48581560283688,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "blackule-lane",
+      "ru": "Блэкьюл-лейн",
+      "uk": "Блек’юл-лейн",
+      "representation": "pin",
+      "x": 29.875,
+      "y": 34.39716312056738,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "neverwinter-academy",
+      "ru": "Невервинтерская академия",
+      "uk": "Невервінтерська академія",
+      "representation": "pin",
+      "x": 64.5625,
+      "y": 83.06737588652481,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "shining-serpent",
+      "ru": "Гостиница «Сияющий змей»",
+      "uk": "Готель «Сяйний змій»",
+      "representation": "pin",
+      "x": 61,
+      "y": 72,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "board-laid-bare",
+      "ru": "«Накрытый стол»",
+      "uk": "«Накритий стіл»",
+      "representation": "pin",
+      "x": 68.75,
+      "y": 15.514184397163119,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "sune-park",
+      "ru": "Священный парк Суны",
+      "uk": "Священний парк Суни",
+      "representation": "pin",
+      "x": 80.5,
+      "y": 25.70921985815603,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "magic-academy",
+      "ru": "Невервинтерская академия магии",
+      "uk": "Невервінтерська академія магії",
+      "representation": "pin",
+      "x": 28.625,
+      "y": 42.37588652482269,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "waukeen-temple",
+      "ru": "Храм Вокин",
+      "uk": "Храм Вокін",
+      "representation": "pin",
+      "x": 28.625,
+      "y": 42.37588652482269,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "sand-shop",
+      "ru": "Магическая лавка Сэнда",
+      "uk": "Магічна крамниця Сенда",
+      "representation": "pin",
+      "x": 19.375,
+      "y": 58.156028368794324,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "sunken-flagon",
+      "ru": "Таверна «Затонувшая кружка»",
+      "uk": "Таверна «Затонулий кухоль»",
+      "representation": "pin",
+      "x": 17.4375,
+      "y": 60.99290780141844,
+      "accuracy": "overview",
+      "period": "historical"
+    },
+    {
+      "id": "scar-keep",
+      "ru": "Крепость Шрама",
+      "uk": "Фортеця Шраму",
+      "representation": "pin",
+      "x": 58.56249999999999,
+      "y": 79.16666666666666,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "deekin-street",
+      "ru": "Улица Дикина",
+      "uk": "Вулиця Дікіна",
+      "representation": "pin",
+      "x": 37.8125,
+      "y": 82.80141843971631,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "coriol-street",
+      "ru": "Улица Кориол",
+      "uk": "Вулиця Коріол",
+      "representation": "pin",
+      "x": 40.75,
+      "y": 73.13829787234043,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "tymor-street",
+      "ru": "Улица Тимор",
+      "uk": "Вулиця Тимор",
+      "representation": "pin",
+      "x": 24,
+      "y": 61.87943262411347,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "skull-fortress",
+      "ru": "Крепость Черепа",
+      "uk": "Фортеця Черепа",
+      "representation": "pin",
+      "x": 6.375,
+      "y": 10.638297872340425,
+      "accuracy": "overview",
+      "period": "uncertain"
+    },
+    {
+      "id": "vilebog",
+      "ru": "Гиблое болото",
+      "uk": "Згубне болото",
+      "representation": "pin",
+      "x": 5,
+      "y": 9.48581560283688,
+      "accuracy": "overview",
+      "period": "uncertain"
+    }
+  ],
+  "limits": [
+    "Map coverage applies to bundled default city data in a disposable GM test world, with no search/category filter and regions enabled. Existing campaign customization, viewport clipping and player permissions were not audited.",
+    "Indexed wiki text was consulted; the referenced Neverwinter Campaign Setting p.159 was not directly inspected.",
+    "Six named shops/temple candidates remain unverified after follow-up; lack of evidence is not proof that they are noncanonical."
+  ],
+  "diagnostics": [
+    "Initial browser run stopped at a test locator for a territory checkbox in the separate manager window. The helper now opens that window, enables contours and closes it through the UI. Complete rerun passed."
+  ],
+  "publication": {
+    "tagPushed": false,
+    "githubReleaseCreated": false,
+    "foundrySubmitted": false
+  },
+  "next": "Trace provenance of remaining disputed surface-shop names in Forgotten Maps. Keep Evernight and underground outside this work."
+}

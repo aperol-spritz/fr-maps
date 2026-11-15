@@ -1,3 +1,4 @@
+import {groupedList} from './grouped-list.mjs';
 // Install a ZIP into an entirely new Foundry data directory. No installed pack
 // is opened and no campaign/world configuration is read or changed.
 import fs from 'node:fs/promises';
@@ -13,16 +14,28 @@ import {ROOT,files} from '../tools/build.mjs';
 import {sha256,verifyArchive} from '../tools/release/prepare.mjs';
 import {verifyPackData} from '../tools/pack-check.mjs';
 import {journalOperations} from '../tools/build-pack.mjs';
-import {environment,playwright} from '../../gem/tools/integration/server.mjs';
+import {environment} from './environment.mjs';
+import {playwright} from '../../gem/tools/integration/server.mjs';
 import {login,guard} from '../../gem/tests/integration/helpers.mjs';
+import {bulkAccess} from './bulk-access.mjs';
+import {locationPanel} from './location-panel.mjs';
 import {loreSummaries} from './lore-summaries.mjs';
+import {streetLore} from './lore-streets.mjs';
+import {skyholdLore} from './lore-skyhold.mjs';
+import {beggarsNestLore} from './lore-beggars-nest.mjs';
+import {designFlow} from './design.mjs';
+import {unrollFlow} from './unroll.mjs';
+import {playerProse} from './player-prose.mjs';
 
 const zipFile=process.argv[2];if(!zipFile)throw Error('Usage: npm run test:foundry:journals -- build/local-…/module.zip');
+const designOnly=process.argv.includes('--design-only');
+const locationOnly=process.argv.includes('--location-panel-only');
 const zip=await fs.readFile(zipFile),entries=unzipSync(zip),checked=verifyArchive(entries['module.json'],zip);
 const audit=await verifyPackData(checked),env=await environment();
 const root=await fs.mkdtemp(path.join(os.tmpdir(),'neverwinter-journal-test-'));
 const token=randomUUID(),world='atlas-journals-'+token.slice(0,8),server={...env,world,token};
-const report={status:'failed',foundry:env.foundryVersion,zipSha256:sha256(zip),audit,checks:[]};
+const report={status:'failed',foundry:env.foundryVersion,dnd5e:env.systemVersion,zipSha256:sha256(zip),audit,checks:[]};
+report.scope=designOnly?'ZIP journals, media and design; other UI scenarios omitted':'Full ZIP journal/UI suite';
 let child,browser,log,exited;
 const json=async(file,value)=>fs.writeFile(file,JSON.stringify(value,null,2)+'\n');
 async function snapshot(directory) {return Object.fromEntries(await Promise.all((await files(directory)).filter(f=>!['LOCK','LOG','LOG.old'].includes(path.basename(f))).map(async f=>[f,sha256(await fs.readFile(path.join(directory,f)))])));}
@@ -36,7 +49,7 @@ try {
   await fs.cp(env.system,systemCopy,{recursive:true,filter:f=>!['LOCK','LOG','LOG.old'].includes(path.basename(f))});
   assert.deepEqual(await snapshot(env.system),before);assert.deepEqual(await snapshot(systemCopy),before);
   await fs.copyFile(env.license,path.join(root,'Config/license.json'));
-  await json(path.join(root,`Data/worlds/${world}/world.json`),{id:world,title:'Disposable atlas journal ZIP test',system:'dnd5e',coreVersion:env.foundryVersion,systemVersion:'6.0.6',compatibility:{minimum:'14',verified:env.foundryVersion}});
+  await json(path.join(root,`Data/worlds/${world}/world.json`),{id:world,title:'Disposable atlas journal ZIP test',system:'dnd5e',coreVersion:env.foundryVersion,systemVersion:env.systemVersion,compatibility:{minimum:'14',verified:env.foundryVersion}});
   await json(path.join(root,'Config/options.json'),{port:env.port,hostname:'127.0.0.1',localHostname:'127.0.0.1',upnp:false,telemetry:false,language:'en'});
   await fs.writeFile(path.join(root,'Data/gem-integration-marker.txt'),token);
   log=await fs.open(path.join(root,'server.log'),'w');
@@ -46,6 +59,7 @@ try {
   assert.ok(ready,'Foundry readiness timeout');
   browser=await playwright().chromium.launch({executablePath:process.env.GEM_BROWSER_EXECUTABLE,headless:true});
   const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
+  await page.addInitScript(()=>localStorage.setItem('core.tourProgress',JSON.stringify({core:{welcome:3}})));
   page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/*',route=>route.request().url().startsWith(env.baseURL)||!/^https?:/.test(route.request().url())?route.continue():route.abort());
   await login(page,server);await page.evaluate(()=>game.settings.set('core','moduleConfiguration',{'neverwinter-atlas':true}));await page.reload();
@@ -70,6 +84,8 @@ try {
   await page.locator(`[data-entry-id="${first._id}"]`).first().dblclick();
   await page.waitForFunction(id=>[...foundry.applications.instances.values()].some(a=>a.rendered&&a.document?.id===id),first._id);
   report.checks.push('opened-from-compendium-sidebar','opened-journal-sheet');
+  await playerProse(page,report);
+  await page.evaluate(async id=>{await (await game.packs.get('neverwinter-atlas.city').getDocument(id)).sheet.render({force:true});},first._id);
   const pinSources=JSON.parse(Buffer.from(entries['data/places.json']).toString()).filter(p=>p.asset);
   if(pinSources.length) {
     await page.waitForFunction(()=>[...document.querySelectorAll('.journal-entry img')].some(img=>img.src.includes('/assets/journals/pins/')&&img.complete&&img.naturalWidth>0));
@@ -116,7 +132,18 @@ try {
   await page.reload();await page.waitForFunction(()=>game.ready);await compare();
   await page.evaluate(()=>game.packs.get('neverwinter-atlas.city').render(true));
   await page.locator(`[data-entry-id="${first._id}"]`).first().waitFor();
-  await loreSummaries(page,report);
+  if(!designOnly){
+    await locationPanel(page,report,server);
+    if(!locationOnly){
+    await loreSummaries(page,report);
+    await streetLore(page,report);
+    await skyholdLore(page,report);
+    await beggarsNestLore(page,report);
+    await bulkAccess(page,report);
+  await groupedList(page,report);
+    }
+  }
+  if(!locationOnly){await designFlow(page,report);await unrollFlow(page,report);}
   report.checks.push('pack-reopens-after-reload');assert.deepEqual(errors,[]);report.status='passed';
 } catch(error) {report.error=error.stack;throw error;}
 finally {
@@ -125,5 +152,5 @@ finally {
   assert.equal(path.dirname(root),path.resolve(os.tmpdir()));assert.ok(path.basename(root).startsWith('neverwinter-journal-test-'));
   for(const name of ['Data','Config','Logs'])await fs.rm(path.join(root,name),{recursive:true,force:true});
   report.cleanup={serverStopped:true,disposablePayloadRemoved:true};report.finished=new Date().toISOString();
-  await json(path.join(ROOT,'tests/journals-latest.json'),report);console.log(JSON.stringify(report,null,2));
+  await json(process.env.ATLAS_JOURNAL_REPORT ?? path.join(ROOT,process.env.ATLAS_REPORT_FILE || 'tests/journals-latest.json'),report);console.log(JSON.stringify(report,null,2));
 }

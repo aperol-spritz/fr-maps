@@ -1,0 +1,49 @@
+
+> neverwinter-atlas@0.18.1 test
+> node --test tests/node/*.test.mjs
+
+✔ audits image, audio, video, PDF pages and inline HTML, srcset, CSS media with exact casing (6.4709ms)
+✔ resolves journal and page UUIDs, reports citation links, rejects broken and external document links (5.8069ms)
+✔ rejects missing, duplicate and orphan pages in the compiled pack (0.4729ms)
+✔ a territory label background color in packaged metadata is not a media path (0.6132ms)
+✔ all six uploaded pin GIFs retain bytes and appear in both journal languages with portable paths (114.4868ms)
+✔ functional groups override coarse categories and sort localized names without mutation (20.5291ms)
+✔ indicator describes actual player visibility, inherited grants and mixed ownership (1.9242ms)
+✔ quick cycle persists default view, owner, hidden without losing player exceptions or prose (2.2134ms)
+✔ quick cycle rejects a player and leaves settings untouched (0.8538ms)
+✔ reference paragraphs reach existing public records without replacing campaign edits (1.5561ms)
+✔ two surface island records have bilingual lore, parent links and overview positions (27.1753ms)
+✔ Tower District is an eastern-part search alias with unchanged district and island contours (9.1855ms)
+✔ underground island candidates remain deferred without adding cave or dungeon records (7.2504ms)
+✔ new surface lore is bilingual and street anchors do not invent routes or exact structures (30.9276ms)
+✔ Iron Flagon remains explicitly unresolved instead of becoming an unsupported canonical venue (4.9478ms)
+✔ 1492 references are moderate, mark inferences, retain identities and exclude later events (30.3854ms)
+✔ every city location has a short summary in each language and a stable compiled page (14.3789ms)
+✔ historical school and replacement temple share only an overview; unsupported shops stay candidates (7.5198ms)
+✔ player journals omit development caveats and retain expanded animated-location lore (9.351ms)
+✔ stable tag validation rejects suffixes, leading zeros and shell/ref injection (3016.8768ms)
+✔ resolve exact lightweight/annotated tag, not a same-named branch; reject nonexistent tag (1449.7866ms)
+✔ real portable build preserves both journals and all source pages through round trip (78.5965ms)
+✔ release manifest comes from tag, preserves source identity and exact compatibility; source untouched (2.4707ms)
+✔ ZIP has manifest at root, original assets, runtime imports, only fresh compendium, no local/audit data (3599.6792ms)
+✔ workflow has validated existing-tag dispatch, exact SHA checkout, scoped write token and explicit job dependency (18.2518ms)
+✔ publish uploads both assets into draft BEFORE publishing, then sends exact official Foundry payload (5106.5602ms)
+✔ missing Foundry secret leaves GitHub release successful and emits a clear warning (1666.5751ms)
+✔ complete immutable release is reused byte-for-byte and keeps maintainer notes (2819.3043ms)
+✔ published mutable release backfills only missing matching asset and retains notes (1529.0559ms)
+✔ mismatching existing manifest stops retry without asset replacement (744.4492ms)
+✔ incomplete immutable release fails safely without replacing or uploading assets (710.6675ms)
+✔ recover partial workflow draft, preserve generated notes and finish only automation-owned draft (1522.5364ms)
+✔ human drafts and prereleases never submit to Foundry or get promoted automatically (5446.717ms)
+✔ moved tag and mismatching archive fail before remote mutations (698.8044ms)
+✔ Foundry HTTP failure retains completed GitHub assets and does not save a success receipt (1522.1808ms)
+✔ backfilling an older stable release does not replace latest (1494.0474ms)
+✔ GitHub-only mode ignores even a configured Foundry token and creates no receipt (1675.2498ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33781.9012

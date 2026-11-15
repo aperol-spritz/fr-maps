@@ -28,9 +28,10 @@ export function recordFor(place,map) {
   if(existing) {
     const record=copy(existing);
     if(record.shape===undefined && place.shape) record.shape=copy(place.shape);
+    if(!place.document && !place.area)for(const language of ['ru','uk'])for(const field of ['description','details','services','organizations','reconstruction'])if(record[language]?.[field]===undefined && place[language]?.[field])record[language][field]=place[language][field];
     return record;
   }
-  const local=language=>({name:place[language].name,lore:place.document?'':place[language].lore ?? ''});
+  const local=language=>place.document?{name:place[language].name,lore:''}:copy(place[language]);
   return {id:place.id,custom:Boolean(place.document || place.area),area:place.area,map,
     x:place.x,y:place.y,en:place.en,category:place.category,ru:local('ru'),uk:local('uk'),
     aliases:place.aliases ?? [],asset:place.asset ?? '',color:place.color??null,size:place.size??null,period:place.period,position:copy(place.position),related:place.related ?? [],district:place.district,
@@ -43,6 +44,11 @@ export function removePoint(id,map) {return updateMap(map,current=>{delete curre
 export function syncTerritoryDefaults(base,map) {
   return updateMap(map,current=>{
     let changed=false;
+    // Fill previously unpublished reference paragraphs without replacing any
+    // campaign-authored text or touching the GM's original journal documents.
+    for(const source of base){const record=current.points[source.id];if(!record || source.area)continue;
+      for(const language of ['ru','uk'])for(const field of ['description','details','services','organizations','reconstruction'])if(record[language]?.[field]===undefined && source[language]?.[field]){record[language][field]=source[language][field];changed=true;}
+    }
     for(const source of base){const record=current.points[source.id];if(record && source.position && !record.position){record.position=copy(source.position);changed=true;}}
     for(const source of base.filter(p=>p.territoryOnly || p.keepMarker)) {
       const record=current.points[source.id];if(!record)continue;
@@ -75,7 +81,9 @@ export function accessiblePlaces(base,map,custom) {
 export function visibility(place) {
   const users=game.users.filter(user=>!user.isGM && permission(place.record?.ownership,user)>=2);
   const players=game.users.filter(u=>!u.isGM),level=Math.max(0,...players.map(u=>permission(place.record?.ownership,u)),players.length?0:Number(place.record?.ownership.default)||0);
-  return {open:level>=2,level,names:users.map(user=>user.name)};
+  const partial=users.length>0 && users.length<players.length;
+  const allOwners=players.length?players.every(user=>permission(place.record?.ownership,user)>=3):level>=3;
+  return {open:level>=2,level,access:partial?'partial':allOwners?'owner':level>=2?'view':'none',names:users.map(user=>user.name)};
 }
 export const primaryGM=()=>game.users.filter(u=>u.active && u.isGM).sort((a,b)=>a.id.localeCompare(b.id))[0];
 export function authenticatedRequest(flag,map,data) {

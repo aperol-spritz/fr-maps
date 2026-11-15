@@ -85,13 +85,13 @@ try {
   const search=()=>atlas.locator('input[type=search]');
   async function select(query){await search().fill(query);await atlas.locator('nav button').click();}
   await gm.evaluate(async({ID,MAP,user})=>{const next=foundry.utils.deepClone(game.settings.get(ID,'atlasState'));next.maps[MAP].points.lake.ownership[user]=3;await game.settings.set(ID,'atlasState',next);},{ID,MAP,user:fixture.users[0].id});
-  await select('Голубое озеро');await atlas.locator('[data-point-settings]').click();
-  assert.equal(await settings.locator('[data-user="'+fixture.users[0].id+'"]').inputValue(),'2','An old movement grant retains territory viewing');
+  await select('Голубое озеро');await atlas.locator('.nw-card-access').dblclick();
+  assert.equal(await settings.locator('[data-user="'+fixture.users[0].id+'"]').inputValue(),'3','An old ownership grant is preserved in the access dialog');
   await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('2');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.locator('[data-zone=lake]').waitFor();assert.equal(await reader.locator('[data-zone]').count(),1);
   assert.equal(await reader.locator('[data-place=lake]').count(),0,'Existing published region migrates without a duplicate pin');
   await territoryPresentation(gm,reader,fixture,report);
-  await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
+  await atlas.locator('.nw-card-access').dblclick();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.locator('[data-zone=lake]').waitFor({state:'detached'});
   report.checks.push('published-territory-and-revocation','legacy-territory-move-grant-keeps-view-access');
   await select('Castle Never');
@@ -120,6 +120,7 @@ try {
   await settings.locator('[name=color]').fill('#4194be');await settings.locator('[name=size]').fill('48');
   assert.equal(await settings.locator('[name=individual]').isChecked(),true);
   await settings.locator('[name=publicRu]').fill('Открытая крепость.');await settings.locator('[name=publicUk]').fill('Відкрита фортеця.');
+  await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await atlas.locator('.nw-card-access').dblclick();
   await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('2');
   await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   assert.equal(await pin.evaluate(e=>e.offsetWidth),48);assert.equal(await pin.evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(65, 148, 190)');
@@ -145,7 +146,7 @@ try {
   await reader.evaluate(({ID,MAP})=>game.user.setFlag(ID,'moveRequest',{map:MAP,id:'castle',x:99,y:99,nonce:'unauthorized-observer'}),{ID,MAP});
   await gm.waitForFunction(({ID})=>game.users.find(u=>u.name==='Atlas Reader').getFlag(ID,'moveRequest')?.nonce==='unauthorized-observer',{ID});
   await drag(gm);await gm.waitForFunction(({ID,MAP,x})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle.x>x+1,{ID,MAP,x:original.x});
-  await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('3');
+  await atlas.locator('.nw-card-access').dblclick();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('3');
   await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.waitForFunction(({ID,MAP,user})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle.ownership[user]===3,{ID,MAP,user:fixture.users[0].id});
   const gmMoved=await coordinates(reader);await drag(reader);
@@ -284,11 +285,13 @@ try {
   await atlas.locator('[data-connections=members] [data-go="'+customId+'"]').click();assert.match(await atlas.locator('.nw-summary').innerText(),/янтарный ключ/);
   await atlas.locator('[data-point-settings]').click();assert.equal(await settings.locator('[name=publicRu]').inputValue(),'');
   await settings.locator('[name=publicRu]').fill('Открытая мастерская.');await settings.locator('[name=publicUk]').fill('Відкрита майстерня.');
+  await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await atlas.locator('.nw-card-access').dblclick();
   await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('2');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.locator('[data-place="'+customId+'"]').click();assert.equal(await reader.locator('.nw-summary').innerText(),'Відкрита майстерня.');
   assert.equal(await reader.locator('[data-go="'+areaId+'"]').count(),0,'Unpublished district stays hidden');
   assert.equal(await reader.evaluate(({ID,MAP,customId})=>JSON.stringify(game.settings.get(ID,'atlasState').maps[MAP].points[customId]).includes('янтарный'),{ID,MAP,customId}),false);
   await select('New District');await atlas.locator('[data-point-settings]').click();await settings.locator('[name=publicUk]').fill('Район майстрів.');
+  await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await atlas.locator('.nw-card-access').dblclick();
   await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('2');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.locator('[data-go="'+areaId+'"]').click();assert.equal(await reader.locator('.nw-summary').innerText(),'Район майстрів.');
   await atlas.locator('[data-territories]').click();await territories.locator('[data-edit-region="'+areaId+'"]').click();await territories.locator('[name=areaCategory]').selectOption('water');await territories.locator('[data-region-save]').click();
@@ -344,7 +347,7 @@ try {
   await backupFlow(gm,fixture,report);
   await atlas.locator('[data-settings]').click();await settings.locator('[data-user=default]').selectOption('2');await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('-1');await settings.locator('[data-user="'+fixture.users[1].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.reload();await reader.waitForFunction(()=>game.ready);await closeProfile(reader);await keyM(reader);await reader.locator('[data-place=castle]').waitFor();await keyM(blocked);assert.equal(await blocked.locator('.nw-atlas').count(),0);
-  await select('Castle Never');await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await reader.locator('[data-place=castle]').waitFor({state:'detached'});
+  await select('Castle Never');await atlas.locator('.nw-card-access').dblclick();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await reader.locator('[data-place=castle]').waitFor({state:'detached'});
   await atlas.locator('[data-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('0');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});await reader.locator('.nw-atlas').waitFor({state:'detached'});
   assert.equal(requests.some(url=>url.includes('/data/places.json')),false);assert.equal(await gm.evaluate(()=>game.journal.size),2);
   report.checks.push('default-access-individual-exception','point-revocation-live','map-revocation-live','player-no-GM-catalog','no-service-journal-after-all-tools');

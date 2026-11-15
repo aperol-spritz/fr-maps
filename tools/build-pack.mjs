@@ -35,17 +35,16 @@ for (const language of ['ru','uk']) {
       const other=places.find(place=>place.id===key);
       return '@UUID[Compendium.neverwinter-atlas.city.JournalEntry.'+journalId+'.JournalEntryPage.'+stableId(language+'/'+key)+']{'+escape(other[language].name)+(other.omitEnglish?'':' ('+escape(other.en)+')')+'}';
     }).join(' · ');
-    const details=local.details ? '<h3>1492 ЛД</h3><p>'+escape(local.details)+'</p>' : '';
-    const services=local.services ? '<h3>'+(language==='ru'?'Услуги':'Послуги')+'</h3><p>'+escape(local.services)+'</p>' : '';
-    const organizations=local.organizations ? '<h3>'+(language==='ru'?'Организации и 1492 год':'Організації та 1492 рік')+'</h3><p>'+escape(local.organizations)+'</p>' : '';
-    const links=related ? '<h3>'+(language==='ru'?'Связанные локации':'Пов’язані локації')+'</h3><p>'+related+'</p>' : '';
-    const sourceLabel=language==='ru'?'Краткая справка и перевод по статье':'Коротка довідка й переклад за статтею';
+    const prose=[local.lore,local.description].filter(Boolean).map(text=>'<p>'+escape(text)+'</p>').join('');
+    const links=related ? '<p><strong>'+(language==='ru'?'Связанные локации:':'Пов’язані локації:')+'</strong> '+related+'</p>' : '';
+    const sourceLabel=language==='ru'?'Источники:':'Джерела:';
     const sources=[{url:source,label:'Forgotten Realms Wiki'},...(place.sources ?? [])];
     const citations=sources.map(item=>'<a href="'+escape(item.url)+'" target="_blank" rel="noopener noreferrer">'+escape(item.label)+'</a>').join(' · ');
-    const provenance='<hr><p>'+sourceLabel+' '+citations+'. '+escape(place.sourceDate ?? '2026-11-08')+'.</p>';
+    // Inline relative sizing also survives export/import into a world journal.
+    const notes='<footer class="nw-journal-notes" style="font-size:0.8em;line-height:1.4;border-top:1px solid currentColor;margin-top:1.5em;padding-top:0.6em">'+links+'<p><strong>'+sourceLabel+'</strong> '+citations+'</p></footer>';
     const media=place.asset ? '<figure><img src="'+escape(place.asset)+'" alt="'+escape(local.name)+'"></figure>' : '';
     const page = {_id:id,name:local.name+(place.omitEnglish?'':' ('+place.en+')'),type:'text',sort:journal.pages.length*1000,
-      flags:{'neverwinter-atlas':{key:place.id,location:structuredClone(place)}},text:{format:1,content:media+'<p>'+escape(local.lore)+'</p>'+(local.description?'<p>'+escape(local.description)+'</p>':'')+services+details+organizations+links+provenance}};
+      flags:{'neverwinter-atlas':{key:place.id,location:structuredClone(place)}},text:{format:1,content:media+prose+notes}};
     journal.pages.push(id);
     operations.push({type:'put',key:'!journal.pages!'+journalId+'.'+id,value:page});
   }

@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-15",
+  "scope": "surface-fortification-and-street-lore",
+  "status": "passed",
+  "moduleVersion": "0.18.1",
+  "publication": false,
+  "installedPacksChanged": false,
+  "artifact": "build/local-55aOgu/module.zip",
+  "zipSHA256": "4f7d3428c334360a99e84fe53dea69c76c70a82a2dbe2f070c4deecfbd3b83a6",
+  "content": {
+    "locations": 64,
+    "pages": 128,
+    "journals": 2,
+    "pins": 52,
+    "territories": 12,
+    "oldSourceRecordsPreserved": 60,
+    "newLocations": [
+      "scar-keep",
+      "deekin-street",
+      "coriol-street",
+      "tymor-street"
+    ],
+    "pendingCatalogueCandidates": 14
+  },
+  "preservation": {
+    "installedPackAndMapReferenceHashesVerified": true,
+    "evernightAndUndergroundChangedByThisTask": false,
+    "priorUserDataPreserved": true,
+    "concurrentFilesChangedDuringSession": [
+      "atlas.mjs",
+      "state.mjs",
+      "tools/build-pack.mjs",
+      "tests/journals.mjs"
+    ],
+    "runtimeChangedSinceTestedZIP": []
+  },
+  "portableTests": {
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "build": {
+    "directory": "build/lore-streets-2026-11-15/module",
+    "status": "passed",
+    "verification": "runtime, canonical database readback, media and UUIDs"
+  },
+  "foundry": {
+    "version": "14.370",
+    "system": "6.1.0",
+    "status": "passed",
+    "checks": [
+      "ZIP-installed",
+      "module-enabled",
+      "no-startup-import",
+      "titles-page-order-types-rich-text-match",
+      "all-UUID-links-resolve",
+      "opened-from-compendium-sidebar",
+      "opened-journal-sheet",
+      "captured-five-point-coordinates",
+      "captured-pin-colors-and-sizes",
+      "bundled-calibration-and-compendium-location-metadata",
+      "journal-GIF-renders",
+      "six-default-pin-GIFs-load",
+      "existing-record-image-default-and-explicit-removal",
+      "dnd5e-character-sheet-opens-from-marker",
+      "dnd5e-prototype-token-image-loads",
+      "character-search-finds-offline-world-actor",
+      "character-drag-tracks-every-pointer-step",
+      "vertical-sidebar-toggle",
+      "hidden-header-title",
+      "character-search-and-empty-online-default",
+      "64-bilingual-summary-pages",
+      "ten-lore-facts-and-era-limits-RU-UA",
+      "search-opens-localized-summary-cards",
+      "editorial-metadata-kept-off-player-surface",
+      "academy-temple-linked-navigation-distinguishes-historical-sites",
+      "summary-opens-ukrainian-journal",
+      "four-surface-lore-cards-RU-UA",
+      "street-related-navigation-opens-ukrainian-journal",
+      "all-new-lore-present-in-128-pages",
+      "new-lore-does-not-restore-editorial-metadata",
+      "bulk-marker-view-owner-hide-including-filtered-out-pins",
+      "bulk-replaces-individual-grants",
+      "bulk-preserves-other-maps-and-map-permissions",
+      "bulk-access-persists-and-cancel-does-not-apply",
+      "pack-reopens-after-reload"
+    ],
+    "cleanup": {
+      "serverStopped": true,
+      "disposablePayloadRemoved": true
+    },
+    "finished": "2026-11-15T10:26:49.265Z"
+  },
+  "journalAudit": {
+    "internalLinks": 426,
+    "externalCitations": 80
+  },
+  "inputSHA256": {
+    "data/places.json": "fe9f3dedc9bdb1170d8625ff9f9ea9343bacbca42f30b7611ff7fd28ab26d700",
+    "data/forgottenmaps-candidates.json": "26b1be49ad50676ed95cac7b6abe1b35ef20b9b3b788aff602dd3d51ac106507",
+    "tests/lore-streets.mjs": "ed6977b80982ee57dc6676c59bfed07d7a8b7c7ba9f808e28344ea016527686d",
+    "tests/node/lore-streets.test.mjs": "9b69670cfef79d58856d6f3e2477f3eb8369e72a206281b33ca4a29e890d0885",
+    "tests/node/lore.test.mjs": "fe83ea5ebffdc1fbbf43d01663957e043b12719aee3ba303fa48d183f82ebfb6",
+    "tests/lore-summaries.mjs": "71f33c134577ed5ad1c7508f1bebe6ae85036eac415d2aee70afecde30971024",
+    "tests/journals.mjs": "c7b58e0cd41dd87be7573cd7d26f706fb17051fd146fe13cee4340641c113545",
+    "tests/environment.mjs": "4b3c2dc49dec87d8f911b2cc7544587f8b8835552523307ca39a538a98784a14"
+  },
+  "limitations": [
+    "Indexed wiki/publisher text used where direct article pages were unavailable or JavaScript-only.",
+    "New points are overview anchors; no street route, building match or active 1492 portal inferred.",
+    "Iron Flagon source origin remains unresolved; repeated fan text not treated as independent canonical corroboration.",
+    "Concurrent runtime/UI and environment edits were preserved and packaged as present; this task changed lore, its tests and documentation.",
+    "Legacy city.mjs counts updated and syntax checked; executed behavior evidence is the isolated ZIP journal scenario."
+  ]
+}

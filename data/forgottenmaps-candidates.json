@@ -185,9 +185,9 @@
           893
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "scar-keep",
+      "status": "included",
+      "note": "Reviewed 2026-11-15: named surface location supported by wiki; MMO era separated from 1492; published point is an overview, not a route or confirmed structure."
     },
     {
       "name": "Skull Fortress",
@@ -199,9 +199,9 @@
           120
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "skull-fortress",
+      "status": "included",
+      "note": "Surface-only lore reviewed 2026-11-15. Published point is an overview, not a building match or terrain boundary; 1479 MMO narrative separated from 1492."
     },
     {
       "name": "Pirate King's Retreat",
@@ -215,7 +215,16 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-15",
+        "decision": "deferred-mixed-underground-scope",
+        "note": "Sources describe a surface settlement plus substantial underground fortress/dungeon; island overview also uses the name for Kayliss hideaway. Identity and current scope need reconciliation. No point or dungeon added.",
+        "sources": [
+          "https://forgottenrealms.fandom.com/wiki/Pirate_King%27s_Retreat",
+          "https://forgottenrealms.fandom.com/wiki/Pirates%27_Skyhold"
+        ]
+      }
     },
     {
       "name": "Neverwinter Archives",
@@ -371,9 +380,10 @@
       "status": "pending-lore-and-1492-review",
       "note": "",
       "review": {
-        "checked": "2026-11-09",
+        "checked": "2026-11-15",
         "decision": "needs-source",
-        "note": "No reliable Neverwinter temple source located. Do not import same-named temples from other cities."
+        "note": "No reliable Neverwinter temple source located. Do not import same-named temples from other cities.",
+        "searchNote": "Surface-lore follow-up: no sufficient published source for this named Neverwinter establishment or 1492 continuity located; retained as an unverified candidate, not declared nonexistent or noncanonical."
       }
     },
     {
@@ -430,7 +440,16 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-15",
+        "decision": "needs-source",
+        "note": "Fan maps and campaign pages repeat Lyrana Delmont and Poison Serpent ale, but a reliable published Realms/game source and in-world date have not been established. Not added as confirmed canon.",
+        "sources": [
+          "https://whitelabel.worldanvil.com/w/not-forgotten-realms-palant/a/iron-flagon-inn-article",
+          "https://www.reddit.com/r/LostMinesOfPhandelver/comments/1ejhepc/"
+        ]
+      }
     },
     {
       "name": "House of a Thousand Faces",
@@ -516,9 +535,10 @@
       "status": "pending-lore-and-1492-review",
       "note": "",
       "review": {
-        "checked": "2026-11-09",
+        "checked": "2026-11-15",
         "decision": "needs-source",
-        "note": "No reliable named Neverwinter establishment source located. Retain as unverified, not declared noncanonical."
+        "note": "No reliable named Neverwinter establishment source located. Retain as unverified, not declared noncanonical.",
+        "searchNote": "Surface-lore follow-up: no sufficient published source for this named Neverwinter establishment or 1492 continuity located; retained as an unverified candidate, not declared nonexistent or noncanonical."
       }
     },
     {
@@ -633,13 +653,14 @@
       "status": "pending-lore-and-1492-review",
       "note": "",
       "review": {
-        "checked": "2026-11-09",
+        "checked": "2026-11-15",
         "decision": "needs-source",
         "note": "Hazel the Alchemist and Blacklake sludge research are documented in the MMO wiki; a named apothecary establishment, sale service and 1492 continuity are not established.",
         "sources": [
           "https://neverwinter.fandom.com/wiki/Stolen_Supplies",
           "https://neverwinter.fandom.com/wiki/Blacklake_District"
-        ]
+        ],
+        "searchNote": "Surface-lore follow-up: no sufficient published source for this named Neverwinter establishment or 1492 continuity located; retained as an unverified candidate, not declared nonexistent or noncanonical."
       }
     },
     {
@@ -656,9 +677,10 @@
       "status": "pending-lore-and-1492-review",
       "note": "",
       "review": {
-        "checked": "2026-11-09",
+        "checked": "2026-11-15",
         "decision": "needs-source",
-        "note": "No reliable named Neverwinter establishment source located; identity, spelling and provenance require evidence."
+        "note": "No reliable named Neverwinter establishment source located; identity, spelling and provenance require evidence.",
+        "searchNote": "Surface-lore follow-up: no sufficient published source for this named Neverwinter establishment or 1492 continuity located; retained as an unverified candidate, not declared nonexistent or noncanonical."
       }
     },
     {
@@ -717,9 +739,10 @@
       "status": "pending-lore-and-1492-review",
       "note": "",
       "review": {
-        "checked": "2026-11-09",
+        "checked": "2026-11-15",
         "decision": "needs-source",
-        "note": "No reliable named Neverwinter establishment source located. Retain as unverified, not declared noncanonical."
+        "note": "No reliable named Neverwinter establishment source located. Retain as unverified, not declared noncanonical.",
+        "searchNote": "Surface-lore follow-up: no sufficient published source for this named Neverwinter establishment or 1492 continuity located; retained as an unverified candidate, not declared nonexistent or noncanonical."
       }
     },
     {
@@ -736,9 +759,10 @@
       "status": "pending-lore-and-1492-review",
       "note": "",
       "review": {
-        "checked": "2026-11-09",
+        "checked": "2026-11-15",
         "decision": "needs-source",
-        "note": "No reliable named Neverwinter establishment source located. Do not confuse with Buckman NPCs from West Harbor."
+        "note": "No reliable named Neverwinter establishment source located. Do not confuse with Buckman NPCs from West Harbor.",
+        "searchNote": "Surface-lore follow-up: no sufficient published source for this named Neverwinter establishment or 1492 continuity located; retained as an unverified candidate, not declared nonexistent or noncanonical."
       }
     },
     {
@@ -1715,7 +1739,15 @@
       },
       "moduleId": null,
       "status": "pending-lore-and-1492-review",
-      "note": ""
+      "note": "",
+      "review": {
+        "checked": "2026-11-15",
+        "decision": "deferred-underground-scope",
+        "note": "Confirmed underground cave. Deferred under user instruction to leave underground content untouched. No location or route added.",
+        "sources": [
+          "https://forgottenrealms.fandom.com/wiki/Scalefather%27s_Hollow"
+        ]
+      }
     },
     {
       "name": "Vilebog",
@@ -1727,9 +1759,9 @@
           107
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "vilebog",
+      "status": "included",
+      "note": "Surface-only lore reviewed 2026-11-15. Published point is an overview, not a building match or terrain boundary; 1479 MMO narrative separated from 1492."
     },
     {
       "name": "Fisher's Float",
@@ -2139,9 +2171,9 @@
           934
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "deekin-street",
+      "status": "included",
+      "note": "Reviewed 2026-11-15: named surface location supported by wiki; MMO era separated from 1492; published point is an overview, not a route or confirmed structure."
     },
     {
       "name": "Coriol Street",
@@ -2153,9 +2185,9 @@
           825
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "coriol-street",
+      "status": "included",
+      "note": "Reviewed 2026-11-15: named surface location supported by wiki; MMO era separated from 1492; published point is an overview, not a route or confirmed structure."
     },
     {
       "name": "Tymor Street",
@@ -2167,9 +2199,9 @@
           698
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "tymor-street",
+      "status": "included",
+      "note": "Reviewed 2026-11-15: named surface location supported by wiki; MMO era separated from 1492; published point is an overview, not a route or confirmed structure."
     },
     {
       "name": "Blacklake District",
@@ -2647,9 +2679,9 @@
           ]
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": "Historical district equivalence requires review; no contour imported."
+      "moduleId": "river-district",
+      "status": "included",
+      "note": "Reviewed 2026-11-15: name for eastern River District, resolved as search alias of existing record. Not identical to every River District boundary; no website polygon imported."
     },
     {
       "name": "Protector's Enclave",
@@ -3083,9 +3115,18 @@
           ]
         ]
       },
-      "moduleId": null,
-      "status": "pending-lore-and-1492-review",
-      "note": ""
+      "moduleId": "chasm",
+      "status": "included",
+      "note": "Historical southeastern district, largely replaced by the Chasm after 1451; not a modern district or Pauper’s Section. Existing Chasm page explains the historical correspondence; published polygon not imported.",
+      "review": {
+        "checked": "2026-11-15",
+        "decision": "historical-predecessor-partial-correspondence",
+        "note": "Search alias opens the existing Chasm district with an explicit historical explanation. No duplicate district, new pin, coordinate change or polygon import.",
+        "sources": [
+          "https://forgottenrealms.fandom.com/wiki/Neverwinter/Beggar%27s_Nest",
+          "https://forgottenrealms.fandom.com/wiki/Neverwinter/Chasm"
+        ]
+      }
     }
   ]
 }

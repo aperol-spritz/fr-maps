@@ -1,0 +1,233 @@
+{
+  "status": "passed",
+  "foundry": "14.370",
+  "dnd5e": "6.0.6",
+  "zipSha256": "5c3f7b259b0b9d7b696803f82ede26d6c98ebec591ecbcbdca2baca525cc34a0",
+  "audit": {
+    "journals": 2,
+    "pages": 132,
+    "pageTypes": {
+      "text": 132
+    },
+    "media": [
+      {
+        "location": "city:!journal.pages!83116acf18e4dc44.003f20b65ee6c4b4.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/chasm-rift.gif"
+      },
+      {
+        "location": "city:!journal.pages!83116acf18e4dc44.20e5d4a77529d8ec.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/mask.gif"
+      },
+      {
+        "location": "city:!journal.pages!83116acf18e4dc44.416c3c6ebf2058e5.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/shard.gif"
+      },
+      {
+        "location": "city:!journal.pages!83116acf18e4dc44.4968be0d7fec1c43.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/castle.gif"
+      },
+      {
+        "location": "city:!journal.pages!83116acf18e4dc44.a3978cef5c0c35b4.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/beached.gif"
+      },
+      {
+        "location": "city:!journal.pages!83116acf18e4dc44.acc228d6a78483b4.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/knowledge.gif"
+      },
+      {
+        "location": "city:!journal.pages!ed5ad332c1060437.31e2c85d151b7aec.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/chasm-rift.gif"
+      },
+      {
+        "location": "city:!journal.pages!ed5ad332c1060437.38326938dd81629b.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/knowledge.gif"
+      },
+      {
+        "location": "city:!journal.pages!ed5ad332c1060437.4bae6f7c7ba638cd.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/beached.gif"
+      },
+      {
+        "location": "city:!journal.pages!ed5ad332c1060437.4f054758ca7fdf0f.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/castle.gif"
+      },
+      {
+        "location": "city:!journal.pages!ed5ad332c1060437.8ae7767a3fefe86f.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/shard.gif"
+      },
+      {
+        "location": "city:!journal.pages!ed5ad332c1060437.dfa4ad81bdc0b6d9.text.content",
+        "path": "modules/neverwinter-atlas/assets/journals/pins/mask.gif"
+      }
+    ],
+    "internalLinks": 438,
+    "externalLinks": [
+      "https://forgottenmaps.web.app/map/Neverwinter",
+      "https://forgottenrealms.fandom.com/wiki/Adventurer%27s_Guild_%28Neverwinter%29",
+      "https://forgottenrealms.fandom.com/wiki/Allis_Lhyssich%27s_Hand_Crafted_Weapons_and_Magical_Weapons_for_Noble_Causes",
+      "https://forgottenrealms.fandom.com/wiki/Augustavus_Cale",
+      "https://forgottenrealms.fandom.com/wiki/Beached_Leviathan",
+      "https://forgottenrealms.fandom.com/wiki/Bishop",
+      "https://forgottenrealms.fandom.com/wiki/Blacklake",
+      "https://forgottenrealms.fandom.com/wiki/Blackule_Lane",
+      "https://forgottenrealms.fandom.com/wiki/Castle_Never",
+      "https://forgottenrealms.fandom.com/wiki/Cauldron_of_Blue_Fire",
+      "https://forgottenrealms.fandom.com/wiki/Church_of_Sune",
+      "https://forgottenrealms.fandom.com/wiki/Church_of_Tyr",
+      "https://forgottenrealms.fandom.com/wiki/Cloak_Tower",
+      "https://forgottenrealms.fandom.com/wiki/Dannar%27s_Mechanical_Marvels",
+      "https://forgottenrealms.fandom.com/wiki/Death_of_a_Sailorman",
+      "https://forgottenrealms.fandom.com/wiki/Deekin_Scalesinger",
+      "https://forgottenrealms.fandom.com/wiki/Dolphin_Bridge",
+      "https://forgottenrealms.fandom.com/wiki/Doomguide",
+      "https://forgottenrealms.fandom.com/wiki/Driftwood_Tavern",
+      "https://forgottenrealms.fandom.com/wiki/Fallen_Tower",
+      "https://forgottenrealms.fandom.com/wiki/Fisher%27s_Float",
+      "https://forgottenrealms.fandom.com/wiki/Hall_of_Justice",
+      "https://forgottenrealms.fandom.com/wiki/Hallowed_Temple_of_Sel%C3%BBne",
+      "https://forgottenrealms.fandom.com/wiki/Harpers",
+      "https://forgottenrealms.fandom.com/wiki/House_of_Knowledge_(Neverwinter)",
+      "https://forgottenrealms.fandom.com/wiki/House_of_a_Thousand_Faces",
+      "https://forgottenrealms.fandom.com/wiki/Jaesor%27s_Fineware_Porcelain_Works",
+      "https://forgottenrealms.fandom.com/wiki/Kalach-Cha",
+      "https://forgottenrealms.fandom.com/wiki/Luskan_Threat_to_Neverwinter",
+      "https://forgottenrealms.fandom.com/wiki/Many-Starred_Cloak",
+      "https://forgottenrealms.fandom.com/wiki/Manycoins_Moneylending",
+      "https://forgottenrealms.fandom.com/wiki/Manycoins_services",
+      "https://forgottenrealms.fandom.com/wiki/Merchant_Guild_Hall",
+      "https://forgottenrealms.fandom.com/wiki/Merchant_Square_%28Neverwinter%29",
+      "https://forgottenrealms.fandom.com/wiki/Moonstone_Mask",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter/Blacklake_District",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter/Chasm",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter/Docks_District",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter/Neverdeath",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter/Protector%27s_Enclave",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter/River_District",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter_%28game%29",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter_Academy",
+      "https://forgottenrealms.fandom.com/wiki/Neverwinter_Guard",
+      "https://forgottenrealms.fandom.com/wiki/New_Neverwinter",
+      "https://forgottenrealms.fandom.com/wiki/Pirates%27_Skyhold",
+      "https://forgottenrealms.fandom.com/wiki/Plaguechanged",
+      "https://forgottenrealms.fandom.com/wiki/Plaguechanged_Warrens",
+      "https://forgottenrealms.fandom.com/wiki/Qara",
+      "https://forgottenrealms.fandom.com/wiki/Sand_%28individual%29",
+      "https://forgottenrealms.fandom.com/wiki/Shard_of_Night",
+      "https://forgottenrealms.fandom.com/wiki/Shining_Knight_Arms_%26_Armor",
+      "https://forgottenrealms.fandom.com/wiki/Shining_Serpent_Inn",
+      "https://forgottenrealms.fandom.com/wiki/Sleeping_Dragon_Bridge",
+      "https://forgottenrealms.fandom.com/wiki/Sons_of_Alagondar",
+      "https://forgottenrealms.fandom.com/wiki/Starshine_Academy",
+      "https://forgottenrealms.fandom.com/wiki/Tarmalune_Trade_House",
+      "https://forgottenrealms.fandom.com/wiki/Temple_of_Waukeen_%28Neverwinter%29",
+      "https://forgottenrealms.fandom.com/wiki/The_Mute_Lute",
+      "https://forgottenrealms.fandom.com/wiki/The_Wall_(Neverwinter)",
+      "https://forgottenrealms.fandom.com/wiki/Theryis",
+      "https://forgottenrealms.fandom.com/wiki/Tower_of_Solace",
+      "https://forgottenrealms.fandom.com/wiki/Trade_of_Blades",
+      "https://forgottenrealms.fandom.com/wiki/Twisted_Fane",
+      "https://forgottenrealms.fandom.com/wiki/Vanteen%27s_Siphon",
+      "https://forgottenrealms.fandom.com/wiki/Vellgard_Manor",
+      "https://forgottenrealms.fandom.com/wiki/Vilebog",
+      "https://forgottenrealms.fandom.com/wiki/Waterclock_Guild",
+      "https://forgottenrealms.fandom.com/wiki/Waterclock_Guild%27s_Crypts",
+      "https://forgottenrealms.fandom.com/wiki/Winged_Wyvern_Bridge",
+      "https://forgottenrealms.fandom.com/wiki/Wintershield_watchmen",
+      "https://housegriffon.com/RPG/Games/DnD/add2/ForgottenRealms/Volo%27s%20Guide%20to%20the%20North.pdf",
+      "https://neverwinter.fandom.com/fr/wiki/Enclave_du_Protecteur",
+      "https://neverwinter.fandom.com/wiki/Lore%3APirates%27_Skyhold",
+      "https://neverwinter.fandom.com/wiki/Sage%27s_Shop",
+      "https://neverwinter.fandom.com/wiki/Shaundakul_Stables",
+      "https://news.xbox.com/en-us/2022/06/15/neverwinter-dragonslayer-roars-to-xbox/",
+      "https://nwn2.fandom.com/wiki/Sunken_Flagon",
+      "https://www.patreon.com/EdGreenwood/posts/best-lesser-in-84837350",
+      "https://www.playneverwinter.com/en/news-details/11263573",
+      "https://www.sageadvice.eu/perchance-blackule-lane-in-neverwinter-is-located-in-the-blacklake-district/"
+    ],
+    "dependencies": []
+  },
+  "checks": [
+    "ZIP-installed",
+    "module-enabled",
+    "no-startup-import",
+    "titles-page-order-types-rich-text-match",
+    "all-UUID-links-resolve",
+    "opened-from-compendium-sidebar",
+    "opened-journal-sheet",
+    "captured-five-point-coordinates",
+    "captured-pin-colors-and-sizes",
+    "bundled-calibration-and-compendium-location-metadata",
+    "journal-GIF-renders",
+    "six-default-pin-GIFs-load",
+    "existing-record-image-default-and-explicit-removal",
+    "location-card-frame-and-title-hover",
+    "list-double-click-opens-exact-journal-page",
+    "blank-map-right-click-clears-selection",
+    "eye-default-view-owner-hide-cycle",
+    "partial-player-access-is-yellow",
+    "eye-manual-access-and-pin-gestures",
+    "gear-does-not-edit-access",
+    "quick-cycle-preserves-individual-exceptions",
+    "independent-player-reader-gets-expanded-lore",
+    "excluded-player-has-no-marker",
+    "revocation-removes-player-marker-and-card",
+    "dnd5e-character-sheet-opens-from-marker",
+    "dnd5e-prototype-token-image-loads",
+    "character-search-finds-offline-world-actor",
+    "character-drag-tracks-every-pointer-step",
+    "vertical-sidebar-toggle",
+    "hidden-header-title",
+    "character-search-and-empty-online-default",
+    "66-bilingual-summary-pages",
+    "ten-lore-facts-and-era-limits-RU-UA",
+    "search-opens-localized-summary-cards",
+    "editorial-metadata-kept-off-player-surface",
+    "academy-temple-linked-navigation-distinguishes-historical-sites",
+    "summary-opens-ukrainian-journal",
+    "four-surface-lore-cards-RU-UA",
+    "street-related-navigation-opens-ukrainian-journal",
+    "all-new-lore-present-in-132-pages",
+    "new-lore-does-not-restore-editorial-metadata",
+    "two-island-surface-summaries-RU-UA",
+    "Tower-District-three-aliases-open-one-River-District",
+    "island-parent-and-surface-links-navigate",
+    "island-ukrainian-journal-opens",
+    "66-pages-per-language-no-extra-Tower-District",
+    "bulk-marker-view-owner-hide-including-filtered-out-pins",
+    "bulk-replaces-individual-grants",
+    "bulk-preserves-other-maps-and-map-permissions",
+    "bulk-access-persists-and-cancel-does-not-apply",
+    "functional-group-headings-RU-UA",
+    "alphabetical-rows-within-groups",
+    "search-preserves-groups-hides-empty-groups",
+    "grouped-row-opens-location",
+    "design-button-between-settings-and-RU",
+    "classic-and-aged-keyboard-toggle",
+    "design-preserves-selection-search-zoom",
+    "design-client-only-persists-reopen-reload",
+    "design-RU-UA-tooltips",
+    "aged-transparent-corners-opaque-center",
+    "design-normal-maximized-screenshots",
+    "classic-restored-world-content-unchanged",
+    "pack-reopens-after-reload"
+  ],
+  "scope": "Full ZIP journal/UI suite",
+  "design": {
+    "image": {
+      "width": 1678,
+      "height": 937,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center": 253
+    }
+  },
+  "cleanup": {
+    "serverStopped": true,
+    "disposablePayloadRemoved": true
+  },
+  "finished": "2026-11-15T10:44:30.520Z"
+}

@@ -3,6 +3,10 @@
 A Russian/Ukrainian Foundry VTT atlas for Neverwinter in 1492 DR. Package ID:
 `neverwinter-atlas`. Minimum Foundry: **14**; verified: **14.370**.
 
+Version 0.19.0 includes 66 locations and 132 RU/UA journal pages, grouped location
+lists, bulk marker access, two parchment designs and the opening reveal. See
+[release notes](https://github.com/aperol-spritz/fr-maps/blob/main/docs/releases/0.19.0.md).
+
 Open with **M**. Includes the city map, the supplied Evernight map, a placeholder
 for a future underground map, lore journals, custom locations, territories,
 drawings, character markers, permissions and a distance/travel-time ruler.

@@ -1,8 +1,10 @@
+import {groupedPlaces} from './list-groups.mjs';
+import {unrollAtlas} from './unroll.mjs';
 import {layerIds,currentLayer,layerMap,layerName,pendingMap} from './layers.mjs';
 import {watchUI,tr,confirmUI} from './i18n.mjs';
 import {configureWindow,configureMap,showFloatingDialog} from './window.mjs';
 import {customPlaces,editPoint} from './custom-points.mjs';
-import {BUNDLED_MAP,mapPath,canViewMap,canMove,accessiblePlaces,visibility,mapSettings,pointSettings,movePoint,formDialog} from './access.mjs';
+import {BUNDLED_MAP,mapPath,canViewMap,canMove,accessiblePlaces,visibility,mapSettings,pointSettings,locationAccess,cycleLocationAccess,movePoint,formDialog} from './access.mjs';
 import {actionHistory} from './history.mjs';
 import {mapState,registerState,migrateLegacy,removePoint,patchPoint,syncTerritoryDefaults,copy} from './state.mjs';
 import {renderTerritories,renderDrawings,draggablePin,drawingTools} from './map-art.mjs';
@@ -62,6 +64,36 @@ async function createAtlas() {
   const manager=document.createElement('dialog');manager.className='nw-point-editor nw-territory-manager';
   const sidebarButton=document.createElement('button');sidebarButton.dataset.sidebar='';sidebarButton.setAttribute('aria-label','Скрыть панель');sidebarButton.innerHTML='<i class="fas fa-sidebar"></i>';el.querySelector('aside').before(sidebarButton);
   const characterButton=document.createElement('button');characterButton.dataset.characters='';characterButton.title='Персонажи';characterButton.innerHTML='<i class="fas fa-users"></i>';el.querySelector('[data-settings]').before(characterButton);
+  const designMenu=document.createElement('details');designMenu.className='nw-design-tools';
+  designMenu.innerHTML='<summary data-design title="Выбрать дизайн" aria-label="Выбрать дизайн" aria-haspopup="menu" aria-expanded="false"><i class="fas fa-palette" aria-hidden="true"></i></summary><div role="menu" aria-label="Дизайн"><strong>Дизайн</strong><button type="button" role="menuitemradio" data-design-choice="classic"><span class="nw-design-swatch nw-design-classic" aria-hidden="true"></span><span>Классический</span><i class="fas fa-check" aria-hidden="true"></i></button><button type="button" role="menuitemradio" data-design-choice="aged"><span class="nw-design-swatch nw-design-aged" aria-hidden="true"></span><span>Старый пергамент</span><i class="fas fa-check" aria-hidden="true"></i></button></div>';
+  el.querySelector('[data-settings]').after(designMenu);
+  const designButton=designMenu.querySelector('[data-design]');
+  const designChoices=[...designMenu.querySelectorAll('[data-design-choice]')];
+  function closeDesign(){designMenu.open=false;designButton.setAttribute('aria-expanded','false');}
+  function applyDesign(value) {
+    const aged=value==='aged';el.dataset.design=aged?'aged':'classic';
+    for(const choice of designChoices)choice.setAttribute('aria-checked',String(choice.dataset.designChoice===el.dataset.design));
+  }
+  applyDesign(game.settings.get(ID,'design'));
+  for(const choice of designChoices)choice.onclick=async()=>{
+    designChoices.forEach(button=>{button.disabled=true;});
+    try {await game.settings.set(ID,'design',choice.dataset.designChoice);applyDesign(choice.dataset.designChoice);closeDesign();designButton.focus({preventScroll:true});}
+    catch(error){ui.notifications.error(tr(error.message));}
+    finally {designChoices.forEach(button=>{button.disabled=false;});}
+  };
+  designMenu.addEventListener('toggle',()=>designButton.setAttribute('aria-expanded',String(designMenu.open)));
+  designMenu.addEventListener('keydown',event=>{
+    if(event.key==='Escape' && designMenu.open){event.preventDefault();event.stopPropagation();closeDesign();designButton.focus({preventScroll:true});return;}
+    const keys=['ArrowDown','ArrowUp','Home','End'];if(!keys.includes(event.key))return;
+    event.preventDefault();event.stopPropagation();designMenu.open=true;
+    const current=designChoices.indexOf(document.activeElement);
+    const index=event.key==='Home'?0:event.key==='End'?designChoices.length-1:current<0?designChoices.findIndex(button=>button.getAttribute('aria-checked')==='true'):(current+(event.key==='ArrowDown'?1:-1)+designChoices.length)%designChoices.length;
+    designChoices[index].focus({preventScroll:true});
+  });
+  designMenu.addEventListener('focusout',event=>{if(!designMenu.contains(event.relatedTarget))closeDesign();});
+  const dismissDesign=event=>{if(!designMenu.contains(event.target))closeDesign();};
+  document.addEventListener('pointerdown',dismissDesign,true);
+  el.addEventListener('close',()=>document.removeEventListener('pointerdown',dismissDesign,true),{once:true});
   const accuracy=document.createElement('select');accuracy.dataset.positionFilter='';el.querySelector('[data-period-filter]').after(accuracy);
   const count=document.createElement('small');count.className='nw-list-count';el.querySelector('nav').before(count);
   manager.innerHTML='<h2>Территории</h2><div class="nw-territory-content"><button data-new-region>Создать территорию</button><button data-outline-selected disabled>Контур выбранной локации</button><label class="nw-check"><input data-show-regions type="checkbox" checked>Показать контуры</label><section class="nw-region-list" data-region-list></section><section data-region-editor-host></section></div>';
@@ -131,8 +163,40 @@ async function createAtlas() {
     if(panel.open) for(const other of toolPanels) if(other!==panel) other.open=false;
   });
   const editMarker=place=>pointSettings(place,baseMap).catch(error=>ui.notifications.error(tr(error.message)));
+  function accessControl(node,place) {
+    const status=visibility(place);
+    node.dataset.access=status.access;
+    node.classList.add(status.open?'fa-eye':'fa-eye-slash');
+    const label={owner:'Владение у всех игроков',view:'Доступно всем игрокам',partial:'Доступно части игроков',none:'Скрыто от игроков'}[status.access];
+    node.title=tr(label)+(status.names.length?' — '+status.names.join(', '):'')+'. '+tr('ПКМ: переключить общий доступ. Двойной щелчок: настроить доступ.');
+    node.setAttribute('aria-label',tr(node.title));node.setAttribute('role','button');node.tabIndex=0;
+    node.onclick=event=>{event.preventDefault();event.stopPropagation();};
+    node.ondblclick=event=>{event.preventDefault();event.stopPropagation();locationAccess(place,baseMap);};
+    node.oncontextmenu=event=>{event.preventDefault();event.stopPropagation();cycleLocationAccess(place,baseMap).catch(error=>ui.notifications.error(tr(error.message)));};
+    node.onpointerdown=event=>event.stopPropagation();
+    node.onkeydown=event=>{if(['Enter',' '].includes(event.key)){event.preventDefault();event.stopPropagation();locationAccess(place,baseMap);}};
+  }
+  async function openLocationJournal(place) {
+    const book=books.get(language),page=place.document?place.document.pages.contents[0]:book?.pages.find(page=>page.getFlag(ID,'key')===place.id);
+    if(place.document || (game.user.isGM && !place.area)) {
+      const sheet=(place.document ?? book).sheet;await sheet.render({force:true,pageId:page?.id,mode:1});sheet.bringToFront();
+    } else {
+      const reader=document.createElement('dialog');reader.className='nw-point-editor nw-public-reader';
+      const heading=document.createElement('h2');heading.textContent=nameFor(place,language);reader.append(heading);
+      for(const field of ['lore','description','services','details','organizations','reconstruction'])if(place[language][field]){
+        if(field==='reconstruction'){const title=document.createElement('h3');title.textContent=language==='uk'?'Реконструкція на 1492 рік':'Реконструкция на 1492 год';reader.append(title);}
+        const text=document.createElement('p');text.textContent=place[language][field];reader.append(text);
+      }
+      const close=document.createElement('button');close.textContent=labels[language].close;close.onclick=()=>reader.close();
+      reader.append(close);
+      const accessHook=Hooks.on('updateSetting',()=>{if(!canViewMap(baseMap)||!places().some(p=>p.id===place.id))reader.close();});
+      reader.onclose=()=>{Hooks.off('updateSetting',accessHook);reader.remove();};showFloatingDialog(reader);
+    }
+  }
+  let listClickTimer;
   const matchesPeriod=()=>true;
   function choose(place,{center=false,reveal=false}={}) {
+    clearTimeout(listClickTimer);
     if(sidebarCollapsed)sidebar(false);
     if(selectedId!==place.id) history.push({
       selectedId,query:input.value,category:select.value,period:periodFilter.value,
@@ -239,8 +303,7 @@ async function createAtlas() {
         pin.setAttribute('aria-label',name);showTooltip(pin,place);
         if(game.user.isGM) {
           const state=visibility(place);
-          const badge=document.createElement('i');badge.className='fas fa-eye nw-access-icon';badge.dataset.access=state.level>=3?'owner':state.open?'view':'none';
-          badge.title=(state.level>=3?'Владение у игроков':state.open?'Доступно игрокам':'Скрыто от игроков')+(state.names.length?' — '+state.names.join(', '):'');
+          const badge=document.createElement('i');badge.className='fas nw-access-icon';accessControl(badge,place);
           pin.dataset.visibility=state.open?'open':'hidden';
           pin.append(badge);
         }
@@ -257,7 +320,7 @@ async function createAtlas() {
     }
     map?.refreshPins();
     listed=visible;refreshList();
-    const card=find('article');card.replaceChildren();card.hidden=!selected;
+    const card=find('article');card.replaceChildren();card.hidden=!selected;card.dataset.selectedPlace=selected?.id ?? '';
     if(!selected) return;
     const page=selected.document ? selected.document.pages.contents[0] :
       game.user.isGM && !selected.area ? books.get(language).pages.find(page=>page.getFlag(ID,'key')===selected.id) : undefined;
@@ -266,21 +329,11 @@ async function createAtlas() {
     const parsed=new DOMParser().parseFromString(page?.text?.content ?? '','text/html');
     summary.textContent=selected.document ? parsed.body.innerText : page?parsed.querySelector('p')?.textContent:selected[language].lore;
     const button=document.createElement('button');button.textContent=t.full;
-    button.onclick=async()=>{
-      if(selected.document || (game.user.isGM && !selected.area)) {const sheet=(selected.document ?? books.get(language)).sheet;await sheet.render({force:true,pageId:page?.id,mode:1});sheet.bringToFront();}
-      else {
-        const reader=document.createElement('dialog');reader.className='nw-point-editor nw-public-reader';
-        const heading=document.createElement('h2');heading.textContent=nameFor(selected,language);
-        const text=document.createElement('p');text.textContent=selected[language].lore ?? '';
-        const close=document.createElement('button');close.textContent=t.close;close.onclick=()=>reader.close();
-        reader.append(heading,text,close);reader.onclose=()=>reader.remove();showFloatingDialog(reader);
-      }
-    };
+    button.onclick=()=>openLocationJournal(selected);
     button.hidden=true;heading.className='nw-location-heading';const titleButton=document.createElement('button');titleButton.dataset.openJournal='';titleButton.textContent=heading.textContent;titleButton.onclick=button.onclick;heading.replaceChildren(titleButton);card.append(heading,summary,button);
     if(game.user.isGM) {
       const state=visibility(selected);
-      const access=document.createElement('i');access.className='fas fa-eye nw-card-access';access.dataset.access=state.level>=3?'owner':state.open?'view':'none';
-      access.title=state.level>=3?'Владение у игроков':state.open?'Доступно игрокам':'Скрыто от игроков';access.setAttribute('aria-label',access.title);
+      const access=document.createElement('i');access.className='fas nw-card-access';accessControl(access,selected);
       const settings=document.createElement('button');settings.dataset.pointSettings='';settings.innerHTML='<i class="fas fa-cog"></i>';settings.title='Настройки локации';settings.setAttribute('aria-label',settings.title);settings.onclick=()=>editMarker(selected);
       heading.append(settings,access);
     }
@@ -342,23 +395,32 @@ async function createAtlas() {
   }
   function refreshList(){
     const nav=find('nav');nav.replaceChildren();const global=Boolean(input.value.trim()),inFrame=global?listed:listed.filter(place=>inViewport(place,stage,viewport));
-    for(const place of inFrame){const button=document.createElement('button');button.textContent=nameFor(place,language);button.dataset.listPlace=place.id;button.setAttribute('aria-pressed',String(place.id===selectedId));button.onclick=()=>choose(place,{center:true});nav.append(button);}
+    for(const group of groupedPlaces(inFrame,language)){
+      const heading=document.createElement('h4');heading.className='nw-list-group';heading.dataset.listGroup=group.id;heading.textContent=group.title;nav.append(heading);
+      for(const place of group.places){
+      const button=document.createElement('button');button.textContent=nameFor(place,language);button.dataset.listPlace=place.id;button.setAttribute('aria-pressed',String(place.id===selectedId));
+      // Keep the row in place until the browser can distinguish a double click
+      // from a single click; expanding the card immediately moves its target.
+      button.onclick=event=>{clearTimeout(listClickTimer);if(event.detail===0)choose(place,{center:true});else if(event.detail===1)listClickTimer=setTimeout(()=>choose(place,{center:true}),300);};
+      button.ondblclick=event=>{event.preventDefault();clearTimeout(listClickTimer);choose(place,{center:true});openLocationJournal(place);};nav.append(button);
+    }
+    }
     if(!inFrame.length)nav.textContent=language==='uk'?'У цій області локацій немає':'В этой области локаций нет';
     count.textContent=global?(language==='uk'?'Пошук у всьому місті: ':'Поиск по всему городу: ')+inFrame.length:(language==='uk'?'У кадрі: ':'В кадре: ')+inFrame.length+' / '+listed.length;
   }
   viewport.addEventListener('nw-view-change',()=>{refreshList();measure?.refresh();});
   viewport.addEventListener('nw-redraw',render);
   el.querySelectorAll('[data-lang]').forEach(button=>button.onclick=async()=>{
-    language=button.dataset.lang;render();await game.settings.set(ID,'language',language);measure?.refresh();
+    language=button.dataset.lang;render();await game.settings.set(ID,'language',language);applyDesign(el.dataset.design);measure?.refresh();
   });
-  select.onchange=render;accuracy.onchange=render;input.oninput=()=>{lastPinClick=null;render();};periodFilter.onchange=render;
+  select.onchange=accuracy.onchange=periodFilter.onchange=()=>{clearTimeout(listClickTimer);render();};input.oninput=()=>{clearTimeout(listClickTimer);lastPinClick=null;render();};
   find('[data-back]').onclick=()=>{
     const previous=history.pop();
     if(!previous) return;
     selectedId=previous.selectedId;placing=false;placingCharacter=null;input.value=previous.query;select.value=previous.category;periodFilter.value=previous.period;
     render();map.restore(previous.view);find('aside').scrollTop=previous.scroll;
   };
-  find('[data-settings]').onclick=()=>mapSettings(baseMap).catch(error=>ui.notifications.error(tr(error.message)));
+  find('[data-settings]').onclick=()=>mapSettings(baseMap,()=>places().filter(place=>(place.keepMarker || !(place.area || place.territoryOnly || place.shape?.points?.length>=3)) && (place.isCustom || baseMap===bundledMap) && Number.isFinite(place.x) && Number.isFinite(place.y))).catch(error=>ui.notifications.error(tr(error.message)));
   characterButton.onclick=()=>characterTools(baseMap,actorId=>{stopDrawing();measure.stop();regions.stop();placing=false;placingCharacter=null;placingCharacter=actorId;viewport.classList.add('nw-placing');find('footer small').textContent=language==='uk'?'Клацніть на мапі, щоб поставити персонажа':'Щёлкните по карте, чтобы поставить персонажа';},record=>{map.centerOn(record.x,record.y);const token=stage.querySelector('[data-character="'+record.actorId+'"]');token?.focus({preventScroll:true});token?.animate([{outline:'4px solid #248fc7'},{outline:'0px solid transparent'}],{duration:1500});});
   find('[data-add]').onclick=()=>{stopDrawing();measure.stop();regions.stop();placing=!placing;render();};
   find('[data-territories]').onclick=()=>{if(game.user.isGM)showFloatingDialog(manager);};
@@ -397,7 +459,7 @@ async function createAtlas() {
   manager.addEventListener('keydown',event=>{
     if((event.ctrlKey || event.metaKey) && event.code==='KeyZ' && !event.target.closest('input,textarea,select') && regions.active()) {event.preventDefault();regions.undo();}
   });
-  viewport.addEventListener('contextmenu',event=>{event.preventDefault();event.stopPropagation();if(!event.target.closest('[data-zone],.nw-pin,.nw-region-label,.nw-character,.nw-vertex,.nw-midpoint') && !regions.active()){selectedId=undefined;lastPinClick=null;render();}});
+  viewport.addEventListener('contextmenu',event=>{event.preventDefault();event.stopPropagation();if(!event.target.closest('[data-zone],.nw-pin,.nw-region-label,.nw-character,.nw-vertex,.nw-midpoint') && !regions.active()){clearTimeout(listClickTimer);selectedId=undefined;lastPinClick=null;render();}});
   measure=ruler(el,stage,viewport,img,baseMap,()=>map,()=>{stopDrawing();regions.stop();placing=false;placingCharacter=null;render();});
   if(game.user.isGM) {
     stopDrawing=drawingTools(stage,viewport,baseMap,()=>map,find('.nw-drawing-tools'),actions);
@@ -405,6 +467,7 @@ async function createAtlas() {
     find('[data-draw]').addEventListener('click',()=>{measure.stop();regions.stop();placing=false;placingCharacter=null;render();});
   }
   el.onclose=()=>{
+    clearTimeout(listClickTimer);
     (layerId==='city'?game.settings.set(ID,'view',map.snapshot()):game.settings.set(ID,'layerViews',{...game.settings.get(ID,'layerViews'),[layerId]:map.snapshot()})).catch(error=>ui.notifications.error(tr(error.message)));
     game.settings.set(ID,'periodFilter',periodFilter.value).catch(error=>ui.notifications.error(tr(error.message)));
     stopDrawing();regions.stop();measure.destroy();manager.close();manager.remove();map.destroy();cleanupWindow();
@@ -412,11 +475,12 @@ async function createAtlas() {
     el.remove();atlas=null;
   };
   input.focus();
+  unrollAtlas(el);
 }
 Hooks.once('init',()=>{
   registerState();
   registerCharacters();
-  for(const [key,type,value] of [['activeLayer',String,'city'],['layerViews',Object,{}],['language',String,'ru'],['window',Object,{}],['view',Object,{}],['sidebarCollapsed',Boolean,false],['rulerPreferences',Object,{}]]) {
+  for(const [key,type,value] of [['activeLayer',String,'city'],['layerViews',Object,{}],['language',String,'ru'],['design',String,'classic'],['window',Object,{}],['view',Object,{}],['sidebarCollapsed',Boolean,false],['rulerPreferences',Object,{}]]) {
     game.settings.register(ID,key,{scope:'client',config:false,type,default:value});
   }
   game.keybindings.register(ID,'openAtlas',{

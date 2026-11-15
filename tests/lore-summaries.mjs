@@ -24,7 +24,7 @@ export async function loreSummaries(page,report){
   });
   assert.deepEqual(stored.map(j=>j.language).sort(),['ru','uk']);
   for(const journal of stored){
-    assert.equal(journal.pages.length,60);
+    assert.equal(journal.pages.length,66);
     for(const item of loreCases){
       const p=journal.pages.find(p=>p.key===item.id);assert.ok(p);assert.match(p.html,item.fact[journal.language]);assert.doesNotMatch(p.html,/Расположение —|Розташування —|Период сведений —|Період відомостей —/);
     }
@@ -67,12 +67,17 @@ export async function loreSummaries(page,report){
   await atlas.locator('[data-characters]').click();await settings.locator('[name=characterSearch]').fill('Atlas motion');
   assert.equal(await settings.locator('[name=actorId] option').count(),1);assert.equal(await settings.locator('[name=actorId]').inputValue(),actor);
   await settings.locator('[data-cancel]').click();
-  const token=atlas.locator(`[data-character="${actor}"]`);await token.waitFor();const start=await token.boundingBox();
+  const token=atlas.locator(`[data-character="${actor}"]`);await token.waitFor();
+  await token.click();await page.waitForFunction(id=>[...foundry.applications.instances.values()].some(app=>app.document?.id===id && app.rendered),actor);
+  await page.evaluate(async id=>{for(const app of foundry.applications.instances.values())if(app.document?.id===id)await app.close();},actor);
+  assert.equal(await token.locator('img').evaluate(e=>e.complete && e.naturalWidth>0),true);
+  report.checks.push('dnd5e-character-sheet-opens-from-marker','dnd5e-prototype-token-image-loads');
+  const start=await token.boundingBox();
   await page.mouse.move(start.x+start.width/2,start.y+start.height/2);await page.mouse.down();
   for(let i=1;i<=8;i++){await page.mouse.move(start.x+start.width/2+i*5,start.y+start.height/2+i*3);const r=await token.boundingBox();assert.ok(Math.abs(r.x-start.x-i*5)<2 && Math.abs(r.y-start.y-i*3)<2,'Marker follows pointer without easing lag');}
   await page.mouse.up();await page.evaluate(async id=>{const {changeCharacter}=await import('/modules/neverwinter-atlas/characters.mjs');await changeCharacter('modules/neverwinter-atlas/assets/neverwinter.webp','remove',id);await game.actors.get(id).delete();},actor);
   report.checks.push('character-search-finds-offline-world-actor','character-drag-tracks-every-pointer-step');
   report.checks.push('vertical-sidebar-toggle','hidden-header-title','character-search-and-empty-online-default');
   await atlas.locator('[data-close]').click();
-  report.checks.push('60-bilingual-summary-pages','ten-lore-facts-and-era-limits-RU-UA','search-opens-localized-summary-cards','editorial-metadata-kept-off-player-surface','academy-temple-linked-navigation-distinguishes-historical-sites','summary-opens-ukrainian-journal');
+  report.checks.push('66-bilingual-summary-pages','ten-lore-facts-and-era-limits-RU-UA','search-opens-localized-summary-cards','editorial-metadata-kept-off-player-surface','academy-temple-linked-navigation-distinguishes-historical-sites','summary-opens-ukrainian-journal');
 }

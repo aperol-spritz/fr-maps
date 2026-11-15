@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "date": "2026-11-15",
+  "scope": "Surface island lore and Tower District alias; no Evernight or underground changes",
+  "node": "v24.22.1",
+  "places": 66,
+  "pages": 132,
+  "pins": 54,
+  "territories": 12,
+  "districts": 5,
+  "internalLinks": 438,
+  "citationUrls": 82,
+  "registry": {
+    "total": 71,
+    "included": 60,
+    "remaining": 11
+  },
+  "added": [
+    "skull-fortress",
+    "vilebog"
+  ],
+  "updated": [
+    "river-district",
+    "pirates-skyhold"
+  ],
+  "preserved": {
+    "priorIdentitiesAndOrder": true,
+    "priorCoordinatesShapesAssetsCategories": true,
+    "installedPackFiles": 66,
+    "installedPackFilesUnchanged": true,
+    "evernightUndergroundImagesUnchanged": true,
+    "regionReferenceFilesUnchanged": true
+  },
+  "validation": {
+    "portable": {
+      "command": "npm test",
+      "pass": 37,
+      "fail": 0,
+      "log": "lore-skyhold-tests-2026-11-15.txt"
+    },
+    "build": "npm run build -- build/lore-skyhold-2026-11-15/module",
+    "verify": "npm run verify -- build/local-GGGzqi/module",
+    "foundry": {
+      "status": "passed",
+      "version": "14.370",
+      "dnd5e": "6.1.0",
+      "checks": 63,
+      "report": "lore-skyhold-foundry-2026-11-15.json",
+      "cleanup": {
+        "serverStopped": true,
+        "disposablePayloadRemoved": true
+      }
+    },
+    "legacyCityScenario": "Syntax checked and counts updated; standalone legacy city suite not run",
+    "testMaintenance": [
+      "Trim trailing whitespace before comparing localized list order",
+      "Read compendium path from the built manifest in release tests"
+    ]
+  },
+  "artifact": {
+    "path": "build/local-GGGzqi/module.zip",
+    "sha256": "0522bbc7b093eca0c7d7bfba33666d0723eece9d465c6781fdf274b3cec330da",
+    "manifest": {
+      "id": "neverwinter-atlas",
+      "title": "Neverwinter: City Map",
+      "description": "Двуязычный атлас Невервинтера с доступом игроков, своими территориями, рисованием и линейкой. Открывается клавишей M.",
+      "version": "0.18.1",
+      "compatibility": {
+        "minimum": "14",
+        "verified": "14.370"
+      },
+      "esmodules": [
+        "atlas.mjs"
+      ],
+      "styles": [
+        "atlas.css"
+      ],
+      "packs": [
+        {
+          "name": "city",
+          "label": "Neverwinter: City Map · RU / UA",
+          "path": "packs/city-1492-20261115",
+          "type": "JournalEntry",
+          "ownership": {
+            "PLAYER": "NONE",
+            "ASSISTANT": "NONE"
+          }
+        }
+      ]
+    },
+    "canonicalPlacesMatch": true
+  },
+  "concurrentWork": {
+    "baselineFilesChangedOutsideLore": [
+      "module.json",
+      "atlas.mjs",
+      "atlas.css",
+      "tools/build-pack.mjs"
+    ],
+    "sourceFilesChangedAfterThisTestedSnapshot": [
+      "atlas.mjs"
+    ],
+    "note": "Shared workspace runtime edits continued during this lore stage. Verification applies to the exact ZIP above. The canonical lore matches current data/places.json; no unrelated runtime edits were reverted."
+  },
+  "diagnostics": [
+    "Initial npm test run: one local mock HTTP ECONNRESET; targeted retry passed.",
+    "Second full run found two release tests hardcoded to the previous compendium path during concurrent manifest update. Tests now read the built manifest; final full run passed 37/37.",
+    "Initial browser run passed island lore checks, then failed grouped-list test because trailing whitespace prevented removal of the English suffix. Test normalization corrected; complete rerun and final ZIP run passed."
+  ],
+  "publication": {
+    "tagPushed": false,
+    "githubReleaseCreated": false,
+    "foundrySubmitted": false
+  },
+  "next": "Historical Beggar’s Nest correspondence; source gaps for surface shops and Temple of Amaunator. No duplicate districts; Evernight and underground remain out of scope."
+}

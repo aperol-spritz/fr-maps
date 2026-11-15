@@ -42,11 +42,18 @@ export function formDialog(title,body,save,{gmOnly=true}={}) {
   return {dialog,form,show:()=>showFloatingDialog(dialog)};
 }
 const colorFields='<div class="nw-colors"><input name="color" type="color"><input name="colorHex" pattern="#[0-9a-fA-F]{6}" required aria-label="Код цвета"></div>';
-export async function mapSettings(map) {
+export async function mapSettings(map,places=()=>[]) {
   const data=mapState(map);
   const ui=formDialog('Настройки карты',
-    '<label>Цвет значков по умолчанию'+colorFields+'</label><label>Размер значков, px<input name="size" type="number" min="20" max="96" required></label><fieldset data-permissions><legend>Доступ к карте</legend></fieldset><button type="button" data-backup>Резервная копия карты</button>',
-    form=>updateMap(map,current=>Object.assign(current,{ownership:readOwnership(form),color:form.elements.color.value,size:Number(form.elements.size.value)})));
+    '<label>Цвет значков по умолчанию'+colorFields+'</label><label>Размер значков, px<input name="size" type="number" min="20" max="96" required></label><fieldset data-permissions><legend>Доступ к карте</legend></fieldset><fieldset><legend>Доступ ко всем значкам</legend><label>Все игроки<select name="allMarkerAccess"><option value="">Не изменять</option><option value="0">Скрыть от игроков</option><option value="2">Просмотр</option><option value="3">Владение</option></select></label><small>Применяется ко всем значкам локаций на этой карте, включая скрытые и находящиеся вне кадра. Заменяет индивидуальные разрешения игроков. Территории и персонажи сохраняют свой доступ.</small></fieldset><button type="button" data-backup>Резервная копия карты</button>',
+    form=>updateMap(map,current=>{
+      Object.assign(current,{ownership:readOwnership(form),color:form.elements.color.value,size:Number(form.elements.size.value)});
+      const access=form.elements.allMarkerAccess.value;
+      if(access!==''){
+        const level=Number(access);if(![0,2,3].includes(level))throw Error('Неверный уровень доступа');
+        for(const place of places())current.points[place.id]={...(current.points[place.id] ?? recordFor(place,map)),ownership:{default:level}};
+      }
+    }));
   ui.form.elements.color.value=data.color;ui.form.elements.size.value=data.size;
   bindColor(ui.form);permissionFields(ui.form,data.ownership,false);
   ui.form.querySelector('[data-backup]').onclick=()=>import('./backup.mjs').then(module=>{ui.dialog.close();module.openBackup(map);}).catch(error=>globalThis.ui.notifications.error(tr(error.message)));
@@ -56,10 +63,9 @@ export async function pointSettings(place,map) {
   if(!game.user.isGM && !canEditLocation(place))throw Error('Нет владения этой локацией');
   const data=recordFor(place,map),defaults=mapState(map);
   if(!place.keepMarker && (place.area || place.territoryOnly || place.shape?.points?.length>=3)) {
-    const ui=formDialog('Территория — '+place[game.settings.get(ID,'language')].name,'<label>Публичный текст RU<textarea name="publicRu" rows="4" maxlength="20000"></textarea></label><label>Публічний текст UA<textarea name="publicUk" rows="4" maxlength="20000"></textarea></label><fieldset data-permissions><legend>Доступ к территории</legend></fieldset><small>Граница и заливка настраиваются в окне «Территории».</small>',form=>patchPoint(place,map,{ownership:readOwnership(form),ru:{...data.ru,lore:form.elements.publicRu.value},uk:{...data.uk,lore:form.elements.publicUk.value}}));
+    const ui=formDialog('Территория — '+place[game.settings.get(ID,'language')].name,'<label>Публичный текст RU<textarea name="publicRu" rows="4" maxlength="20000"></textarea></label><label>Публічний текст UA<textarea name="publicUk" rows="4" maxlength="20000"></textarea></label><small>Граница и заливка настраиваются в окне «Территории».</small>',form=>patchPoint(place,map,{ru:{...data.ru,lore:form.elements.publicRu.value},uk:{...data.uk,lore:form.elements.publicUk.value}}));
     ui.form.elements.publicRu.value=data.ru.lore ?? '';ui.form.elements.publicUk.value=data.uk.lore ?? '';
-    const grants=Object.fromEntries(Object.entries(data.ownership ?? {}).map(([id,value])=>[id,value===3?2:value]));
-    permissionFields(ui.form,grants,false);ui.show();return;
+    ui.show();return;
   }
   let upload;
   const ui=formDialog('Точка — '+place[game.settings.get(ID,'language')].name,
@@ -68,7 +74,7 @@ export async function pointSettings(place,map) {
       await upload;
       const asset=form.elements.asset.value.trim();
       if(asset && !/\.(jpe?g|png|gif|webp)(\?.*)?$/i.test(asset)) throw Error('Выберите изображение JPG, PNG, GIF или WebP');
-      await editPublicLocation(place,map,{...(game.user.isGM?{ownership:readOwnership(form)}:{}),
+      await editPublicLocation(place,map,{
         ru:{...(game.user.isGM?data.ru:{}),lore:form.elements.publicRu.value},uk:{...(game.user.isGM?data.uk:{}),lore:form.elements.publicUk.value},
         color:form.elements.individual.checked?form.elements.color.value:null,
         size:form.elements.individual.checked?Number(form.elements.size.value):null,asset});
@@ -99,7 +105,24 @@ export async function pointSettings(place,map) {
     })();
     upload.catch(error=>{ui.form.querySelector('[role=alert]').textContent=error.message;});
   };
-  if(game.user.isGM)permissionFields(ui.form,data.ownership,true);else ui.form.querySelector('[data-permissions]').remove();ui.show();
+  ui.form.querySelector('[data-permissions]').remove();ui.show();
+}
+
+export function locationAccess(place,map) {
+  if(!game.user.isGM)throw Error('Требуются права ведущего');
+  const data=recordFor(place,map);
+  const ui=formDialog('Доступ к локации — '+place[game.settings.get(ID,'language')].name,
+    '<fieldset data-permissions><legend>Доступ к локации</legend></fieldset>',form=>patchPoint(place,map,{ownership:readOwnership(form)}));
+  permissionFields(ui.form,data.ownership,true);ui.show();
+}
+
+export function cycleLocationAccess(place,map) {
+  return updateMap(map,current=>{
+    const record=current.points[place.id] ?? recordFor(place,map);
+    const level=Number(record.ownership?.default ?? 0);
+    // The quick action changes the default only; named player overrides survive.
+    current.points[place.id]={...record,ownership:{...record.ownership,default:level===2?3:level===3?0:2}};
+  });
 }
 function bindColor(form,changed=()=>{}) {
   const fields=form.elements;

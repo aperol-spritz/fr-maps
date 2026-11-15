@@ -40,8 +40,8 @@ try {
   await atlas.waitFor();
   assert.ok((await page.locator('.nw-launch:visible').first().boundingBox()).height<=32,'Compact launcher');
   await page.waitForFunction(()=>document.querySelector('.nw-stage img')?.naturalWidth===3200 && document.querySelector('.nw-stage img')?.naturalHeight===2256);
-  assert.equal(await atlas.locator('.nw-pin:visible').count(),48);
-  report.checks.push('standalone-local-map-48-pins-12-territories','key-m-opens-atlas');
+  assert.equal(await atlas.locator('.nw-pin:visible').count(),54);
+  report.checks.push('standalone-local-map-54-pins-12-territories','key-m-opens-atlas');
   await territoriesFlow(page,report);
   const riverReference=JSON.parse(await fs.readFile(new URL('../data/river-default-source.json',import.meta.url)));
   const riverPoints=await atlas.locator('[data-zone=river]').getAttribute('points');
@@ -90,8 +90,8 @@ try {
     return journals.map(j=>({language:j.getFlag('neverwinter-atlas','language'),pages:j.pages.map(p=>({id:p.id,name:p.name,key:p.getFlag('neverwinter-atlas','key'),content:p.text.content}))}));
   });
   for(const journal of docs) {
-    assert.equal(journal.pages.length,60);
-    assert.equal(new Set(journal.pages.map(p=>p.key)).size,60);
+    assert.equal(journal.pages.length,66);
+    assert.equal(new Set(journal.pages.map(p=>p.key)).size,66);
     for(const item of journal.pages) {
       if(item.key==='mask-earthmote')assert.equal(item.name,journal.language==='ru'?'Маска Лунного Камня':'Маска Місячного Каменю');else assert.match(item.name,/\(.+\)/,'English in page name');
       assert.match(item.content,/forgottenrealms.fandom.com\/wiki\//);
@@ -120,10 +120,10 @@ try {
       assert.equal(await page.evaluate(async links=>(await Promise.all(links.map(link=>fromUuid(link)))).every(Boolean),links),true,'Journal cross-links resolve');
     }
   }
-  report.content={expected:{languages:['ru','uk'],pagesPerLanguage:60,pins:48},actual:{languages:docs.map(j=>j.language).sort(),pageCounts:docs.map(j=>j.pages.length),pins:await atlas.locator('.nw-pin').count()}};
+  report.content={expected:{languages:['ru','uk'],pagesPerLanguage:66,pins:54},actual:{languages:docs.map(j=>j.language).sort(),pageCounts:docs.map(j=>j.pages.length),pins:await atlas.locator('.nw-pin').count()}};
   report.hotkey={expected:'KeyM',actual:await page.evaluate(()=>game.keybindings.get('neverwinter-atlas','openAtlas')[0].key)};
   assert.equal(report.hotkey.actual,report.hotkey.expected);
-  report.checks.push('60-pages-per-language','journal-source-links','journal-related-uuid-links','journal-period-labels');
+  report.checks.push('66-pages-per-language','journal-source-links','journal-related-uuid-links','journal-period-labels');
   const newSearch=atlas.locator('input[type=search]');
   const period=atlas.locator('[data-period-filter]');
   await atlas.locator('[data-category]').selectOption('shop');
@@ -178,7 +178,7 @@ try {
   await page.locator('body').click({position:{x:500,y:20}});
   await page.keyboard.press('KeyM');
   await atlas.locator('[data-place="dannar"]').waitFor();
-  assert.equal(await atlas.locator('.nw-pin').count(),48);
+  assert.equal(await atlas.locator('.nw-pin').count(),54);
   await atlas.locator('[data-category]').selectOption('shop');
   assert.equal(await atlas.locator('nav button').count(),10);
   await atlas.locator('[data-category]').selectOption('service');

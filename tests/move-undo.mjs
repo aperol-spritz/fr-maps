@@ -35,10 +35,10 @@ export async function movementUndo(gm,reader,fixture,report,drag,coordinates) {
   await same(reader,baseline);await drag(reader);await changed(reader,baseline);await undo(reader);await same(reader,baseline);await same(gm,baseline);
   // Permission must still be valid when undo runs, not just at drag time.
   await drag(reader);await changed(reader,baseline);const beforeRevocation=await coordinates(reader);
-  await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('2');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
+  await atlas.locator('.nw-card-access').dblclick();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('2');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   await reader.waitForFunction(({ID,MAP,id})=>game.settings.get(ID,'atlasState').maps[MAP].points.castle.ownership[id]===2,{ID,MAP,id:fixture.users[0].id});
   await undo(reader);await reader.getByText('Немає права переміщувати цю локацію',{exact:true}).waitFor();assert.deepEqual(await coordinates(reader),beforeRevocation);
-  await atlas.locator('[data-point-settings]').click();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('3');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
+  await atlas.locator('.nw-card-access').dblclick();await settings.locator('[data-user="'+fixture.users[0].id+'"]').selectOption('3');await settings.locator('[type=submit]').click();await settings.waitFor({state:'detached'});
   // Return only the movement fixture to its earlier state. Keep unrelated data.
   await gm.evaluate(async({ID,MAP,baseline})=>{const next=foundry.utils.deepClone(game.settings.get(ID,'atlasState'));Object.assign(next.maps[MAP].points.castle,baseline);await game.settings.set(ID,'atlasState',next);},{ID,MAP,baseline});
   await same(reader,baseline);assert.equal(await atlas.locator('[data-stroke]').count(),0);
